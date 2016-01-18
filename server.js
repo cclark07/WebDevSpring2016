@@ -1,6 +1,3 @@
-/**
- * Created by Christopher on 1/15/2016.
- */
 var express = require('express');
 var app = express();
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
