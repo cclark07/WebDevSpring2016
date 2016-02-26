@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
 
     <!-- Load custom styles -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,38 +34,13 @@
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="home.html">Form Maker</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="profile.view.html">Username</a></li>
-                <li><a href="login.view.html">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--HEADER WAS HERE-->
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="home.html">Home</a></li>
-                <li class="active"><a href="profile.view.html">Profile</a></li>
-                <li><a href="admin.view.html">Admin</a></li>
-                <li><a href="forms.view.html">Forms</a></li>
-            </ul>
-        </div>
+        <!--SIDEBAR WAS HERE-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Profile</h1>
+            <h1 class="page-header">Register</h1>
             <form class="form-horizontal">
                 <div class="form-group">
                 <label for="username" class="col-sm-2 control-label">Username:</label>
@@ -80,15 +55,9 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="firstname" class="col-sm-2 control-label">First Name:</label>
+                <label for="verify" class="col-sm-2 control-label">Verify Password:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="firstname" placeholder="First Name">
-                </div>
-              </div>
-               <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                  <input type="password" class="form-control" id="verify" placeholder="Password">
                 </div>
               </div>
               <div class="form-group">
@@ -99,7 +68,7 @@
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <a class="btn btn-primary btn-block" href="profile.view.html">Update</a>
+                  <a class="btn btn-primary btn-block" href="profile.view.html">Register</a>
                 </div>
               </div>
             </form>
