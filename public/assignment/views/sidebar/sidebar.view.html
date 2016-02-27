@@ -9,8 +9,8 @@
         <li ng-hide="currentUser == null" ng-class="{'active' : $location.url() == '/forms'}">
         	<a href="#/forms">Forms</a>
         </li>
-        <li ng-class="{'active' : $location.url() == '/admin'}">
-            <a href="#/admin">Admin HIDE IF ADMIN</a>
+        <li ng-show="currentUser != null && currentUser.roles.indexOf('admin') != -1" ng-class="{'active' : $location.url() == '/admin'}">
+            <a href="#/admin">Admin</a>
         </li>
     </ul>
 </div>
