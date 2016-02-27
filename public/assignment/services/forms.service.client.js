@@ -1,3 +1,4 @@
+"use strict";
 (function(){
     angular
         .module("FormBuilderApp")
@@ -63,7 +64,7 @@
         function updateFormById(formId, newForm, callback) {
             for (var i = 0; i < forms.length; i++) {
                 if (forms[i]._id == formId) {
-                    forms[i] = form;
+                    forms[i] = newForm;
                     callback(forms[i]);
                     return;
                 }

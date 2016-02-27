@@ -1,4 +1,4 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="FormsController">
     <h1 class="page-header">Forms</h1>
     <ul class="nav nav-tabs">
           <li class="active"><a href="#/forms">Forms</a></li>
@@ -19,31 +19,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" placeholder="name"></td>
+                        <td><input ng-model="formname" type="text" placeholder="name"></td>
                         <td>
-                            <span class="glyphicon glyphicon-plus table-icon"></span>
-                            <span class="glyphicon glyphicon-ok table-icon"></span>
+                            <button ng-click="addForm()" class="glyphicon glyphicon-plus table-icon"></button>
+                            <button ng-click="updateForm()" class="glyphicon glyphicon-ok table-icon"></button>
                         </td>
                     </tr>
-                    <tr>
-                        <td><a href="#">Registration Form</a></td>
+                    <tr ng-repeat="form in userforms">
+                        <td><a>{{form.title}}</a></td>
                         <td>
-                            <span class="glyphicon glyphicon-remove table-icon"></span>
-                            <span class="glyphicon glyphicon-pencil table-icon"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">Contact List</a></td>
-                        <td>
-                            <span class="glyphicon glyphicon-remove table-icon"></span>
-                            <span class="glyphicon glyphicon-pencil table-icon"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">To Do List</a></td>
-                        <td>
-                            <span class="glyphicon glyphicon-remove table-icon"></span>
-                            <span class="glyphicon glyphicon-pencil table-icon"></span>
+                            <button ng-click="deleteForm($index)" class="glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="selectForm($index)" class="glyphicon glyphicon-pencil table-icon"></button>
                         </td>
                     </tr>
                 </tbody>
