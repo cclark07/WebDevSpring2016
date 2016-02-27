@@ -5,6 +5,5 @@
 
     function MainController($scope, $location) {
         $scope.$location = $location;
-        $scope.currentUser;
     }
 })();
