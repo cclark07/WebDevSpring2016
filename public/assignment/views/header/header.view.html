@@ -14,7 +14,7 @@
                 <li ng-show="currentUser == null" ng-class="{'active' : $location.url() == '/register'}"><a href="#/register">Register</a></li>
                 <li ng-show="currentUser == null" ng-class="{'active' : $location.url() == '/login'}"><a href="#/login">Login</a></li>
                 <li ng-hide="currentUser == null"><a href="#/profile">Username</a></li>
-                <li ng-hide="currentUser == null"><a href="#/home">Logout</a></li>
+                <li ng-hide="currentUser == null"><a href="" ng-click="logout()">Logout</a></li>
             </ul>
         </div>
     </div>
