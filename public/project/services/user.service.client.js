@@ -69,7 +69,7 @@
 
         // Calls back with array of all users
         function findAllUsers(callback) {
-            return users;
+            callback(users);
         }
 
   		// Adds property called _id with unique value (timestamp) to the user object parameter

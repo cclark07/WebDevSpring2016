@@ -39,49 +39,27 @@
                         <td><input type="password" placeholder="Password"></td>
                         <td><input type="text" placeholder="First Name"></td>
                         <td><input type="text" placeholder="Last Name"></td>
-                        <td><input type="text" placeholder="Email"></td>
+                        <td><input type="email" placeholder="Email"></td>
                         <td><input type="text" placeholder="Role1, Role2"></td>
                         <td class="text-nowrap">
                             <button class="glyphicon glyphicon-plus table-icon"></button>
                             <button class="glyphicon glyphicon-ok table-icon"></button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>alice</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>User</td>
+
+                    <tr ng-repeat="user in users">
+                        <td>{{user.username}}</td>
+                        <td>{{user.password}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.roles}}</td>
                         <td class="text-nowrap">
-                            <button class="glyphicon glyphicon-pencil table-icon"></button>
-                            <button class="glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="" class="glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="" class="glyphicon glyphicon-pencil table-icon"></button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>bob</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>User, Admin</td>
-                        <td class="text-nowrap">
-                            <button class="glyphicon glyphicon-pencil table-icon"></button>
-                            <button class="glyphicon glyphicon-remove table-icon"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>charlie</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>User</td>
-                        <td class="text-nowrap">
-                            <button class="glyphicon glyphicon-pencil table-icon"></button>
-                            <button class="glyphicon glyphicon-remove table-icon"></button>
-                        </td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>

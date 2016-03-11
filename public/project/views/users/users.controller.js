@@ -4,7 +4,15 @@
         .module("SourceCamApp")
         .controller("UsersController", UsersController);
 
-    function UsersController() {
-        //TODO
+    function UsersController($scope, UserService) {
+        $scope.users = [];
+
+        function init() {
+            UserService.findAllUsers(function(response) {
+                $scope.users = response;
+            })
+        }
+
+        init();
     }
 })();

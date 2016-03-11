@@ -103,7 +103,7 @@
         }
 
         function getAllLocations(callback) {
-            return callback(locations);
+            callback(locations);
         }
     }
 })();
