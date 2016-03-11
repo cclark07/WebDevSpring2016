@@ -4,7 +4,9 @@
         .module("SourceCamApp")
         .controller("MapController", MapController);
 
-    function MapController($location) {
+    function MapController($scope, $location) {
+        $scope.initMap = initMap;
+
         function initMap() {
             var mapProp = {
                 center:new google.maps.LatLng(42.508742,-71.120850),
