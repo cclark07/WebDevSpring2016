@@ -25,10 +25,10 @@
             //    templateUrl: "views/admin/admin.view.html",
             //    controller: "AdminController"
             //})
-            //.when("/forms", {
-            //    templateUrl: "views/forms/forms.view.html",
-            //    controller: "FormsController"
-            //})
+            .when("/locations", {
+                templateUrl: "views/locations/locations.view.html",
+                controller: "LocationsController"
+            })
             .otherwise({
                 redirectTo: "/home"
             });

@@ -2,6 +2,10 @@
 	width: 100%;
 }
 
+.location-icons {
+	font-size: 3rem;
+}
+
 .no-margin {
 	margin: 0;
 }
