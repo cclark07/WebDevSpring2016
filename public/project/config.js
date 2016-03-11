@@ -33,6 +33,10 @@
                 templateUrl: "views/users/create.view.html",
                 controller: "CreateController"
             })
+            .when("/map", {
+                templateUrl: "views/worldmap/worldmap.view.html",
+                controller: "MapController"
+            })
             .otherwise({
                 redirectTo: "/home"
             });
