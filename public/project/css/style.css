@@ -6,6 +6,11 @@ body {
 	width: 100%;
 }
 
+#googleMap {
+	width:100%;
+	height:400px;
+}
+
 .location-icons {
 	font-size: 3rem;
 }
@@ -22,10 +27,6 @@ body {
 	margin-top: 1rem;
 }
 
-#profile-name {
-	color: white;
-}
-
 .table-icon {
 	font-size: 2rem;
 }
@@ -35,7 +36,6 @@ body {
 	align-items: center;
 }
 
-#googleMap {
-	width:100%;
-	height:400px;
+.white-text {
+	color: white;
 }
