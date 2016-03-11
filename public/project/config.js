@@ -17,10 +17,10 @@
                 templateUrl: "views/users/login.view.html",
                 controller: "LoginController"
             })
-            //.when("/profile", {
-            //    templateUrl: "views/users/profile.view.html",
-            //    controller: "ProfileController"
-            //})
+            .when("/profile", {
+                templateUrl: "views/users/profile.view.html",
+                controller: "ProfileController"
+            })
             //.when("/admin", {
             //    templateUrl: "views/admin/admin.view.html",
             //    controller: "AdminController"

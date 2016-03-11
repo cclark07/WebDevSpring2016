@@ -2,8 +2,16 @@
 	width: 100%;
 }
 
+.padded {
+	padding: 1rem;
+}
+
 .panel {
 	margin-top: 1rem;
+}
+
+.table-icon {
+	font-size: 2rem;
 }
 
 .vertical-align {
