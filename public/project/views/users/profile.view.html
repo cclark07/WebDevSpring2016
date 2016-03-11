@@ -74,13 +74,16 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>---</td>
-                        <td>---</td>
-                        <td>---</td>
-                        <td>---</td>
-                        <td>---</td>
+                        <td><input class="form-control" ng-model="locationName" type="text" placeholder="Name"></td>
+                        <td><input class="form-control" ng-model="latlon" type="text" placeholder="Lat/Lon (e.g. [40, 70])"></td>
+                        <td><input class="form-control" ng-model="webcamURL" type="url" placeholder="URL"></td>
+                        <td><input class="form-control" ng-model="weatherURL" type="url" placeholder="URL"></td>
                         <td>
-                            <button ng-click="newLocation()" class="glyphicon glyphicon-plus table-icon"></button>
+                            <p>Open</p>
+                        </td>
+                        <td class="text-nowrap">
+                            <button ng-click="addLocation()" class="glyphicon glyphicon-plus table-icon"></button>
+                            <button ng-click="updateLocation()" class="glyphicon glyphicon-ok table-icon"></button>
                         </td>
                     </tr>
                     <tr ng-repeat="location in userLocations">

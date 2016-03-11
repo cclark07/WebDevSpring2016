@@ -7,6 +7,7 @@
     function ProfileController($rootScope, $scope, UserService, LocationService) {
 
         $scope.updateDetails = updateDetails;
+        $scope.addLocation = addLocation;
         $scope.deleteLocation = deleteLocation;
 
         // Get currentUser from rootScope
@@ -44,6 +45,21 @@
             UserService.updateUser(user._id, user, function(response) {
                 $rootScope.currentUser = response;
                 user = response;
+            });
+        }
+
+        // Uses the LocationService to create a new location for the current user
+        function addLocation() {
+            var newLocation = {
+                "name":$scope.locationName,
+                "userId":user._id,
+                "latlon":$scope.latlon,
+                "webcamURL":$scope.webcamURL,
+                "weatherURL":$scope.weatherURL,
+                "status":"Open"
+            };
+            LocationService.createLocationForUser(user._id, newLocation, function(response) {
+                $scope.userLocations.push(response);
             });
         }
 
