@@ -21,6 +21,10 @@
                 templateUrl: "views/users/profile.view.html",
                 controller: "ProfileController"
             })
+            .when("/users", {
+                templateUrl: "views/users/users.view.html",
+                controller: "UsersController"
+            })
             .when("/admin", {
                 templateUrl: "views/admin/admin.view.html",
                 controller: "AdminController"
