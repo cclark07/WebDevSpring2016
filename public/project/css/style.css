@@ -1,3 +1,7 @@
+body {
+	background-color: #004d66;
+}
+
 .full-width {
 	width: 100%;
 }
@@ -18,6 +22,10 @@
 	margin-top: 1rem;
 }
 
+#profile-name {
+	color: white;
+}
+
 .table-icon {
 	font-size: 2rem;
 }
@@ -28,6 +36,6 @@
 }
 
 #googleMap {
-	width:700px;
+	width:100%;
 	height:400px;
 }
