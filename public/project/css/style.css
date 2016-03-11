@@ -26,3 +26,8 @@
 	display: flex;
 	align-items: center;
 }
+
+#googleMap {
+	width:700px;
+	height:400px;
+}
