@@ -25,9 +25,9 @@
                 templateUrl: "views/admin/admin.view.html",
                 controller: "AdminController"
             })
-            .when("/locations", {
-                templateUrl: "views/locations/locations.view.html",
-                controller: "LocationsController"
+            .when("/location", {
+                templateUrl: "views/location/location.view.html",
+                controller: "LocationController"
             })
             .when("/create", {
                 templateUrl: "views/users/create.view.html",
