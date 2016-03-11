@@ -11,7 +11,7 @@
 
         // Inject functions into scope
         $scope.addLocation = addLocation;
-        //$scope.deleteUser = deleteUser;
+        $scope.deleteLocation = deleteLocation;
         //$scope.selectUser = selectUser;
         //$scope.updateUser = updateUser;
 
@@ -39,6 +39,13 @@
                 "status":$scope.status
             };
             LocationService.createLocationForUser($scope.userId, newLocation, function(response) {});
+        }
+
+        // Uses the LocationService to delete the location at the selected index
+        function deleteLocation(index) {
+            LocationService.deleteLocationByIndex(index, function(response) {
+                $scope.locations = response;
+            })
         }
     }
 })();
