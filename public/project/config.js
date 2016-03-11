@@ -10,15 +10,15 @@
                 controller: "HomeController"
             })
             .when("/register", {
-                templateUrl: "views/users/register.view.html",
+                templateUrl: "views/user/register.view.html",
                 controller: "RegisterController"
             })
             .when("/login", {
-                templateUrl: "views/users/login.view.html",
+                templateUrl: "views/user/login.view.html",
                 controller: "LoginController"
             })
             .when("/profile", {
-                templateUrl: "views/users/profile.view.html",
+                templateUrl: "views/user/profile.view.html",
                 controller: "ProfileController"
             })
             .when("/users", {
@@ -38,7 +38,7 @@
                 controller: "LocationsController"
             })
             .when("/create", {
-                templateUrl: "views/users/create.view.html",
+                templateUrl: "views/user/create.view.html",
                 controller: "CreateController"
             })
             .when("/map", {
