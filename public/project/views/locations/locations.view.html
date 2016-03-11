@@ -32,9 +32,9 @@
                     <tbody>
                     <tr>
                         <td><input ng-model="locationName" type="text" placeholder="Name"></td>
-                        <td><input ng-model="latlon" type="decimal" placeholder="Lat/Lon (e.g. 40, 70)"></td>
-                        <td><input ng-model="webcamURL" type="text" placeholder="URL"></td>
-                        <td><input ng-model="weatherURL" type="text" placeholder="URL"></td>
+                        <td><input ng-model="latlon" type="text" placeholder="Lat/Lon (e.g. [40, 70])"></td>
+                        <td><input ng-model="webcamURL" type="url" placeholder="URL"></td>
+                        <td><input ng-model="weatherURL" type="url" placeholder="URL"></td>
                         <td>
                             <select>
                                 <option>Open</option>
@@ -43,31 +43,20 @@
                             </select>
                         </td>
                         <td class="text-nowrap">
-                            <button class="glyphicon glyphicon-plus table-icon"></button>
-                            <button class="glyphicon glyphicon-ok table-icon"></button>
+                            <button ng-click="" class="glyphicon glyphicon-plus table-icon"></button>
+                            <button ng-click="" class="glyphicon glyphicon-ok table-icon"></button>
                         </td>
                     </tr>
 
-                    <tr>
-                        <td>Location 1</td>
-                        <td>---</td>
-                        <td>---</td>
-                        <td>---</td>
-                        <td>Open</td>
+                    <tr ng-repeat="location in locations">
+                        <td>{{location.name}}</td>
+                        <td>{{location.latlon}}</td>
+                        <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
+                        <td><a href="{{location.weatherURL}}" target="blank">{{location.weatherURL}}</a></td>
+                        <td>{{location.status}}</td>
                         <td class="text-nowrap">
-                            <button class="glyphicon glyphicon-pencil table-icon"></button>
-                            <button class="glyphicon glyphicon-remove table-icon"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Location 2</td>
-                        <td>---</td>
-                        <td>---</td>
-                        <td>---</td>
-                        <td>Approved</td>
-                        <td class="text-nowrap">
-                            <button class="glyphicon glyphicon-pencil table-icon"></button>
-                            <button class="glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="" class="glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="" class="glyphicon glyphicon-pencil table-icon"></button>
                         </td>
                     </tr>
                     </tbody>

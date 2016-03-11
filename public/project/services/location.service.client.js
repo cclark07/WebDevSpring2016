@@ -13,28 +13,32 @@
                 "userId": 1,
                 "latlon": [42, -71],
                 "webcamURL": "http://test.test.test",
-                "weatherURL": "http://test.test.test"
+                "weatherURL": "http://test.test.test",
+                "status": "Open"
             },
             {"_id": "2",
                 "name": "Weymouth",
                 "userId": 1,
                 "latlon": [40, -72],
                 "webcamURL": "http://test.test.test",
-                "weatherURL": "http://test.test.test"
+                "weatherURL": "http://test.test.test",
+                "status": "Open"
             },
             {"_id": "3",
                 "name": "Long Island",
                 "userId": 2,
                 "latlon": [40, -73],
                 "webcamURL": "http://test.test.test",
-                "weatherURL": "http://test.test.test"
+                "weatherURL": "http://test.test.test",
+                "status": "Open"
             },
             {"_id": "4",
                 "name": "Grand Cayman",
                 "userId": 3,
                 "latlon": [19, -81],
                 "webcamURL": "http://brucesbythesea.dyndns.org:8081/en/index.html",
-                "weatherURL": "http://www.wunderground.com/personal-weather-station/dashboard?ID=I90579739"
+                "weatherURL": "http://www.wunderground.com/personal-weather-station/dashboard?ID=I90579739",
+                "status": "Approved"
             }
         ];
 
@@ -43,6 +47,7 @@
             findAllLocationsForUser: findAllLocationsForUser,
             deleteLocationById: deleteLocationById,
             updateLocationById: updateLocationById,
+            getAllLocations: getAllLocations
         };
 
         return api;
@@ -95,6 +100,10 @@
                 }
             };
             callback(null);
+        }
+
+        function getAllLocations(callback) {
+            return callback(locations);
         }
     }
 })();
