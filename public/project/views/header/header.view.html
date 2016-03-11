@@ -26,7 +26,7 @@
                 <li ng-hide="currentUser == null">
                     <a href="" ng-click="logout()">Logout</a>
                 </li>
-                <li ng-show="currentUser != null && currentUser.roles.indexOf('admin') != -1" ng-class="{'active' : $location.url() == '/admin'}">
+                <li ng-show="currentUser != null && currentUser.roles.indexOf('Admin') != -1" ng-class="{'active' : $location.url() == '/admin'}">
                     <a href="#/admin">Admin</a>
                 </li>
             </ul>
