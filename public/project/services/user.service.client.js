@@ -25,7 +25,7 @@
 		  {	"_id":3,
 			  "firstName":"Bruce",
 			  "lastName":"Clark",
-			  "username":"Bruce",
+			  "username":"bruce",
 			  "password":"bruce",
 			  "roles": ["User"],
 			  "locations":[]		},
