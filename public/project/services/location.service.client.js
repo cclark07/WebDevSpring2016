@@ -33,8 +33,8 @@
                 "name": "Grand Cayman",
                 "userId": 3,
                 "latlon": [19, -81],
-                "webcamURL": "http://brucesbythesea.dyndns.org:8081/oneshotimage1?1457713199601",
-                "weatherURL": "http://test.test.test"
+                "webcamURL": "http://brucesbythesea.dyndns.org:8081/en/index.html",
+                "weatherURL": "http://www.wunderground.com/personal-weather-station/dashboard?ID=I90579739"
             }
         ];
 

@@ -17,14 +17,18 @@
         $scope.firstname = user.firstName;
         $scope.lastname = user.lastName;
         $scope.email = user.email;
-        $scope.locations = user.locations;
 
         $scope.userLocations = [];
 
         if (user) {
+            init();
+        }
+
+        // Initializes the user and user forms
+        function init() {
             LocationService.findAllLocationsForUser(user._id, function(response) {
                 $scope.userLocations = response;
-            })
+            });
         }
 
         // Updates the current user
@@ -34,6 +38,7 @@
             user.firstName = $scope.firstname;
             user.lastName = $scope.lastname;
             user.email = $scope.email;
+            user.locations = $scope.userLocations;
 
             UserService.updateUser(user._id, user, function(response) {
                 $rootScope.currentUser = response;
