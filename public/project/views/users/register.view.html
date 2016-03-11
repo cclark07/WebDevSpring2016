@@ -1,0 +1,35 @@
+<div class="col-xs-12 col-md-8  col-md-offset-2 main panel panel-default" ng-controller="RegisterController">
+    <h1 class="page-header">Register</h1>
+    <form class="form-horizontal" name="registrationForm">
+        <div class="form-group">
+        <label for="username" class="col-sm-2 control-label">Username:</label>
+        <div class="col-sm-10">
+          <input ng-model="username" type="text" class="form-control" placeholder="Username" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">Password:</label>
+        <div class="col-sm-10">
+          <input ng-model="password" type="password" class="form-control" placeholder="Password" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="verify" class="col-sm-2 control-label">Verify Password:</label>
+        <div class="col-sm-10">
+          <input ng-model="verify" type="password" class="form-control" placeholder="Password" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">Email:</label>
+        <div class="col-sm-10">
+          <input ng-model="email" type="email" class="form-control" placeholder="Email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button ng-click="registrationForm.$valid && register()" class="btn btn-primary btn-block">Register</button>
+        </div>
+      </div>
+    </form>
+    <p class="text-center">Already have an account? <a href="#/login">Login Here!</a></p>
+</div>
