@@ -70,11 +70,9 @@
         function deleteLocation(index) {
             var locationId = $scope.userLocations[index]._id;
             var userId = user._id;
-            console.log($scope.userLocations.length);
             LocationService.deleteUserLocationById(userId, locationId, function(response) {
                 $scope.userLocations = response;
             })
-            console.log($scope.userLocations.length);
         }
 
         // Selects the location at the given index to be edited
