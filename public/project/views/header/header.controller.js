@@ -5,6 +5,11 @@
         .controller("HeaderController", HeaderController);
 
     function HeaderController($rootScope, $scope, $location) {
-    	//TODO
+        $scope.logout = logout;
+
+        function logout() {
+            $rootScope.currentUser = null;
+            $location.path("#/home");
+        }
     }
 })();
