@@ -46,6 +46,7 @@
             createLocationForUser: createLocationForUser,
             findAllLocationsForUser: findAllLocationsForUser,
             deleteLocationByIndex: deleteLocationByIndex,
+            deleteUserLocationById: deleteUserLocationById,
             updateLocationById: updateLocationById,
             getAllLocations: getAllLocations
         };
@@ -85,6 +86,24 @@
                 }
             };
             callback(locations);
+        }
+
+        // Iterates over the array of locations and removes the location with the given id
+        // Calls back with remaining array of locations for the given user id
+        function deleteUserLocationById(userId, locationId, callback) {
+            for (var i = 0; i < locations.length; i++) {
+                if (locations[i]._id == locationId) {
+                    locations.splice(i, 1);
+                    callback(locations[i]);
+                    break;
+                }
+            };
+
+            var updatedLocationList = [];
+            findAllLocationsForUser(userId, function(response) {
+                updatedLocationList = response;
+            })
+            callback(updatedLocationList);
         }
 
         // Iterates over array of locations looking for location whose id is location id parameter

@@ -36,7 +36,7 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button ng-click="update()" class="btn btn-primary btn-block">Update</button>
+            <button ng-click="updateDetails()" class="btn btn-primary btn-block">Update</button>
           </div>
         </div>
       </form>
@@ -90,7 +90,7 @@
                         <td><a href="{{location.weatherURL}}" target="blank">{{location.weatherURL}}</a></td>
                         <td>{{location.status}}</td>
                         <td class="text-nowrap">
-                            <button ng-click="" class="glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove table-icon"></button>
                             <button ng-click="" class="glyphicon glyphicon-pencil table-icon"></button>
                         </td>
                     </tr>

@@ -4,9 +4,10 @@
         .module("SourceCamApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($rootScope, $scope, $location, UserService, LocationService) {
-        $scope.newLocation = newLocation;
-        $scope.update = update;
+    function ProfileController($rootScope, $scope, UserService, LocationService) {
+
+        $scope.updateDetails = updateDetails;
+        $scope.deleteLocation = deleteLocation;
 
         // Get currentUser from rootScope
         var user = $rootScope.currentUser;
@@ -32,7 +33,7 @@
         }
 
         // Updates the current user
-        function update() {
+        function updateDetails() {
             user.username = $scope.username;
             user.password = $scope.password;
             user.firstName = $scope.firstname;
@@ -46,10 +47,15 @@
             });
         }
 
-        function newLocation() {
-            $location.url("/create");
+        // Uses the LocationService to delete the location at the selected index
+        function deleteLocation(index) {
+            var locationId = $scope.userLocations[index]._id;
+            var userId = user._id;
+            console.log($scope.userLocations.length);
+            LocationService.deleteUserLocationById(userId, locationId, function(response) {
+                $scope.userLocations = response;
+            })
+            console.log($scope.userLocations.length);
         }
-
-
     }
 })();
