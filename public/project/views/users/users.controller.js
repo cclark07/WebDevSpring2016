@@ -75,9 +75,7 @@
             newuser.email = $scope.email;
             newuser.roles = $scope.roles;
 
-            UserService.updateUser(userId, newuser, function(response) {
-
-            })
+            UserService.updateUser(userId, newuser, function(response) {});
         }
     }
 })();

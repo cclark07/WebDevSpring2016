@@ -49,7 +49,7 @@
                         </td>
                         <td class="text-nowrap">
                             <button ng-click="addLocation()" class="glyphicon glyphicon-plus table-icon"></button>
-                            <button ng-click="" class="glyphicon glyphicon-ok table-icon"></button>
+                            <button ng-click="updateLocation()" class="glyphicon glyphicon-ok table-icon"></button>
                         </td>
                     </tr>
 
@@ -62,7 +62,7 @@
                         <td>{{location.status}}</td>
                         <td class="text-nowrap">
                             <button ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove table-icon"></button>
-                            <button ng-click="" class="glyphicon glyphicon-pencil table-icon"></button>
+                            <button ng-click="selectLocation($index)" class="glyphicon glyphicon-pencil table-icon"></button>
                         </td>
                     </tr>
                     </tbody>
