@@ -17,7 +17,7 @@
         $scope.updateLocation = updateLocation;
 
         $scope.locationName;
-        $scope.userId
+        $scope.userId;
         $scope.latlon;
         $scope.webcamURL;
         $scope.weatherURL;

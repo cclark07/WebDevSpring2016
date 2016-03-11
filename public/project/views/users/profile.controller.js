@@ -5,10 +5,13 @@
         .controller("ProfileController", ProfileController);
 
     function ProfileController($rootScope, $scope, UserService, LocationService) {
+        var selectedLocation;
 
         $scope.updateDetails = updateDetails;
         $scope.addLocation = addLocation;
         $scope.deleteLocation = deleteLocation;
+        $scope.selectLocation = selectLocation;
+        $scope.updateLocation = updateLocation;
 
         // Get currentUser from rootScope
         var user = $rootScope.currentUser;
@@ -72,6 +75,33 @@
                 $scope.userLocations = response;
             })
             console.log($scope.userLocations.length);
+        }
+
+        // Selects the location at the given index to be edited
+        function selectLocation(index) {
+            selectedLocation = $scope.userLocations[index];
+            $scope.locationName = selectedLocation.name;
+            $scope.latlon = selectedLocation.latlon;
+            $scope.webcamURL = selectedLocation.webcamURL;
+            $scope.weatherURL = selectedLocation.weatherURL;
+        }
+
+        //Updates selected location with updated data
+        function updateLocation() {
+            if (!selectedLocation) {
+                return;
+            }
+
+            var newlocation = selectedLocation;
+            var locationId = selectedLocation._id;
+            newlocation.name = $scope.locationName;
+            newlocation.userId = user._id;
+            newlocation.latlon = $scope.latlon;
+            newlocation.webcamURL = $scope.webcamURL;
+            newlocation.weatherURL = $scope.weatherURL;
+            newlocation.status = selectedLocation.status;
+
+            LocationService.updateLocationById(locationId, newlocation, function(response) {});
         }
     }
 })();

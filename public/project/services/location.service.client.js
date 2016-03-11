@@ -22,7 +22,7 @@
                 "latlon": [40, -72],
                 "webcamURL": "http://test.test.test",
                 "weatherURL": "http://test.test.test",
-                "status": "Open"
+                "status": "Declined"
             },
             {"_id": "3",
                 "name": "Long Island",

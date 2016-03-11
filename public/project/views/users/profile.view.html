@@ -79,7 +79,7 @@
                         <td><input class="form-control" ng-model="webcamURL" type="url" placeholder="URL"></td>
                         <td><input class="form-control" ng-model="weatherURL" type="url" placeholder="URL"></td>
                         <td>
-                            <p>Open</p>
+                            <p>---</p>
                         </td>
                         <td class="text-nowrap">
                             <button ng-click="addLocation()" class="glyphicon glyphicon-plus table-icon"></button>
@@ -94,7 +94,7 @@
                         <td>{{location.status}}</td>
                         <td class="text-nowrap">
                             <button ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove table-icon"></button>
-                            <button ng-click="" class="glyphicon glyphicon-pencil table-icon"></button>
+                            <button ng-click="selectLocation($index)" class="glyphicon glyphicon-pencil table-icon"></button>
                         </td>
                     </tr>
                     </tbody>
