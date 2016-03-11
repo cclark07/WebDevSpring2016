@@ -11,6 +11,7 @@
 
         // Inject functions into scope
         $scope.addUser = addUser;
+        $scope.deleteUser = deleteUser;
 
         $scope.username;
         $scope.password;
@@ -37,6 +38,13 @@
             };
             UserService.createUser(newUser, function(response) {
 
+            })
+        }
+
+        // Uses the UserService to delete the user at the selected index
+        function deleteUser(index) {
+            UserService.deleteUserByIndex(index, function(response) {
+                $scope.users = response;
             })
         }
     }

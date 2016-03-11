@@ -49,7 +49,7 @@
 			findUserByCredentials: findUserByCredentials,
 			findAllUsers: findAllUsers,
 			createUser: createUser,
-			deleteUserById: deleteUserById,
+			deleteUserByIndex: deleteUserByIndex,
 			updateUser: updateUser
 		};
 
@@ -81,12 +81,11 @@
             callback(user);
         }
 
-		// Iterates over the array of current users looking for the given user id
-		// If found, removes user from the array of current users
+		// Iterates over the array of current users and removes the user at the given index
 		// Calls back with remaining array of all users
-        function deleteUserById(userId, callback) {
+        function deleteUserByIndex(index, callback) {
             for (var i = 0; i < users.length; i++) {
-            	if (users[i]._id == userId) {
+            	if (i == index) {
             		users.splice(i, 1);
                     break;
             	}
