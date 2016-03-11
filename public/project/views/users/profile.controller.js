@@ -4,7 +4,7 @@
         .module("SourceCamApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($rootScope, $scope, $location, UserService) {
+    function ProfileController($rootScope, $scope, $location, UserService, LocationService) {
         $scope.newLocation = newLocation;
         $scope.update = update;
 
@@ -18,6 +18,14 @@
         $scope.lastname = user.lastName;
         $scope.email = user.email;
         $scope.locations = user.locations;
+
+        $scope.userLocations = [];
+
+        if (user) {
+            LocationService.findAllLocationsForUser(user._id, function(response) {
+                $scope.userLocations = response;
+            })
+        }
 
         // Updates the current user
         function update() {
