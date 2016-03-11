@@ -1,6 +1,6 @@
 <div ng-include="'views/worldmap/worldmap.view.html'"></div>
 
-<div class="col-xs-12 col-md-8 col-md-offset-2 panel panel-default padded">
+<div class="col-xs-12 col-md-8 col-md-offset-2 panel panel-default padded" ng-controller="HomeController">
     <p class="hidden-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit,
         vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus,
         ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor
@@ -16,7 +16,7 @@
                 <input class="full-width" type="search" placeholder="Search term">
             </div>
             <div class="col-xs-6 col-md-4 col-lg-2">
-                <button ng-click="showResults=true" class="btn btn-primary btn-block">Search</button>
+                <button ng-click="showResults=true; searchLocations()" class="btn btn-primary btn-block">Search</button>
             </div>
         </div>
         <div ng-show="showResults">
@@ -33,21 +33,9 @@
                             </th>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><a href="#/location">Location 1</a></td>
+                            <tr ng-repeat="location in locations">
+                                <td><a href="{{location.webcamURL}}">{{location.name}}</a></td>
                             </tr>
-                            <tr>
-                                <td><a href="#/location">Location 2</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#/location">Location 3</a></td>
-                            </tr>
-                            <!--<tr ng-repeat="favorite in userfavorites">-->
-                            <!--<td>{{favorite.title}}</td>-->
-                            <!--<td>-->
-                            <!--<button ng-click="" class="glyphicon glyphicon-star table-icon"></button>-->
-                            <!--</td>-->
-                            <!--</tr>-->
                             </tbody>
                         </table>
                     </div>
@@ -63,20 +51,8 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td><a href="#">Region 1</a></td>
+                                <td><a>Region 1 TODO</a></td>
                             </tr>
-                            <tr>
-                                <td><a href="#">Region 2</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Region 3</a></td>
-                            </tr>
-                            <!--<tr ng-repeat="favorite in userfavorites">-->
-                            <!--<td>{{favorite.title}}</td>-->
-                            <!--<td>-->
-                            <!--<button ng-click="" class="glyphicon glyphicon-star table-icon"></button>-->
-                            <!--</td>-->
-                            <!--</tr>-->
                             </tbody>
                         </table>
                     </div>
