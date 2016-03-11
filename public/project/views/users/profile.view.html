@@ -1,6 +1,6 @@
 <div class="col-xs-12 col-md-8 col-md-offset-2 main" ng-controller="ProfileController">
     <img class="img-responsive center-block" src="http://placehold.it/200x200"/>
-    <p class="text-center">currentUser</p>
+    <p class="text-center">{{currentUser.firstName}} {{currentUser.lastName}}</p>
     <div class="panel panel-default padded">
       <h1 class="page-header">My Profile</h1>
       <form class="form-horizontal" name="profileForm">
@@ -65,11 +65,16 @@
                     </th>
                     <th>
                         <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
+                        Status
+                    </th>
+                    <th>
+                        <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
                         Action
                     </th>
                     </thead>
                     <tbody>
                     <tr>
+                        <td>---</td>
                         <td>---</td>
                         <td>---</td>
                         <td>---</td>
@@ -83,6 +88,7 @@
                         <td>{{location.latlon}}</td>
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
                         <td><a href="{{location.weatherURL}}" target="blank">{{location.weatherURL}}</a></td>
+                        <td>{{location.status}}</td>
                         <td class="text-nowrap">
                             <button ng-click="" class="glyphicon glyphicon-remove table-icon"></button>
                             <button ng-click="" class="glyphicon glyphicon-pencil table-icon"></button>
