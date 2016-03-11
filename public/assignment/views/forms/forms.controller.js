@@ -15,10 +15,10 @@
     	}
 
     	// Inject functions into scope
-        $scope.addLocation = addLocation;
-        $scope.updateLocation = updateLocation;
-        $scope.deleteLocation = deleteLocation;
-        $scope.selectLocation = selectLocation;
+        $scope.addForm = addForm;
+        $scope.updateForm = updateForm;
+        $scope.deleteForm = deleteForm;
+        $scope.selectForm = selectForm;
 
     	// Bind controller variables to view inputs
         $scope.formname;
@@ -33,7 +33,7 @@
 
         // Uses form model and FormService to create a new form
         // Adds the new form to the array of userforms
-        function addLocation() {
+        function addForm() {
             var newform = {"title":$scope.formname};
         	FormService.createFormForUser(user._id, newform, function(response) {
                 $scope.userforms.push(response);
@@ -41,7 +41,7 @@
         }
 
         // Update currently selected form
-        function updateLocation() {
+        function updateForm() {
             if (!selectedForm) {
                 return;
             }
@@ -56,7 +56,7 @@
         }
 
         // Delete the form at the given index
-        function deleteLocation(index) {
+        function deleteForm(index) {
         	var test = $scope.userforms[index];
             FormService.deleteFormById(test._id, function(response) {
                 init()
@@ -64,7 +64,7 @@
         }
 
         // Selects the form at the given index to be edited
-        function selectLocation(index) {
+        function selectForm(index) {
         	selectedForm = $scope.userforms[index];
             $scope.formname = selectedForm.title;
         }
