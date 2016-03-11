@@ -39,9 +39,7 @@
                 "email":$scope.email,
                 "roles":$scope.roles
             };
-            UserService.createUser(newUser, function(response) {
-
-            })
+            UserService.createUser(newUser, function(response) {});
         }
 
         // Uses the UserService to delete the user at the selected index
