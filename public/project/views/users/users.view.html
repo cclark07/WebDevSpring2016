@@ -7,6 +7,10 @@
                     <thead>
                     <th>
                         <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
+                        User ID
+                    </th>
+                    <th>
+                        <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
                         Username
                     </th>
                     <th>
@@ -35,6 +39,7 @@
                     </thead>
                     <tbody>
                     <tr>
+                        <td></td>
                         <td><input class="form-control" ng-model="username" type="text" placeholder="Username"></td>
                         <td><input class="form-control" ng-model="password" type="password" placeholder="Password"></td>
                         <td><input class="form-control" ng-model="firstName" type="text" placeholder="First Name"></td>
@@ -48,6 +53,7 @@
                     </tr>
 
                     <tr ng-repeat="user in users">
+                        <td>{{user._id}}</td>
                         <td>{{user.username}}</td>
                         <td>{{user.password}}</td>
                         <td>{{user.firstName}}</td>
