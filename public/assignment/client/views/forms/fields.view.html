@@ -11,25 +11,29 @@
                     <div ng-switch="field.type" class="col-xs-8">
                         <div ng-switch-when="TEXT">
                             <div class="input-group">
+                                <label>{{field.label}}</label>
                                 <input type="text" class="form-control" placeholder="{{field.placeholder}}">
                             </div>
                         </div>
                         <div ng-switch-when="OPTIONS">
                             <div class="input-group">
+                                <label>{{field.label}}</label>
                                 <select class="form-control">
-                                    <option ng-repeat="option in field.fieldOptions">{{option.label}}</option>
+                                    <option ng-repeat="option in field.options">{{option.label}}</option>
                                 </select>
                             </div>
                         </div>
                         <div ng-switch-when="TEXTAREA">
                             <div class="input-group">
+                                <label>{{field.label}}</label>
                                 <textarea class="form-control" placeholder="{{field.placeholder}}"></textarea>
                             </div>
                         </div>
                         <div ng-switch-when="CHECKBOXES">
                             <div class="input-group">
+                                <label>{{field.label}}</label>
                                 <div class="checkbox">
-                                    <div ng-repeat="option in field.fieldOptions">
+                                    <div ng-repeat="option in field.options">
                                         <label>
                                             <input type="checkbox" value="{{option.value}}">{{option.label}}
                                         </label>
@@ -40,7 +44,8 @@
                         </div>
                         <div ng-switch-when="RADIOS">
                             <div class="input-group">
-                                <div ng-repeat="option in field.fieldOptions" class="radio">
+                                <label>{{field.label}}</label>
+                                <div ng-repeat="option in field.options" class="radio">
                                     <label>
                                         <input type="radio" name="{{option.label}}" value="{{option.value}}" checked>{{option.label}}
                                     </label>
@@ -49,6 +54,7 @@
                         </div>
                         <div ng-switch-default>
                             <div class="input-group">
+                                <label>{{field.label}}</label>
                                 <input type="date" placeholder="{{field.placeholder}}" class="form-control">
                             </div>
                         </div>
