@@ -1,10 +1,9 @@
 module.exports = function(app, userModel) {
-    app.get("/api/assignment/user", findUserByCredentials);
+    app.post("/api/assignment/user", findUserByCredentials);
 
     function findUserByCredentials(req, res) {
-        var test = req.body;
-        console.log(test + " server");
-        userModel.findUserByCredentials(test);
-        //res.send(200);
+        var credentials = req.body;
+        userModel.findUserByCredentials(credentials);
+        res.send(200);
     }
 }

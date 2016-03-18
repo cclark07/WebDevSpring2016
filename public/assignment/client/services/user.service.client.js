@@ -16,11 +16,13 @@
 
 		return api;
 
-		// Iterates over the array of current users looking for user object whose 
-		// username and password match the parameters then calls back with user found or null otherwise
+        // Creates credentials object from input values and passes them to user.service.server.js
         function findUserByCredentials(username, password) {
-			console.log(username + " client");
-			return $http.get("/api/assignment/user", username);
+			var credentials = {
+				username: username,
+				password: password
+			}
+			return $http.post("/api/assignment/user", credentials);
         }
 
         // Calls back with array of all users
