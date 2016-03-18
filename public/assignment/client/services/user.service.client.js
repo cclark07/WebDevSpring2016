@@ -47,13 +47,13 @@
 		// Deletes user with given id if found in all users
 		// Returns all users
         function deleteUserById(userId) {
-            return $http.delete("/api/assignment/user" + userId);
+            return $http.delete("/api/assignment/user/" + userId);
         }
 
 		// Updates the user with the given id with the data in the given user object
         // Returns all users
         function updateUser(userId, user) {
-            return $http.put("/api/assignment/user" + userId, user);
+            return $http.put("/api/assignment/user/" + userId, user);
         }
     }
 })();
