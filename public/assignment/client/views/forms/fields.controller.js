@@ -4,7 +4,11 @@
         .module("FormBuilderApp")
         .controller("FieldsController", FieldsController);
 
-    function FieldsController() {
-        //TODO
+    function FieldsController($rootScope, FieldsService) {
+        function init() {
+            FieldsService.init();
+        }
+
+        init();
     }
 })();
