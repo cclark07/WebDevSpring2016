@@ -8,7 +8,9 @@
 
 		var api = {
 			findUserByCredentials: findUserByCredentials,
-			findAllUsers: findAllUsers,
+            findUserByUsername: findUserByUsername,
+            getUserById: getUserById,
+            getAllUsers: getAllUsers,
 			createUser: createUser,
 			deleteUserById: deleteUserById,
 			updateUser: updateUser
@@ -16,56 +18,42 @@
 
 		return api;
 
-        // Creates credentials object from input values and passes them to user.service.server.js
+        // Returns user with given credentials or null if not found
         function findUserByCredentials(username, password) {
-			var credentials = {
-				username: username,
-				password: password
-			}
-            console.log(credentials.username);
-			return $http.post("/api/assignment/user", credentials);
+            var test = $http.get("/api/assignment/user?username=" + username + "&password=" + password);
+            return test;
         }
 
-        // Calls back with array of all users
-        function findAllUsers(callback) {
-            return users;
+        function findUserByUsername(username) {
+            return $http.get("/api/assignment/user?username=" + username);
         }
 
-  		// Adds property called _id with unique value (timestamp) to the user object parameter
-		// Adds the new user to local array of users
-		// Calls back with new user
-        function createUser(user, callback) {
-            user._id = (new Date).getTime();
-            users.push(user);
-            callback(user);
+        // Returns user with the given id or null if not found
+        function getUserById(userId) {
+            return $http.get("/api/assignment/user/" + userId);
         }
 
-		// Iterates over the array of current users looking for the given user id
-		// If found, removes user from the array of current users
-		// Calls back with remaining array of all users
-        function deleteUserById(userId, callback) {
-            for (var i = 0; i < users.length; i++) {
-            	if (users[i]._id == userId) {
-            		users.splice(i, 1);
-                    break;
-            	}
-            };
-            callback(users);
+        // Returns all users
+        function getAllUsers() {
+            return $http.get("/api/assignment/user");
         }
 
+  		// Adds user to stored users
+        // Returns all users
+        function createUser(user) {
+            return $http.post("/api/assignment/user", user);
+        }
 
-		// Iterates over the array of current users looking for the given user id
-		// If found, updates user with new user properties and calls back with updated user
-		// If not found, calls back with null
-        function updateUser(userId, user, callback) {
-            for (var i = 0; i < users.length; i++) {
-            	if (users[i]._id == userId) {
-            		users[i] = user;
-            		callback(users[i]);
-            		return;
-            	}
-            };
-            callback(null);
+		// Deletes user with given id if found in all users
+		// Returns all users
+        function deleteUserById(userId) {
+            return $http.delete("/api/assignment/user" + userId);
+        }
+
+		// Updates the user with the given id with the data in the given user object
+        // Returns all users
+        function updateUser(userId, user) {
+            return $http.put("/api/assignment/user" + userId, user);
         }
     }
 })();
