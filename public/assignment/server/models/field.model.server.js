@@ -21,8 +21,20 @@ module.exports = function (uuid) {
     }
 
     function deleteFieldFromForm(formId, fieldId) {
-        console.log(formId);
-        console.log(fieldId);
+        var formIndex = -1;
+
+        for (var i in forms) {
+            if (forms[i]._id == formId) {
+                formIndex = i;
+            }
+        }
+
+        for (var j in forms[formIndex].fields) {
+            if (fieldId == forms[formIndex].fields[j]._id) {
+                forms[formIndex].fields.splice(j, 1);
+                return forms[formIndex].fields;
+            }
+        }
     }
 
     function getFieldForForm(formId, fieldId) {

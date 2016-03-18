@@ -132,7 +132,11 @@
         }
 
         function removeField(field) {
-            console.log(field);
+            FieldsService.deleteFieldFromForm(formId, field._id)
+                .then(function(response) {
+                    vm.fields = response;
+                    init();
+                });
         }
 
         function editField(field) {
