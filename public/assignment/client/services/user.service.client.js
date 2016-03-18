@@ -9,8 +9,8 @@
 		var api = {
 			findUserByCredentials: findUserByCredentials,
             findUserByUsername: findUserByUsername,
-            getUserById: getUserById,
-            getAllUsers: getAllUsers,
+            findUserById: findUserById,
+            findAllUsers: findAllUsers,
 			createUser: createUser,
 			deleteUserById: deleteUserById,
 			updateUser: updateUser
@@ -29,17 +29,17 @@
         }
 
         // Returns user with the given id or null if not found
-        function getUserById(userId) {
+        function findUserById(userId) {
             return $http.get("/api/assignment/user/" + userId);
         }
 
         // Returns all users
-        function getAllUsers() {
+        function findAllUsers() {
             return $http.get("/api/assignment/user");
         }
 
   		// Adds user to stored users
-        // Returns all users
+        // Returns newly created user
         function createUser(user) {
             return $http.post("/api/assignment/user", user);
         }
@@ -51,7 +51,7 @@
         }
 
 		// Updates the user with the given id with the data in the given user object
-        // Returns all users
+        // Returns updated user or null if not found
         function updateUser(userId, user) {
             return $http.put("/api/assignment/user/" + userId, user);
         }
