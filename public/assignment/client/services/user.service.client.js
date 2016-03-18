@@ -22,6 +22,7 @@
 				username: username,
 				password: password
 			}
+            console.log(credentials.username);
 			return $http.post("/api/assignment/user", credentials);
         }
 

@@ -3,7 +3,7 @@ module.exports = function(app, userModel) {
 
     function findUserByCredentials(req, res) {
         var credentials = req.body;
-        userModel.findUserByCredentials(credentials);
-        res.send(200);
+        var user = userModel.findUserByCredentials(credentials);
+        res.send(user);
     }
 }
