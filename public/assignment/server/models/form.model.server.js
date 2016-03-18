@@ -5,6 +5,7 @@ module.exports = function(app) {
         findFormByTitle: findFormByTitle,
         findUserFormsById: findUserFormsById,
         findFormById: findFormById,
+        findAllForms: findAllForms,
         deleteFormById: deleteFormById,
         createFormForUser: createFormForUser,
         updateFormById: updateFormById
@@ -40,6 +41,11 @@ module.exports = function(app) {
             }
         }
         return null;
+    }
+
+    // Returns all forms
+    function findAllForms() {
+        return mock;
     }
 
     //removes a form object whose id is equal to the formId path parameter

@@ -2,6 +2,7 @@ module.exports = function(app, formModel) {
     app.get("/api/assignment/form/:title", findFormByTitle);
     app.get("/api/assignment/user/:userId/form", findUserFormsById);
     app.get("/api/assignment/form/:formId", findFormById);
+    app.get("/api/assignment/form/", findAllForms);
     app.delete("/api/assignment/form/:formId", deleteFormById);
     app.post("/api/assignment/user/:userId/form", createFormForUser);
     app.put("/api/assignment/form/:formId", updateFormById);
@@ -25,6 +26,11 @@ module.exports = function(app, formModel) {
         var formId = req.params.formId;
         var form = formModel.findFormById(formId);
         res.json(form);
+    }
+
+    function findAllForms(req, res) {
+        var forms = formModel.findAllForms();
+        res.json(forms);
     }
 
     //removes a form object whose id is equal to the formId path parameter
