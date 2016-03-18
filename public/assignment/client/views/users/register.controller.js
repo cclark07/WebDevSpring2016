@@ -23,10 +23,13 @@
         	var newUser = {
         		"username":vm.username,  "password":vm.password,   "email":vm.email, "roles": ["student"]
         	};
-        	UserService.createUser(newUser, function(response) {
-        		$rootScope.currentUser = response;
-        		$location.path("#/profile");
-        	})
+        	UserService.createUser(newUser)
+                .then(function(response) {
+                    if (response.data) {
+                        $rootScope.currentUser = response.data;
+                        $location.path("#/profile");
+                    }
+                })
         }
     }
 })();

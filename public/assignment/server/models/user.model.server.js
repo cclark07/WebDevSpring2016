@@ -18,7 +18,7 @@ module.exports = function(app) {
 
     // Adds property called _id with unique value (timestamp) to the user object parameter
     // Adds the new user to available users
-    // Returns all available users
+    // Returns newly created user
     function createUser(user) {
         user._id = (new Date).getTime();
         mock.push(user);
