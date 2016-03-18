@@ -53,14 +53,13 @@ module.exports = function(app) {
     // If found, updates user with new user properties
     // Returns updated user or null if not found
     function updateUserById(id, user) {
-        for (var i = 0; i < mock.length; i++) {
+        for (var i in mock) {
             if (mock[i]._id == id) {
                 mock[i] = user;
                 return mock[i];
             }
         };
         return null;
-
     }
 
     // Iterates over the array of current users looking for the given username
