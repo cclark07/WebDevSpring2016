@@ -1,5 +1,5 @@
 var mock = require("./user.mock.json");
-module.exports = function(app) {
+module.exports = function() {
     var api = {
         getAllUsers: getAllUsers,
         createUser: createUser,
