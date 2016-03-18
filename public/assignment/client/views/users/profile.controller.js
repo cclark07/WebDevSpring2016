@@ -28,11 +28,11 @@
             user.lastName = vm.lastname;
             user.email = vm.email;
 
-        	UserService.updateUser(user._id, user, function(response) {
-                console.log(response);
-                $rootScope.currentUser = response;
-                user = response;
-            });
+        	UserService.updateUser(user._id, user)
+                .then(function(response) {
+                    $rootScope.currentUser = response.data;
+                    vm.user = response.data;
+                });
         }
     }
 })();
