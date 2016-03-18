@@ -22,7 +22,7 @@ module.exports = function(app) {
     function createUser(user) {
         user._id = (new Date).getTime();
         mock.push(user);
-        return users;
+        return mock;
     }
 
     // Iterates over the array of current users looking for the given id
