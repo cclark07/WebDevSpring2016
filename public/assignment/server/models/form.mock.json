@@ -26,7 +26,7 @@
         "_id": "444",
         "label": "State",
         "type": "OPTIONS",
-        "options": [
+        "fieldOptions": [
           {
             "label": "Massachussetts",
             "value": "MA"

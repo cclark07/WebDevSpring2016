@@ -1,5 +1,5 @@
 var forms = require("./form.mock.json");
-module.exports = function () {
+module.exports = function (uuid) {
     var api = {
         createFieldForForm: createFieldForForm,
         deleteFieldFromForm: deleteFieldFromForm,
@@ -11,8 +11,13 @@ module.exports = function () {
     return api;
 
     function createFieldForForm(formId, field) {
-        console.log(formId);
-        console.log(field);
+        for (var i in forms) {
+            if (forms[i]._id == formId) {
+                field._id = uuid.v1();
+                forms[i].fields.push(field);
+                return forms[i].fields;
+            }
+        }
     }
 
     function deleteFieldFromForm(formId, fieldId) {
@@ -26,7 +31,11 @@ module.exports = function () {
     }
 
     function getFieldsForForm(formId) {
-        console.log(formId);
+        for (var i in forms) {
+            if (forms[i]._id == formId) {
+                return forms[i].fields;
+            }
+        }
     }
 
     function updateFieldById(formId, fieldId, field) {

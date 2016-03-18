@@ -11,19 +11,10 @@
             getFieldsForForm: getFieldsForForm,
             getFieldForForm: getFieldForForm,
             deleteFieldFromForm: deleteFieldFromForm,
-            updateField: updateField,
-            init: init
+            updateField: updateField
         };
 
         return api;
-
-        function init() {
-            createFieldForForm(1, {});
-            getFieldsForForm(3);
-            getFieldForForm(4, 5);
-            deleteFieldFromForm(6, 7);
-            updateField(8, 9, {});
-        }
 
         function createFieldForForm (formId, field) {
             return $http.post("/api/assignment/form/" + formId + "/field", field);

@@ -34,8 +34,9 @@ module.exports = function(uuid) {
 
     //returns a form object whose id is equal to the formId path parameter
     function findFormById(formId) {
+        console.log(formId + " server model");
         for (var i in mock) {
-            if (mock[i].formId == formId) {
+            if (mock[i]._id == formId) {
                 return mock[i];
             }
         }
