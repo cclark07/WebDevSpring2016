@@ -8,15 +8,6 @@
         var vm = this;
 
         vm.fieldType = null;
-        vm.fieldOptions =
-            [
-                'Single Line Text Field',
-                'Multi Line Text Field',
-                'Date Field',
-                'Dropdown Field',
-                'Checkboxes Field',
-                'Radio Buttons Field'
-            ];
 
         var fieldOptionMap = [
             {key: "Single Line Text Field", value: "TEXT"},
@@ -140,7 +131,7 @@
         }
 
         function editField(field) {
-            console.log(field);
+            vm.fieldEdit = field;
         }
 
         function moveField(field) {

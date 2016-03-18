@@ -60,7 +60,11 @@
                         </div>
                     </div>
                     <div class="col-xs-4 center">
-                        <button ng-click="vm.editField(field)" class="glyphicon glyphicon-pencil table-icon"></button>
+                        <button ng-click="vm.editField(field)"
+                                data-toggle="modal"
+                                data-target="#{{field.type}}Modal"
+                                class="glyphicon glyphicon-pencil table-icon">
+                        </button>
                         <button class="glyphicon glyphicon-plus table-icon"></button>
                         <button ng-click="vm.removeField(field)" class="glyphicon glyphicon-remove table-icon"></button>
                         <button ng-click="vm.moveField(field)" class="glyphicon glyphicon-menu-hamburger table-icon"></button>
@@ -86,4 +90,151 @@
             </form>
         </div>
     </div>
+</div>
+
+<div>
+    <div id="TEXTModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Single Line Field</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="labelInput" class="control-label">Label</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
+
+                    <label for="placeholder" class="control-label">Placeholder</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="placeholder" ng-model="vm.fieldEdit.placeholder">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="TEXTAREAModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Multiple Line Field</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="labelInput" class="control-label">Label</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
+
+                    <label for="placeholder" class="control-label">Placeholder</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="placeholder" ng-model="vm.fieldEdit.placeholder">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="EMAILModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Email Field</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="labelInput" class="control-label">Label</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
+
+                    <label for="placeholder" class="control-label">Placeholder</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="placeholder" ng-model="vm.fieldEdit.placeholder">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="DATEModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Date Field</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="labelInput" class="control-label">Label</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="OPTIONSModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Dropdown Field</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="labelInput" class="control-label">Label</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
+
+                    <label for="options" class="control-label">Options</label>
+                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="vm.fieldEdit.option"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="CHECKBOXESModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Checkboxes Field</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="labelInput" class="control-label">Label</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="editingField.label">
+
+                    <label for="options" class="control-label">Options</label>
+                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="editingField.optionDescription"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="RADIOSModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Radio Buttons Field</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="labelInput" class="control-label">Label</label>
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="editingField.label">
+
+                    <label for="options" class="control-label">Options</label>
+                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="editingField.optionDescription"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
