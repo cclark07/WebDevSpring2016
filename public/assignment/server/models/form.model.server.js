@@ -14,7 +14,7 @@ module.exports = function(uuid) {
     // Returns a form whose title is equal to the input parameter, null otherwise
     function findFormByTitle(title) {
         for (var i in mock) {
-            if (mock[i].title === title) {
+            if (mock[i].title == title) {
                 return mock[i];
             }
         }
@@ -25,7 +25,7 @@ module.exports = function(uuid) {
     function findUserFormsById(userId) {
         var userForms = [];
         for (var i in mock) {
-            if (mock[i].userId === userId) {
+            if (mock[i].userId == userId) {
                 userForms.push(mock[i]);
             }
         }
@@ -35,7 +35,7 @@ module.exports = function(uuid) {
     //returns a form object whose id is equal to the formId path parameter
     function findFormById(formId) {
         for (var i in mock) {
-            if (mock[i].formId === formId) {
+            if (mock[i].formId == formId) {
                 return mock[i];
             }
         }
@@ -50,7 +50,7 @@ module.exports = function(uuid) {
     //removes a form object whose id is equal to the formId path parameter
     function deleteFormById(formId) {
         for (var i in mock) {
-            if (mock[i]._id === formId) {
+            if (mock[i]._id == formId) {
                 mock.splice(i, 1);
             }
         }
@@ -59,9 +59,13 @@ module.exports = function(uuid) {
 
     //creates a new form whose properties are the same as the form object embedded in the HTTP request's
     //body and the form belongs to a user whose id is equal to the userId path parameter.
-    function createFormForUser(userId, form) {
-        form._id = uuid.v1();
-        form.userId = userId;
+    function createFormForUser(userId, inputForm) {
+        form = {
+            _id: uuid.v1(),
+            title: inputForm.title,
+            userId: userId,
+            fields: []
+        };
         mock.push(form);
         return mock;
     }

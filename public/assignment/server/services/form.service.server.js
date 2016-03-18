@@ -16,7 +16,7 @@ module.exports = function(app, formModel) {
 
     //returns an array of forms belonging to a user whose id is equal to the userId path parameter
     function findUserFormsById(req, res) {
-        var userId = req.query.userId;
+        var userId = req.params.userId;
         var forms = formModel.findUserFormsById(userId);
         res.json(forms);
     }
@@ -43,15 +43,17 @@ module.exports = function(app, formModel) {
     //creates a new form whose properties are the same as the form object embedded in the HTTP request's
     //body and the form belongs to a user whose id is equal to the userId path parameter.
     function createFormForUser(req, res) {
-        var userId = req.query.userId;
-        var form = formModel.createFormForUser(userId);
+        var userId = req.params.userId;
+        var inputForm = req.body;
+        var form = formModel.createFormForUser(userId, inputForm);
         res.json(form);
     }
     //updates a form object whose id is equal to the formId path parameter so that its properties are
     //the same as the property values of the form object embedded in the request's body
     function updateFormById(req, res) {
         var formId = req.params.formId;
-        var form = formModel.updateFormById(formId);
+        var newForm = req.body;
+        var form = formModel.updateFormById(formId, newForm);
         res.json(form);
     }
 }
