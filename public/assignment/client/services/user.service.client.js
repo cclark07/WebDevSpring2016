@@ -20,10 +20,10 @@
 
         // Returns user with given credentials or null if not found
         function findUserByCredentials(username, password) {
-            var test = $http.get("/api/assignment/user?username=" + username + "&password=" + password);
-            return test;
+            return $http.get("/api/assignment/user?username=" + username + "&password=" + password);
         }
 
+        // Returns user with given username or null if not found
         function findUserByUsername(username) {
             return $http.get("/api/assignment/user?username=" + username);
         }
