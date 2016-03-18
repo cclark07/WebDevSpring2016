@@ -4,21 +4,7 @@
         .module("FormBuilderApp")
         .factory("UserService", UserService);
 
-    function UserService() {
-    	var users;
-
-    	users = [
-		  {	"_id":123, "firstName":"Alice",            "lastName":"Wonderland",
-			"username":"alice",  "password":"alice",   "roles": ["student"]		},
-		  {	"_id":234, "firstName":"Bob",              "lastName":"Hope",
-			"username":"bob",    "password":"bob",     "roles": ["admin"]		},
-		  {	"_id":345, "firstName":"Charlie",          "lastName":"Brown",
-			"username":"charlie","password":"charlie", "roles": ["faculty"]		},
-		  {	"_id":456, "firstName":"Dan",              "lastName":"Craig",
-			"username":"dan",    "password":"dan",     "roles": ["faculty", "admin"]},
-		  {	"_id":567, "firstName":"Edward",           "lastName":"Norton",
-			"username":"ed",     "password":"ed",      "roles": ["student"]		}
-		];
+    function UserService($http) {
 
 		var api = {
 			findUserByCredentials: findUserByCredentials,
@@ -32,14 +18,9 @@
 
 		// Iterates over the array of current users looking for user object whose 
 		// username and password match the parameters then calls back with user found or null otherwise
-        function findUserByCredentials(username, password, callback) {
-            for (var i = 0; i < users.length; i++) {
-            	if (users[i].username == username && users[i].password == password) {
-            		callback(users[i]);
-            		return;
-            	}
-            };
-            callback(null);
+        function findUserByCredentials(username, password) {
+			console.log(username + " client");
+			return $http.get("/api/assignment/user", username);
         }
 
         // Calls back with array of all users
