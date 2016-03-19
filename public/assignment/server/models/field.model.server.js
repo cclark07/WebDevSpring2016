@@ -3,7 +3,6 @@ module.exports = function (uuid) {
     var api = {
         createFieldForForm: createFieldForForm,
         deleteFieldFromForm: deleteFieldFromForm,
-        getFieldForForm: getFieldForForm,
         updateFieldById: updateFieldById,
         getFieldsForForm: getFieldsForForm
     };
@@ -37,11 +36,6 @@ module.exports = function (uuid) {
         }
     }
 
-    function getFieldForForm(formId, fieldId) {
-        console.log(formId);
-        console.log(fieldId);
-    }
-
     function getFieldsForForm(formId) {
         for (var i in forms) {
             if (forms[i]._id == formId) {
@@ -51,8 +45,25 @@ module.exports = function (uuid) {
     }
 
     function updateFieldById(formId, fieldId, field) {
-        console.log(formId);
-        console.log(fieldId);
-        console.log(field);
+        var form = null;
+        for (var i in forms) {
+            if (forms[i]._id == formId) {
+                form = forms[i];
+            }
+        }
+
+        if (form) {
+            for (var j in form.fields) {
+                if (form.fields[j]._id == fieldId) {
+                    form.fields[j] = field;
+                    console.log(form.fields[j]);
+                    return form.fields[j];
+                }
+            }
+        }
+
+        else {
+            return null;
+        }
     }
 };

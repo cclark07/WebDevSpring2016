@@ -90,9 +90,7 @@
             </form>
         </div>
     </div>
-</div>
 
-<div>
     <div id="TEXTModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -107,8 +105,8 @@
                     <input type="text" name="{{field.label}}" class="form-control" id="placeholder" ng-model="vm.fieldEdit.placeholder">
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
-                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                    <button ng-click="vm.saveEdit()" class="btn btn-success" data-dismiss="modal">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="vm.cancelEdit()">Cancel</button>
                 </div>
             </div>
         </div>
@@ -128,8 +126,8 @@
                     <input type="text" name="{{field.label}}" class="form-control" id="placeholder" ng-model="vm.fieldEdit.placeholder">
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
-                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="vm.saveEdit()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="vm.cancelEdit()">Cancel</button>
                 </div>
             </div>
         </div>
@@ -149,8 +147,8 @@
                     <input type="text" name="{{field.label}}" class="form-control" id="placeholder" ng-model="vm.fieldEdit.placeholder">
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
-                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="vm.saveEdit()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="vm.cancelEdit()">Cancel</button>
                 </div>
             </div>
         </div>
@@ -167,8 +165,8 @@
                     <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
-                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="vm.saveEdit()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="vm.cancelEdit()">Cancel</button>
                 </div>
             </div>
         </div>
@@ -185,11 +183,11 @@
                     <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
 
                     <label for="options" class="control-label">Options</label>
-                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="vm.fieldEdit.option"></textarea>
+                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="vm.optionText"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
-                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="vm.saveEdit(vm.fieldEdit)">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="vm.cancelEdit()">Cancel</button>
                 </div>
             </div>
         </div>
@@ -203,14 +201,14 @@
                 </div>
                 <div class="modal-body">
                     <label for="labelInput" class="control-label">Label</label>
-                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="editingField.label">
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
 
                     <label for="options" class="control-label">Options</label>
-                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="editingField.optionDescription"></textarea>
+                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="vm.optionText"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
-                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="vm.saveEdit()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="vm.cancelEdit()">Cancel</button>
                 </div>
             </div>
         </div>
@@ -224,14 +222,14 @@
                 </div>
                 <div class="modal-body">
                     <label for="labelInput" class="control-label">Label</label>
-                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="editingField.label">
+                    <input type="text" name="{{field.label}}" class="form-control" id="labelInput" ng-model="vm.fieldEdit.label">
 
                     <label for="options" class="control-label">Options</label>
-                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="editingField.optionDescription"></textarea>
+                    <textarea name="{{field.label}}" class="form-control" id="options" ng-model="vm.optionText"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveEditingField()">OK</button>
-                    <button class="btn btn-warning" data-dismiss="modal" ng-click="cancelEdit()">Cancel</button>
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="vm.saveEdit()">OK</button>
+                    <button class="btn btn-warning" data-dismiss="modal" ng-click="vm.cancelEdit()">Cancel</button>
                 </div>
             </div>
         </div>

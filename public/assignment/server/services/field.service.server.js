@@ -43,9 +43,9 @@ module.exports = function(app, fieldModel) {
     //to a form object whose id is equal to the formId path parameter so that its properties
     //are the same as the property values of the field object embedded in the request's body
     function updateFieldById(req, res) {
-        var fieldId = req.body;
-        var formId = req.params.fieldId;
-        var field = req.params.formId;
+        var formId = req.params.formId;
+        var fieldId = req.params.fieldId;
+        var field = req.body;
         var fields = fieldModel.updateFieldById(formId, fieldId, field);
         res.json(fields);
     }

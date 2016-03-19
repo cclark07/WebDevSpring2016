@@ -8,6 +8,7 @@
         var vm = this;
 
         vm.fieldType = null;
+        vm.optionText = "";
 
         var fieldOptionMap = [
             {key: "Single Line Text Field", value: "TEXT"},
@@ -22,9 +23,10 @@
         vm.removeField = removeField;
         vm.editField = editField;
         vm.moveField = moveField;
+        vm.saveEdit = saveEdit;
+        vm.cancelEdit = cancelEdit;
 
         var formId = null;
-        vm.form = null;
 
         if ($routeParams.formId) {
             formId = $routeParams.formId;
@@ -132,10 +134,46 @@
 
         function editField(field) {
             vm.fieldEdit = field;
+            vm.optionText = "";
+            if (vm.fieldEdit.options) {
+                for (var i = 0; i < vm.fieldEdit.options.length; i++) {
+                    var option = vm.fieldEdit.options[i];
+                    vm.optionText += option.label + ":" + option.value;
+
+                    if (i < vm.fieldEdit.options.length - 1) {
+                        vm.optionText += "\n";
+                    }
+                }
+            }
+        }
+
+        function saveEdit() {
+            var lines = vm.optionText.split("\n");
+            var newOptionsArray = [];
+            for (var i in lines) {
+                if (lines[i] != "") {
+                    var lineArray = lines[i].split(":");
+                    var newOption = {
+                        label: lineArray[0],
+                        value: lineArray[1]
+                    };
+                    newOptionsArray.push(newOption);
+                }
+            }
+            vm.fieldEdit.options = newOptionsArray;
+
+            FieldsService.updateField(formId, vm.fieldEdit._id, vm.fieldEdit)
+                .then(function(response) {
+                    init();
+                })
         }
 
         function moveField(field) {
             console.log(field);
+        }
+
+        function cancelEdit() {
+            vm.fieldEdit = null;
         }
     }
 })();
