@@ -7,6 +7,20 @@
     function FieldsController(FieldsService, $routeParams) {
         var vm = this;
 
+        $("#sortable").sortable({ handle: '.sortHandle', axis: "y",
+            stop: function(eventResponse, ui) {
+                // This should update the model with the new order
+                // 4+ hours of trying to figure it out but no cigar :/
+                // FEEDBACK REQUEST:
+                //  How can I get an array of _ids from the sortable items?
+                //  The standard .toArray() returns the array of HTML id's (which are empty strings)
+                //  Is there a way to get data about the entity instance being sorted?
+                //  If I could get the _ids for the fields being sorted and place them in an array
+                //      updating the model would be fairly trivial.
+                //                      THANKS!!!!
+            }
+        });
+
         vm.fieldType = null;
         vm.optionText = "";
 

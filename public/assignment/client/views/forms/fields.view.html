@@ -6,7 +6,7 @@
     </ul>
     <div class="tab-content">
         <div class="row">
-            <form class="form-vertical">
+            <form class="form-vertical" id="sortable">
                 <div ng-repeat="field in vm.fields" class="form-group col-xs-12">
                     <div ng-switch="field.type" class="col-xs-8">
                         <div ng-switch-when="TEXT">
@@ -67,27 +67,27 @@
                         </button>
                         <button class="glyphicon glyphicon-plus table-icon"></button>
                         <button ng-click="vm.removeField(field)" class="glyphicon glyphicon-remove table-icon"></button>
-                        <button ng-click="vm.moveField(field)" class="glyphicon glyphicon-menu-hamburger table-icon"></button>
-                    </div>
-                </div>
-                <div class="form-group col-xs-12">
-                    <hr>
-                    <div class="col-xs-8">
-                        <label for="add" class="control-label">Add New Field:</label>
-                        <select ng-model="fieldType" class="form-control" id="add">
-                            <option>Single Line Text Field</option>
-                            <option>Multi Line Text Field</option>
-                            <option>Date Field</option>
-                            <option>Dropdown Field</option>
-                            <option>Checkboxes Field</option>
-                            <option>Radio Buttons Field</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-4 center">
-                        <button ng-click="vm.addField(fieldType)" class="glyphicon glyphicon-plus table-icon"></button>
+                        <span class="glyphicon glyphicon-menu-hamburger sortHandle"></span>
                     </div>
                 </div>
             </form>
+            <div class="form-group col-xs-12">
+                <hr>
+                <div class="col-xs-8">
+                    <label for="add" class="control-label">Add New Field:</label>
+                    <select ng-model="fieldType" class="form-control" id="add">
+                        <option>Single Line Text Field</option>
+                        <option>Multi Line Text Field</option>
+                        <option>Date Field</option>
+                        <option>Dropdown Field</option>
+                        <option>Checkboxes Field</option>
+                        <option>Radio Buttons Field</option>
+                    </select>
+                </div>
+                <div class="col-xs-4 center">
+                    <button ng-click="vm.addField(fieldType)" class="glyphicon glyphicon-plus table-icon"></button>
+                </div>
+            </div>
         </div>
     </div>
 
