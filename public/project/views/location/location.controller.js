@@ -4,7 +4,7 @@
         .module("SourceCamApp")
         .controller("LocationController", LocationController);
 
-    function LocationController($rootScope, $scope) {
+    function LocationController($rootScope) {
     	var vm = this;
         //TODO
     }
