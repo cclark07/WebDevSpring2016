@@ -4,8 +4,10 @@
         .module("SourceCamApp")
         .controller("MapController", MapController);
 
-    function MapController($scope, $location) {
-        $scope.initMap = initMap;
+    function MapController($location) {
+        var vm = this;
+
+        vm.initMap = initMap;
 
         function initMap() {
             var mapProp = {
