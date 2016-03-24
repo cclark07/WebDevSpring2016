@@ -5,6 +5,7 @@
         .controller("LocationController", LocationController);
 
     function LocationController($rootScope, $scope) {
+    	var vm = this;
         //TODO
     }
 })();
