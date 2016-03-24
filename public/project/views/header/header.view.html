@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController as vm">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -24,7 +24,7 @@
                     <a href="#/profile">{{currentUser.firstName}}</a>
                 </li>
                 <li ng-hide="currentUser == null">
-                    <a href="" ng-click="logout()">Logout</a>
+                    <a href="" ng-click="vm.logout()">Logout</a>
                 </li>
                 <li ng-show="currentUser != null && currentUser.roles.indexOf('Admin') != -1" ng-class="{'active' : $location.url() == '/admin'}">
                     <a href="#/admin">Admin</a>

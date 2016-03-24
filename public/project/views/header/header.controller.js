@@ -4,8 +4,10 @@
         .module("SourceCamApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController($rootScope, $scope, $location) {
-        $scope.logout = logout;
+    function HeaderController($rootScope, $location) {
+        var vm = this;
+
+        vm.logout = logout;
 
         function logout() {
             $rootScope.currentUser = null;
