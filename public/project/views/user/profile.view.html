@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-md-8 col-md-offset-2 main" ng-controller="ProfileController">
+<div class="col-xs-12 col-md-8 col-md-offset-2 main" ng-controller="ProfileController as vm">
     <img class="img-responsive center-block" src="http://placehold.it/200x200"/>
     <h4 class="text-center white-text">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
     <div class="panel panel-default padded">
@@ -7,36 +7,36 @@
           <div class="form-group">
           <label for="username" class="col-sm-2 control-label">Username:</label>
           <div class="col-sm-10">
-            <input ng-model="username" type="text" class="form-control" placeholder="Username">
+            <input ng-model="vm.username" type="text" class="form-control" placeholder="Username">
           </div>
         </div>
         <div class="form-group">
           <label for="password" class="col-sm-2 control-label">Password:</label>
           <div class="col-sm-10">
-            <input ng-model="password"type="password" class="form-control" placeholder="Password">
+            <input ng-model="vm.password"type="password" class="form-control" placeholder="Password">
           </div>
         </div>
         <div class="form-group">
           <label for="firstname" class="col-sm-2 control-label">First Name:</label>
           <div class="col-sm-10">
-            <input ng-model="firstname"type="text" class="form-control" placeholder="First Name">
+            <input ng-model="vm.firstname"type="text" class="form-control" placeholder="First Name">
           </div>
         </div>
          <div class="form-group">
           <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
           <div class="col-sm-10">
-            <input ng-model="lastname"type="text" class="form-control" placeholder="Last Name">
+            <input ng-model="vm.lastname"type="text" class="form-control" placeholder="Last Name">
           </div>
         </div>
         <div class="form-group">
           <label for="email" class="col-sm-2 control-label">Email:</label>
           <div class="col-sm-10">
-            <input ng-model="email"type="email" class="form-control" placeholder="Email">
+            <input ng-model="vm.email"type="email" class="form-control" placeholder="Email">
           </div>
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button ng-click="updateDetails()" class="btn btn-primary btn-block">Update</button>
+            <button ng-click="vm.updateDetails()" class="btn btn-primary btn-block">Update</button>
           </div>
         </div>
       </form>
@@ -73,27 +73,27 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td><input class="form-control" ng-model="locationName" type="text" placeholder="Name"></td>
-                        <td><input class="form-control" ng-model="latlon" type="text" placeholder="Lat/Lon (e.g. [40, 70])"></td>
-                        <td><input class="form-control" ng-model="webcamURL" type="url" placeholder="URL"></td>
-                        <td><input class="form-control" ng-model="weatherURL" type="url" placeholder="URL"></td>
+                        <td><input class="form-control" ng-model="vm.locationName" type="text" placeholder="Name"></td>
+                        <td><input class="form-control" ng-model="vm.latlon" type="text" placeholder="Lat/Lon (e.g. [40, 70])"></td>
+                        <td><input class="form-control" ng-model="vm.webcamURL" type="url" placeholder="URL"></td>
+                        <td><input class="form-control" ng-model="vm.weatherURL" type="url" placeholder="URL"></td>
                         <td>
                             <p>---</p>
                         </td>
                         <td class="text-nowrap">
-                            <button ng-click="addLocation()" class="glyphicon glyphicon-plus table-icon"></button>
-                            <button ng-click="updateLocation()" class="glyphicon glyphicon-ok table-icon"></button>
+                            <button ng-click="vm.addLocation()" class="glyphicon glyphicon-plus table-icon"></button>
+                            <button ng-click="vm.updateLocation()" class="glyphicon glyphicon-ok table-icon"></button>
                         </td>
                     </tr>
-                    <tr ng-repeat="location in userLocations">
+                    <tr ng-repeat="location in vm.userLocations">
                         <td>{{location.name}}</td>
                         <td>{{location.latlon}}</td>
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
                         <td><a href="{{location.weatherURL}}" target="blank">{{location.weatherURL}}</a></td>
                         <td>{{location.status}}</td>
                         <td class="text-nowrap">
-                            <button ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove table-icon"></button>
-                            <button ng-click="selectLocation($index)" class="glyphicon glyphicon-pencil table-icon"></button>
+                            <button ng-click="vm.deleteLocation($index)" class="glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="vm.selectLocation($index)" class="glyphicon glyphicon-pencil table-icon"></button>
                         </td>
                     </tr>
                     </tbody>
