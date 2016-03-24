@@ -1,6 +1,6 @@
 <div ng-include="'views/worldmap/worldmap.view.html'"></div>
 
-<div class="col-xs-12 col-md-8 col-md-offset-2 panel panel-default padded" ng-controller="HomeController">
+<div class="col-xs-12 col-md-8 col-md-offset-2 panel panel-default padded" ng-controller="HomeController as vm">
     <p class="hidden-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit,
         vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus,
         ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor
@@ -16,10 +16,10 @@
                 <input class="full-width" type="search" placeholder="Search term">
             </div>
             <div class="col-xs-6 col-md-4 col-lg-2">
-                <button ng-click="showResults=true; searchLocations()" class="btn btn-primary btn-block">Search</button>
+                <button ng-click="vm.showResults=true; vm.searchLocations()" class="btn btn-primary btn-block">Search</button>
             </div>
         </div>
-        <div ng-show="showResults">
+        <div ng-show="vm.showResults">
             <hr>
             <h3>Results</h3>
             <form>
@@ -33,7 +33,7 @@
                             </th>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="location in locations">
+                            <tr ng-repeat="location in vm.locations">
                                 <td><a href="#/location">{{location.name}}</a></td>
                             </tr>
                             </tbody>

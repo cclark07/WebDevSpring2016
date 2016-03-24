@@ -4,22 +4,24 @@
         .module("SourceCamApp")
         .controller("HomeController", HomeController);
 
-    function HomeController($scope, LocationService) {
-        $scope.locations = [];
+    function HomeController(LocationService) {
+        var vm = this;
+
+        vm.locations = [];
 
         // Inject functions into scope
-        $scope.searchLocations = searchLocations;
+        vm.searchLocations = searchLocations;
 
-        $scope.locationName;
-        $scope.userId
-        $scope.latlon;
-        $scope.webcamURL;
-        $scope.weatherURL;
-        $scope.status;
+        vm.locationName;
+        vm.userId
+        vm.latlon;
+        vm.webcamURL;
+        vm.weatherURL;
+        vm.status;
 
         function searchLocations() {
             LocationService.getAllLocations(function(response) {
-                $scope.locations = response;
+                vm.locations = response;
             })
         }
     }
