@@ -4,60 +4,62 @@
         .module("SourceCamApp")
         .controller("LocationsController", LocationsController);
 
-    function LocationsController($scope, LocationService) {
-        $scope.locations = [];
+    function LocationsController(LocationService) {
+        var vm = this;
+
+        vm.locations = [];
         var selectedLocation;
 
         init();
 
         // Inject functions into scope
-        $scope.addLocation = addLocation;
-        $scope.deleteLocation = deleteLocation;
-        $scope.selectLocation = selectLocation;
-        $scope.updateLocation = updateLocation;
+        vm.addLocation = addLocation;
+        vm.deleteLocation = deleteLocation;
+        vm.selectLocation = selectLocation;
+        vm.updateLocation = updateLocation;
 
-        $scope.locationName;
-        $scope.userId;
-        $scope.latlon;
-        $scope.webcamURL;
-        $scope.weatherURL;
-        $scope.status;
+        vm.locationName;
+        vm.userId;
+        vm.latlon;
+        vm.webcamURL;
+        vm.weatherURL;
+        vm.status;
 
         function init() {
             LocationService.getAllLocations(function(response) {
-                $scope.locations = response;
+                vm.locations = response;
             })
         }
 
         // Uses the LocationService to create a new location
         function addLocation() {
             var newLocation = {
-                "name":$scope.locationName,
-                "userId":$scope.userId,
-                "latlon":$scope.latlon,
-                "webcamURL":$scope.webcamURL,
-                "weatherURL":$scope.weatherURL,
-                "status":$scope.status
+                "name":vm.locationName,
+                "userId":vm.userId,
+                "latlon":vm.latlon,
+                "webcamURL":vm.webcamURL,
+                "weatherURL":vm.weatherURL,
+                "status":vm.status
             };
-            LocationService.createLocationForUser($scope.userId, newLocation, function(response) {});
+            LocationService.createLocationForUser(vm.userId, newLocation, function(response) {});
         }
 
         // Uses the LocationService to delete the location at the selected index
         function deleteLocation(index) {
             LocationService.deleteLocationByIndex(index, function(response) {
-                $scope.locations = response;
+                vm.locations = response;
             })
         }
 
         // Selects the location at the given index to be edited
         function selectLocation(index) {
-            selectedLocation = $scope.locations[index];
-            $scope.locationName = selectedLocation.name;
-            $scope.userId = selectedLocation.userId;
-            $scope.latlon = selectedLocation.latlon;
-            $scope.webcamURL = selectedLocation.webcamURL;
-            $scope.weatherURL = selectedLocation.weatherURL;
-            $scope.status = selectedLocation.status;
+            selectedLocation = vm.locations[index];
+            vm.locationName = selectedLocation.name;
+            vm.userId = selectedLocation.userId;
+            vm.latlon = selectedLocation.latlon;
+            vm.webcamURL = selectedLocation.webcamURL;
+            vm.weatherURL = selectedLocation.weatherURL;
+            vm.status = selectedLocation.status;
         }
 
         //Updates selected location with updated data
@@ -68,12 +70,12 @@
 
             var newlocation = selectedLocation;
             var locationId = selectedLocation._id;
-            newlocation.name = $scope.locationName;
-            newlocation.userId = $scope.userId;
-            newlocation.latlon = $scope.latlon;
-            newlocation.webcamURL = $scope.webcamURL;
-            newlocation.weatherURL = $scope.weatherURL;
-            newlocation.status = $scope.status;
+            newlocation.name = vm.locationName;
+            newlocation.userId = vm.userId;
+            newlocation.latlon = vm.latlon;
+            newlocation.webcamURL = vm.webcamURL;
+            newlocation.weatherURL = vm.weatherURL;
+            newlocation.status = vm.status;
 
             LocationService.updateLocationById(locationId, newlocation, function(response) {});
         }
