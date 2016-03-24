@@ -4,40 +4,42 @@
         .module("SourceCamApp")
         .controller("UsersController", UsersController);
 
-    function UsersController($scope, UserService) {
-        $scope.users = [];
+    function UsersController(UserService) {
+        var vm = this;
+
+        vm.users = [];
         var selectedUser;
 
         init();
 
         // Inject functions into scope
-        $scope.addUser = addUser;
-        $scope.deleteUser = deleteUser;
-        $scope.selectUser = selectUser;
-        $scope.updateUser = updateUser;
+        vm.addUser = addUser;
+        vm.deleteUser = deleteUser;
+        vm.selectUser = selectUser;
+        vm.updateUser = updateUser;
 
-        $scope.username;
-        $scope.password;
-        $scope.firstName;
-        $scope.lastName;
-        $scope.email;
-        $scope.roles;
+        vm.username;
+        vm.password;
+        vm.firstName;
+        vm.lastName;
+        vm.email;
+        vm.roles;
 
         function init() {
             UserService.findAllUsers(function(response) {
-                $scope.users = response;
+                vm.users = response;
             })
         }
 
         // Uses the UserService to create the new user
         function addUser() {
             var newUser = {
-                "username":$scope.username,
-                "password":$scope.password,
-                "firstName":$scope.firstName,
-                "lastName":$scope.lastName,
-                "email":$scope.email,
-                "roles":$scope.roles
+                "username":vm.username,
+                "password":vm.password,
+                "firstName":vm.firstName,
+                "lastName":vm.lastName,
+                "email":vm.email,
+                "roles":vm.roles
             };
             UserService.createUser(newUser, function(response) {});
         }
@@ -45,19 +47,19 @@
         // Uses the UserService to delete the user at the selected index
         function deleteUser(index) {
             UserService.deleteUserByIndex(index, function(response) {
-                $scope.users = response;
+                vm.users = response;
             })
         }
 
         // Selects the user at the given index to be edited
         function selectUser(index) {
-            selectedUser = $scope.users[index];
-            $scope.username = selectedUser.username;
-            $scope.password = selectedUser.password;
-            $scope.firstName = selectedUser.firstName;
-            $scope.lastName = selectedUser.lastName;
-            $scope.email = selectedUser.email;
-            $scope.roles = selectedUser.roles;
+            selectedUser = vm.users[index];
+            vm.username = selectedUser.username;
+            vm.password = selectedUser.password;
+            vm.firstName = selectedUser.firstName;
+            vm.lastName = selectedUser.lastName;
+            vm.email = selectedUser.email;
+            vm.roles = selectedUser.roles;
         }
 
         // Updates selected user with updated data
@@ -68,12 +70,12 @@
 
             var newuser = selectedUser;
             var userId = selectedUser._id;
-            newuser.username = $scope.username;
-            newuser.password = $scope.password;
-            newuser.firstName = $scope.firstName;
-            newuser.lastName = $scope.lastName;
-            newuser.email = $scope.email;
-            newuser.roles = $scope.roles;
+            newuser.username = vm.username;
+            newuser.password = vm.password;
+            newuser.firstName = vm.firstName;
+            newuser.lastName = vm.lastName;
+            newuser.email = vm.email;
+            newuser.roles = vm.roles;
 
             UserService.updateUser(userId, newuser, function(response) {});
         }
