@@ -32,7 +32,6 @@
 
         function updateLocationById(locationId, newLocation) {
             return $http.put("/api/project/location/" + locationId, newLocation);
-
         }
 
         function getAllLocations() {
@@ -44,7 +43,7 @@
         }
 
         function getLocationById(locationId) {
-            return $http.get("/api/project/location/" + locationId);
+            return $http.get("/api/project/location?id=" + locationId);
         }
     }
 })();

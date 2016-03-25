@@ -1,5 +1,5 @@
 module.exports = function(app, locationModel) {
-    app.get("/api/project/location/:locationId", getLocationById);
+    app.get("/api/project/location?id=id", getLocationById);
     app.get("/api/project/location", getAllLocations);
     app.post("/api/project/location/:userId", createLocationForUser);
     app.delete("/api/project/location/:locationId", deleteLocationById);
@@ -38,7 +38,7 @@ module.exports = function(app, locationModel) {
     }
 
     function getLocationById(req, res) {
-        var locationId = req.params.locationId;
+        var locationId = req.query.locationId;
         var location = locationModel.getLocationById(locationId);
         res.json(location);
     }

@@ -1,6 +1,6 @@
 var locations = require("./location.mock.json");
 module.exports = function() {
-    
+
     var api = {
         getAllLocations: getAllLocations,
         createLocationForUser: createLocationForUser,
