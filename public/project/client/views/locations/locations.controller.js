@@ -84,7 +84,10 @@
             newlocation.weatherURL = vm.weatherURL;
             newlocation.status = vm.status;
 
-            LocationService.updateLocationById(locationId, newlocation, function(response) {});
+            LocationService.updateLocationById(locationId, newlocation)
+                .then(function(response) {
+
+                })
         }
     }
 })();

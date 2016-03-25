@@ -4,7 +4,8 @@ module.exports = function() {
     var api = {
         getAllLocations: getAllLocations,
         createLocationForUser: createLocationForUser,
-        deleteLocationById: deleteLocationById
+        deleteLocationById: deleteLocationById,
+        updateLocationById: updateLocationById
     };
 
     return api;
@@ -28,5 +29,14 @@ module.exports = function() {
             }
         };
         return locations;
+    }
+
+    function updateLocationById(locationId, newLocation) {
+        for (var i = 0; i < locations.length; i++) {
+            if (locations[i]._id == locationId) {
+                locations[i] = newLocation;
+                return locations[i];
+            }
+        };
     }
 }

@@ -102,14 +102,8 @@
         // If found, updates location object with new location values and calls back with update location
         // If not found, calls back with null
         function updateLocationById(locationId, newLocation, callback) {
-            for (var i = 0; i < locations.length; i++) {
-                if (locations[i]._id == locationId) {
-                    locations[i] = newLocation;
-                    callback(locations[i]);
-                    return;
-                }
-            };
-            callback(null);
+            return $http.put("/api/project/location/" + locationId, newLocation);
+
         }
 
         function getAllLocations() {

@@ -23,6 +23,14 @@
     "weatherURL": "http://test.test.test",
     "status": "Open"
   },
+  {"_id": "3",
+    "name": "Coney Island",
+    "userId": 2,
+    "latlon": [40, -72],
+    "webcamURL": "http://test.test.test",
+    "weatherURL": "http://test.test.test",
+    "status": "Approved"
+  },
   {"_id": "4",
     "name": "Grand Cayman",
     "userId": 3,
