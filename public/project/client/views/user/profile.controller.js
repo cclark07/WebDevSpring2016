@@ -27,9 +27,7 @@
 
         vm.userLocations = [];
 
-        if (user) {
-            init();
-        }
+        init();
 
         // Initializes the user and user forms
         function init() {

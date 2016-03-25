@@ -44,7 +44,7 @@
             };
             UserService.createUser(newUser)
                 .then(function(response) {
-                    vm.users = response.data;
+                    init();
                 });
         }
 

@@ -28,7 +28,7 @@ module.exports = function() {
     function createUser(user) {
         user._id = (new Date).getTime();
         users.push(user);
-        return users;
+        return user;
     }
 
     function deleteUser(userId) {

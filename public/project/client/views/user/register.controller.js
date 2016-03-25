@@ -29,10 +29,12 @@
                 "email":vm.email,
                 "roles": ["User"]
             };
-            UserService.createUser(newUser, function(response) {
-                $rootScope.currentUser = response;
-                $location.path("/profile");
-            })
+
+            UserService.createUser(newUser)
+                .then(function(response) {
+                    $rootScope.currentUser = response.data;
+                    $location.path("/profile");
+                });
         }
     }
 })();
