@@ -4,7 +4,7 @@
         .module("SourceCamApp")
         .controller("LocationController", LocationController);
 
-    function LocationController($routeParams, LocationService, UserService) {
+    function LocationController($routeParams, LocationService) {
     	var vm = this;
 
         var locationId = $routeParams.locationId;

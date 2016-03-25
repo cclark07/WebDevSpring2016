@@ -1,10 +1,19 @@
 module.exports = function(app, locationModel) {
     app.get("/api/project/location?id=id", getLocationById);
-    app.get("/api/project/location", getAllLocations);
+    app.get("/api/project/location", requestRouter);
     app.post("/api/project/location/:userId", createLocationForUser);
     app.delete("/api/project/location/:locationId", deleteLocationById);
     app.put("/api/project/location/:locationId", updateLocationById);
     app.get("/api/project/location/:userId", findAllLocationsForUser);
+
+    function requestRouter(req, res) {
+        if (req.query.id) {
+            getLocationById(req, res);
+        }
+        else {
+            getAllLocations(req, res);
+        }
+    }
 
     function getAllLocations(req, res) {
         var locations = locationModel.getAllLocations();
@@ -38,7 +47,7 @@ module.exports = function(app, locationModel) {
     }
 
     function getLocationById(req, res) {
-        var locationId = req.query.locationId;
+        var locationId = req.query.id;
         var location = locationModel.getLocationById(locationId);
         res.json(location);
     }
