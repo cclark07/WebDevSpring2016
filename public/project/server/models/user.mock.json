@@ -1,0 +1,44 @@
+[
+  {	"_id":0,
+    "firstName":"admin",
+    "lastName":"admin",
+    "username":"admin",
+    "password":"admin",
+    "roles": ["User", "Admin"]
+  },
+  {	"_id":1,
+    "firstName":"Alan",
+    "lastName":"Turing",
+    "username":"alan",
+    "password":"alan",
+    "roles": ["User"]
+  },
+  {	"_id":2,
+    "firstName":"Bob",
+    "lastName":"Dole",
+    "username":"bob",
+    "password":"bob",
+    "roles": ["User"]
+  },
+  {	"_id":3,
+    "firstName":"Bruce",
+    "lastName":"Clark",
+    "username":"bruce",
+    "password":"bruce",
+    "roles": ["User"]
+  },
+  {	"_id":4,
+    "firstName":"Chris",
+    "lastName":"Craig",
+    "username":"chris",
+    "password":"chris",
+    "roles": ["User"]
+  },
+  {	"_id":5,
+    "firstName":"Dan",
+    "lastName":"Da Man",
+    "username":"dan",
+    "password":"dan",
+    "roles": ["User"]
+  }
+]

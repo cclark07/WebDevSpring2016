@@ -50,9 +50,11 @@
 
         // Uses the UserService to delete the user at the selected index
         function deleteUser(index) {
-            UserService.deleteUserByIndex(index, function(response) {
-                vm.users = response;
-            })
+            var userId = vm.users[index]._id;
+            UserService.deleteUser(userId)
+                .then(function() {
+                    init();
+                })
         }
 
         // Selects the user at the given index to be edited

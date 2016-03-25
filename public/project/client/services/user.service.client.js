@@ -58,7 +58,7 @@
 			findUserByCredentials: findUserByCredentials,
 			findAllUsers: findAllUsers,
 			createUser: createUser,
-			deleteUserByIndex: deleteUserByIndex,
+			deleteUser: deleteUser,
 			updateUser: updateUser
 		};
 
@@ -76,29 +76,16 @@
             callback(null);
         }
 
-        // Calls back with array of all users
         function findAllUsers() {
-			return $http.get("/api/assignment/user");
+			return $http.get("/api/project/user");
         }
 
-  		// Adds property called _id with unique value (timestamp) to the user object parameter
-		// Adds the new user to local array of users
-		// Calls back with new user
         function createUser(user) {
-			return $http.post("/api/assignment/user", user);
-
+			return $http.post("/api/project/user", user);
         }
 
-		// Iterates over the array of current users and removes the user at the given index
-		// Calls back with remaining array of all users
-        function deleteUserByIndex(index, callback) {
-            for (var i = 0; i < users.length; i++) {
-            	if (i == index) {
-            		users.splice(i, 1);
-                    break;
-            	}
-            };
-            callback(users);
+        function deleteUser(userId) {
+			return $http.delete("/api/project/user/" + userId);
         }
 
 
