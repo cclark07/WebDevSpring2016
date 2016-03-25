@@ -27,6 +27,9 @@
 
         vm.userLocations = [];
 
+        var userFavoriteIds = user.favorites;
+        vm.userFavorites = [];
+
         init();
 
         // Initializes the user and user forms
@@ -35,6 +38,13 @@
                 .then(function(response) {
                     vm.userLocations = response.data;
                 });
+
+            for (var id in userFavoriteIds) {
+                LocationService.getLocationById(userFavoriteIds[id])
+                    .then(function(response) {
+                        vm.userFavorites.push(response.data);
+                    })
+            }
         }
 
         // Updates the current user

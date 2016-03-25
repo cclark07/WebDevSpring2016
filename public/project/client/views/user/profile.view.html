@@ -124,20 +124,14 @@
                     </th>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><p>NAME</p></td>
-                        <td><p>URL</p></td>
-                        <td><p>URL</p></td>
-                        <td>
+                    <tr ng-repeat="location in vm.userFavorites">
+                        <td><a href="#/location/{{location._id}}">{{location.name}}</a></td>
+                        <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
+                        <td><a href="{{location.weatherURL}}" target="blank">{{location.weatherURL}}</a></td>
+                        <td class="text-nowrap">
                             <button ng-click="" class="glyphicon glyphicon-star table-icon"></button>
                         </td>
                     </tr>
-                    <!--<tr ng-repeat="favorite in userfavorites">-->
-                    <!--<td>{{favorite.title}}</td>-->
-                    <!--<td>-->
-                    <!--<button ng-click="" class="glyphicon glyphicon-star table-icon"></button>-->
-                    <!--</td>-->
-                    <!--</tr>-->
                     </tbody>
                 </table>
             </div>

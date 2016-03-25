@@ -4,41 +4,47 @@
     "lastName":"admin",
     "username":"admin",
     "password":"admin",
-    "roles": ["User", "Admin"]
+    "roles": ["User", "Admin"],
+    "favorites": [3, 5]
   },
   {	"_id":1,
     "firstName":"Alan",
     "lastName":"Turing",
     "username":"alan",
     "password":"alan",
-    "roles": ["User"]
+    "roles": ["User"],
+    "favorites": [1, 2]
   },
   {	"_id":2,
     "firstName":"Bob",
     "lastName":"Dole",
     "username":"bob",
     "password":"bob",
-    "roles": ["User"]
+    "roles": ["User"],
+    "favorites": [4]
   },
   {	"_id":3,
     "firstName":"Bruce",
     "lastName":"Clark",
     "username":"bruce",
     "password":"bruce",
-    "roles": ["User"]
+    "roles": ["User"],
+    "favorites": [2]
   },
   {	"_id":4,
     "firstName":"Chris",
     "lastName":"Craig",
     "username":"chris",
     "password":"chris",
-    "roles": ["User"]
+    "roles": ["User"],
+    "favorites": []
   },
   {	"_id":5,
     "firstName":"Dan",
     "lastName":"Da Man",
     "username":"dan",
     "password":"dan",
-    "roles": ["User"]
+    "roles": ["User"],
+    "favorites": [1, 2, 3, 4]
   }
 ]
