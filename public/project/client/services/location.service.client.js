@@ -58,11 +58,8 @@
         // Adds property called userId equal to user id parameter
         // Adds new location to local array of locations
         // Calls back with new location
-        function createLocationForUser(userId, location, callback) {
-            location._id = (new Date).getTime();
-            location.userId = userId;
-            locations.push(location);
-            callback(location);
+        function createLocationForUser(userId, location) {
+            return $http.post("/api/project/location/" + userId, location);
         }
 
         // Iterates over the array of current locations looking for locations whose user id is parameter user id

@@ -42,7 +42,11 @@
                 "weatherURL":vm.weatherURL,
                 "status":vm.status
             };
-            LocationService.createLocationForUser(vm.userId, newLocation, function(response) {});
+
+            LocationService.createLocationForUser(vm.userId, newLocation)
+                .then(function(response) {
+                    vm.locations.push(response.data);
+                })
         }
 
         // Uses the LocationService to delete the location at the selected index
