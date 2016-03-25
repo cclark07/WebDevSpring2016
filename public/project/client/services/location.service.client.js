@@ -39,7 +39,7 @@
         }
 
         function getLocationsByName(name) {
-            //TODO
+            return $http.get("/api/project/location/search/" + name);
         }
 
         function getLocationById(locationId) {

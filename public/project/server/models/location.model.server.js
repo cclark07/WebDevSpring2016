@@ -7,6 +7,7 @@ module.exports = function() {
         deleteLocationById: deleteLocationById,
         updateLocationById: updateLocationById,
         findAllLocationsForUser: findAllLocationsForUser,
+        getLocationsByName: getLocationsByName,
         getLocationById: getLocationById
     };
 
@@ -51,6 +52,16 @@ module.exports = function() {
                 return locations[i];
             }
         }
+    }
+
+    function getLocationsByName(name) {
+        var result = [];
+        for (var i in locations) {
+            if (locations[i].name == name) {
+                result.push(locations[i]);
+            }
+        }
+        return result;
     }
 
     function getLocationById(locationId) {

@@ -1,4 +1,5 @@
 module.exports = function(app, locationModel) {
+    app.get("/api/project/location/search/:name", getLocationsByName);
     app.get("/api/project/location?id=id", getLocationById);
     app.get("/api/project/location", requestRouter);
     app.post("/api/project/location/:userId", createLocationForUser);
@@ -50,5 +51,11 @@ module.exports = function(app, locationModel) {
         var locationId = req.query.id;
         var location = locationModel.getLocationById(locationId);
         res.json(location);
+    }
+
+    function getLocationsByName(req, res) {
+        var name = req.params.name;
+        var locations = locationModel.getLocationsByName(name);
+        res.json(locations);
     }
 }

@@ -14,6 +14,7 @@
         // Inject functions into scope
         vm.getAllLocations = getAllLocations;
         vm.getLocationsByName = getLocationsByName;
+        vm.searchLocations = searchLocations;
 
         vm.locationName;
         vm.userId
@@ -22,18 +23,29 @@
         vm.weatherURL;
         vm.status;
 
+        function searchLocations() {
+            if (vm.searchLocation) {
+                getLocationsByName();
+            }
+            else {
+                getAllLocations();
+            }
+        }
+
         function getAllLocations() {
-            LocationService.getAllLocations(function(response) {
-                vm.locations = response;
-            })
+            LocationService.getAllLocations()
+                .then(function(response) {
+                    vm.locations = response.data;
+                });
         }
 
         function getLocationsByName() {
             vm.locations = [];
 
-            LocationService.getLocationsByName(vm.searchLocation, function(response) {
-                vm.locations = response;
-            })
+            LocationService.getLocationsByName(vm.searchLocation)
+                .then(function(response) {
+                    vm.locations = response.data;
+                });
         }
     }
 })();
