@@ -3,9 +3,16 @@ module.exports = function(app, locationModel) {
     app.post("/api/project/location/:userId", createLocationForUser);
     app.delete("/api/project/location/:locationId", deleteLocationById);
     app.put("/api/project/location/:locationId", updateLocationById);
+    app.get("/api/project/location/:userId", findAllLocationsForUser)
 
     function getAllLocations(req, res) {
         var locations = locationModel.getAllLocations();
+        res.json(locations);
+    }
+
+    function findAllLocationsForUser(req, res) {
+        var userId = req.params.userId;
+        var locations = locationModel.findAllLocationsForUser(userId);
         res.json(locations);
     }
 

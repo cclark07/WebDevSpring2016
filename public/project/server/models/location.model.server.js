@@ -5,7 +5,8 @@ module.exports = function() {
         getAllLocations: getAllLocations,
         createLocationForUser: createLocationForUser,
         deleteLocationById: deleteLocationById,
-        updateLocationById: updateLocationById
+        updateLocationById: updateLocationById,
+        findAllLocationsForUser: findAllLocationsForUser
     };
 
     return api;
@@ -18,7 +19,18 @@ module.exports = function() {
         location._id = (new Date).getTime();
         location.userId = userId;
         locations.push(location);
-        return locations;
+        var userLocations = findAllLocationsForUser(userId);
+        return userLocations;
+    }
+
+    function findAllLocationsForUser(userId) {
+        var userLocations = [];
+        for (var i = 0; i < locations.length; i++) {
+            if (locations[i].userId == userId) {
+                userLocations.push(locations[i]);
+            }
+        };
+        return userLocations;
     }
 
     function deleteLocationById(locationId) {

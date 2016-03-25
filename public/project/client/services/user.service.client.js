@@ -16,17 +16,8 @@
 
 		return api;
 
-		// Iterates over the array of current users looking for user object whose 
-		// username and password match the parameters then calls back with user found or null otherwise
         function findUserByCredentials(username, password) {
 			return $http.get("/api/project/user?username=" + username + "&password=" + password);
-            //for (var i = 0; i < users.length; i++) {
-            //	if (users[i].username == username && users[i].password == password) {
-            //		callback(users[i]);
-            //		return;
-            //	}
-            //};
-            //callback(null);
         }
 
         function findAllUsers() {

@@ -33,9 +33,10 @@
 
         // Initializes the user and user forms
         function init() {
-            LocationService.findAllLocationsForUser(user._id, function(response) {
-                vm.userLocations = response;
-            });
+            LocationService.findAllLocationsForUser(user._id)
+                .then(function(response) {
+                    vm.userLocations = response.data;
+                });
         }
 
         // Updates the current user
@@ -47,10 +48,11 @@
             user.email = vm.email;
             user.locations = vm.userLocations;
 
-            UserService.updateUser(user._id, user, function(response) {
-                $rootScope.currentUser = response;
-                user = response;
-            });
+            UserService.updateUser(user._id, user)
+                .then(function(response) {
+                    $rootScope.currentUser = response.data;
+                    user = response.data;
+                })
         }
 
         // Uses the LocationService to create a new location for the current user
@@ -63,18 +65,19 @@
                 "weatherURL":vm.weatherURL,
                 "status":"Open"
             };
-            LocationService.createLocationForUser(user._id, newLocation, function(response) {
-                vm.userLocations.push(response);
-            });
+            LocationService.createLocationForUser(user._id, newLocation)
+                .then(function(response) {
+                    vm.userLocations = response.data;
+                })
         }
 
         // Uses the LocationService to delete the location at the selected index
         function deleteLocation(index) {
             var locationId = vm.userLocations[index]._id;
-            var userId = user._id;
-            LocationService.deleteUserLocationById(userId, locationId, function(response) {
-                vm.userLocations = response;
-            })
+            LocationService.deleteLocationById(locationId)
+                .then(function(response) {
+                    init();
+                })
         }
 
         // Selects the location at the given index to be edited
@@ -101,7 +104,10 @@
             newlocation.weatherURL = vm.weatherURL;
             newlocation.status = selectedLocation.status;
 
-            LocationService.updateLocationById(locationId, newlocation, function(response) {});
+            LocationService.updateLocationById(locationId, newlocation)
+                .then(function(response) {
+
+                })
         }
     }
 })();

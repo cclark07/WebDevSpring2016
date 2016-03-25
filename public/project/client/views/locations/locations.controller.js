@@ -45,7 +45,7 @@
 
             LocationService.createLocationForUser(vm.userId, newLocation)
                 .then(function(response) {
-                    vm.locations = response.data;
+                    init();
                 })
         }
 
