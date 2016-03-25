@@ -4,7 +4,8 @@ module.exports = function() {
     var api = {
         findAllUsers: findAllUsers,
         createUser: createUser,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        updateUser: updateUser
     }
 
     return api;
@@ -21,12 +22,20 @@ module.exports = function() {
 
     function deleteUser(userId) {
         for (var i = 0; i < users.length; i++) {
-            console.log(users[i]._id + ", " + userId);
             if (users[i]._id == userId) {
                 users.splice(i, 1);
                 break;
             }
         };
         return users;
+    }
+
+    function updateUser(userId, newuser) {
+        for (var i = 0; i < users.length; i++) {
+            if (users[i]._id == userId) {
+                users[i] = newuser;
+                return users[i];
+            }
+        };
     }
 }

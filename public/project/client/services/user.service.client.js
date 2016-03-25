@@ -92,15 +92,8 @@
 		// Iterates over the array of current users looking for the given user id
 		// If found, updates user with new user properties and calls back with updated user
 		// If not found, calls back with null
-        function updateUser(userId, user, callback) {
-            for (var i = 0; i < users.length; i++) {
-            	if (users[i]._id == userId) {
-            		users[i] = user;
-            		callback(users[i]);
-            		return;
-            	}
-            };
-            callback(null);
+        function updateUser(userId, user) {
+			return $http.put("/api/project/user/" + userId, user);
         }
     }
 })();

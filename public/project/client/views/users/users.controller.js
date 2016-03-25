@@ -83,6 +83,11 @@
             newuser.email = vm.email;
             newuser.roles = vm.roles;
 
+            UserService.updateUser(userId. newuser)
+                .then(function() {
+                    init();
+                })
+
             UserService.updateUser(userId, newuser, function(response) {});
         }
     }
