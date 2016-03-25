@@ -4,7 +4,7 @@
         .module("SourceCamApp")
         .factory("LocationService", LocationService);
 
-    function LocationService() {
+    function LocationService($http) {
         var locations;
 
         locations = [
@@ -121,8 +121,8 @@
             callback(null);
         }
 
-        function getAllLocations(callback) {
-            callback(locations);
+        function getAllLocations() {
+            return $http.get("/api/project/location");
         }
 
         function getLocationsByName(name, callback) {

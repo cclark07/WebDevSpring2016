@@ -26,9 +26,10 @@
         vm.status;
 
         function init() {
-            LocationService.getAllLocations(function(response) {
-                vm.locations = response;
-            })
+            LocationService.getAllLocations()
+                .then(function(response) {
+                    vm.locations = response.data;
+                });
         }
 
         // Uses the LocationService to create a new location
