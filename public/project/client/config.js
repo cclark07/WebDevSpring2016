@@ -29,7 +29,7 @@
                 templateUrl: "views/admin/admin.view.html",
                 controller: "AdminController"
             })
-            .when("/location", {
+            .when("/location/:locationId", {
                 templateUrl: "views/location/location.view.html",
                 controller: "LocationController"
             })

@@ -4,8 +4,20 @@
         .module("SourceCamApp")
         .controller("LocationController", LocationController);
 
-    function LocationController($rootScope) {
+    function LocationController($routeParams, LocationService, UserService) {
     	var vm = this;
-        //TODO
+
+        var locationId = $routeParams.locationId;
+
+        vm.location;
+
+        function init() {
+            LocationService.getLocationById(locationId)
+                .then(function(response) {
+                    vm.location = response.data;
+                })
+        }
+
+        init();
     }
 })();

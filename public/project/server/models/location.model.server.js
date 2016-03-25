@@ -1,12 +1,13 @@
 var locations = require("./location.mock.json");
 module.exports = function() {
-
+    
     var api = {
         getAllLocations: getAllLocations,
         createLocationForUser: createLocationForUser,
         deleteLocationById: deleteLocationById,
         updateLocationById: updateLocationById,
-        findAllLocationsForUser: findAllLocationsForUser
+        findAllLocationsForUser: findAllLocationsForUser,
+        getLocationById: getLocationById
     };
 
     return api;
@@ -29,7 +30,7 @@ module.exports = function() {
             if (locations[i].userId == userId) {
                 userLocations.push(locations[i]);
             }
-        };
+        }
         return userLocations;
     }
 
@@ -39,7 +40,7 @@ module.exports = function() {
                 locations.splice(i, 1);
                 break;
             }
-        };
+        }
         return locations;
     }
 
@@ -49,6 +50,14 @@ module.exports = function() {
                 locations[i] = newLocation;
                 return locations[i];
             }
-        };
+        }
+    }
+
+    function getLocationById(locationId) {
+        for (var i = 0; i < locations.length; i++) {
+            if (locations[i]._id == locationId) {
+                return locations[i];
+            }
+        }
     }
 }

@@ -12,7 +12,8 @@
             deleteLocationById: deleteLocationById,
             updateLocationById: updateLocationById,
             getAllLocations: getAllLocations,
-            getLocationsByName: getLocationsByName
+            getLocationsByName: getLocationsByName,
+            getLocationById: getLocationById
         };
 
         return api;
@@ -38,9 +39,12 @@
             return $http.get("/api/project/location");
         }
 
-        function getLocationsByName(name, callback) {
+        function getLocationsByName(name) {
             //TODO
-            callback(locations);
+        }
+
+        function getLocationById(locationId) {
+            return $http.get("/api/project/location/" + locationId);
         }
     }
 })();

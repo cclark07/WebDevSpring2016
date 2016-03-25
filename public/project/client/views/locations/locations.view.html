@@ -54,7 +54,7 @@
                     </tr>
 
                     <tr ng-repeat="location in vm.locations">
-                        <td>{{location.name}}</td>
+                        <td><a href="#/location/{{location._id}}">{{location.name}}</a></td>
                         <td>{{location.userId}}</td>
                         <td>{{location.latlon}}</td>
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
