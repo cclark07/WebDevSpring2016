@@ -26,9 +26,10 @@
         vm.roles;
 
         function init() {
-            UserService.findAllUsers(function(response) {
-                vm.users = response;
-            })
+            UserService.findAllUsers()
+                .then(function(response) {
+                    vm.users = response.data;
+                });
         }
 
         // Uses the UserService to create the new user
@@ -41,7 +42,10 @@
                 "email":vm.email,
                 "roles":vm.roles
             };
-            UserService.createUser(newUser, function(response) {});
+            UserService.createUser(newUser)
+                .then(function(response) {
+                    vm.users = response.data;
+                });
         }
 
         // Uses the UserService to delete the user at the selected index

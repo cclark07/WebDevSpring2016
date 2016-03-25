@@ -4,7 +4,9 @@
         .module("SourceCamApp")
         .factory("UserService", UserService);
 
-    function UserService() {
+    function UserService($http) {
+		//var test = $http.get("/api/project/user");
+		//console.log(test);
     	var users;
 
     	users = [
@@ -75,17 +77,16 @@
         }
 
         // Calls back with array of all users
-        function findAllUsers(callback) {
-            callback(users);
+        function findAllUsers() {
+			return $http.get("/api/assignment/user");
         }
 
   		// Adds property called _id with unique value (timestamp) to the user object parameter
 		// Adds the new user to local array of users
 		// Calls back with new user
-        function createUser(user, callback) {
-            user._id = (new Date).getTime();
-            users.push(user);
-            callback(user);
+        function createUser(user) {
+			return $http.post("/api/assignment/user", user);
+
         }
 
 		// Iterates over the array of current users and removes the user at the given index
