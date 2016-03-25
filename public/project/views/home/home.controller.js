@@ -9,8 +9,11 @@
 
         vm.locations = [];
 
+        vm.searchLocation;
+
         // Inject functions into scope
-        vm.searchLocations = searchLocations;
+        vm.getAllLocations = getAllLocations;
+        vm.getLocationsByName = getLocationsByName;
 
         vm.locationName;
         vm.userId
@@ -19,8 +22,16 @@
         vm.weatherURL;
         vm.status;
 
-        function searchLocations() {
+        function getAllLocations() {
             LocationService.getAllLocations(function(response) {
+                vm.locations = response;
+            })
+        }
+
+        function getLocationsByName() {
+            vm.locations = [];
+
+            LocationService.getLocationsByName(vm.searchLocation, function(response) {
                 vm.locations = response;
             })
         }

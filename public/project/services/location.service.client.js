@@ -48,7 +48,8 @@
             deleteLocationByIndex: deleteLocationByIndex,
             deleteUserLocationById: deleteUserLocationById,
             updateLocationById: updateLocationById,
-            getAllLocations: getAllLocations
+            getAllLocations: getAllLocations,
+            getLocationsByName: getLocationsByName
         };
 
         return api;
@@ -121,6 +122,11 @@
         }
 
         function getAllLocations(callback) {
+            callback(locations);
+        }
+
+        function getLocationsByName(name, callback) {
+            //TODO
             callback(locations);
         }
     }
