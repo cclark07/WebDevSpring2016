@@ -12,10 +12,10 @@
     <div>
         <h2 >Search Locations</h2>
         <div class="row vertical-align">
-            <div class="col-xs-6 col-md-4  col-lg-2">
+            <div class="col-xs-6 col-md-4  col-lg-4">
                 <input ng-model="vm.searchLocation" class="full-width" type="search" placeholder="Location Name">
             </div>
-            <div class="col-xs-6 col-md-4 col-lg-2">
+            <div class="col-xs-6 col-md-4 col-lg-4">
                 <button ng-click="vm.showResults=true; vm.searchLocations()" class="btn btn-primary btn-block">Search</button>
             </div>
         </div>
@@ -34,7 +34,7 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="location in vm.locations">
-                                <td><a href="#/location">{{location.name}}</a></td>
+                                <td><a href="#/location/{{location._id}}">{{location.name}}</a></td>
                             </tr>
                             </tbody>
                         </table>
