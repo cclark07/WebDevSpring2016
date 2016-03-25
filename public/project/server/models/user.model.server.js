@@ -2,6 +2,7 @@ var users = require("./user.mock.json");
 module.exports = function() {
 
     var api = {
+        findUserByCredentials: findUserByCredentials,
         findAllUsers: findAllUsers,
         createUser: createUser,
         deleteUser: deleteUser,
@@ -9,6 +10,16 @@ module.exports = function() {
     }
 
     return api;
+
+    function findUserByCredentials(credentials) {
+        for (var i in users) {
+            if (users[i].username === credentials.username &&
+                users[i].password === credentials.password) {
+                return users[i];
+            }
+        }
+        return null;
+    }
 
     function findAllUsers() {
         return users;
