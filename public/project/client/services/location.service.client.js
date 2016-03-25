@@ -45,7 +45,7 @@
         var api = {
             createLocationForUser: createLocationForUser,
             findAllLocationsForUser: findAllLocationsForUser,
-            deleteLocationByIndex: deleteLocationByIndex,
+            deleteLocationById: deleteLocationById,
             deleteUserLocationById: deleteUserLocationById,
             updateLocationById: updateLocationById,
             getAllLocations: getAllLocations,
@@ -76,14 +76,8 @@
 
         // Iterates over the array of locations and removes the location at the given index
         // Calls back with remaining array of all users
-        function deleteLocationByIndex(index, callback) {
-            for (var i = 0; i < locations.length; i++) {
-                if (i == index) {
-                    locations.splice(i, 1);
-                    break;
-                }
-            };
-            callback(locations);
+        function deleteLocationById(locationId) {
+            return $http.delete("/api/project/location/" + locationId);
         }
 
         // Iterates over the array of locations and removes the location with the given id

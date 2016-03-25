@@ -45,15 +45,17 @@
 
             LocationService.createLocationForUser(vm.userId, newLocation)
                 .then(function(response) {
-                    vm.locations.push(response.data);
+                    vm.locations = response.data;
                 })
         }
 
         // Uses the LocationService to delete the location at the selected index
         function deleteLocation(index) {
-            LocationService.deleteLocationByIndex(index, function(response) {
-                vm.locations = response;
-            })
+            var locationId = vm.locations[index]._id;
+            LocationService.deleteLocationById(locationId)
+                .then(function(response) {
+                    vm.locations = response.data;
+                });
         }
 
         // Selects the location at the given index to be edited
