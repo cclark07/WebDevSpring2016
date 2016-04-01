@@ -4,12 +4,13 @@ module.exports = function(db, mongoose) {
     var UserSchema = require("./user.schema.server.js")();
     var User = mongoose.model("User", UserSchema);
 
-    User.remove(
-        {},
-        function(){
-            console.log("Users Cleared");
-        }
-    )
+    //// Uncomment and restart server to wipe User records ////
+    //User.remove(
+    //    {},
+    //    function(){
+    //        console.log("Users Cleared");
+    //    }
+    //)
 
     var api = {
         getAllUsers: getAllUsers,
