@@ -11,6 +11,6 @@ module.exports = function(mongoose) {
         updated: {type:Date, default:new Date()}
         // collection property sets
         // collection name to 'form'
-    });
+    }, {collection: 'form'});
     return FormSchema;
 };
