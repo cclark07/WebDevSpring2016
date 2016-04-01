@@ -16,17 +16,17 @@
     	// Update controller variables bound to view inputs with currentUser data
         vm.username = user.username;
         vm.password = user.password;
-        vm.firstname = user.firstName;
-        vm.lastname = user.lastName;
-        vm.email = user.email;
+        vm.firstName = user.firstName;
+        vm.lastName = user.lastName;
+        vm.emails = user.emails;
 
         // Updates the current user
         function update() {
             user.username = vm.username;
             user.password = vm.password;
-            user.firstName = vm.firstname;
-            user.lastName = vm.lastname;
-            user.email = vm.email;
+            user.firstName = vm.firstName;
+            user.lastName = vm.lastName;
+            user.emails = vm.emails;
 
         	UserService.updateUser(user._id, user)
                 .then(function(response) {

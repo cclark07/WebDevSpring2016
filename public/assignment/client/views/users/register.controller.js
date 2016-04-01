@@ -21,7 +21,7 @@
 		// Use the $location service to navigate to the profile view
         function register() {
         	var newUser = {
-        		"username":vm.username,  "password":vm.password,   "email":vm.email, "roles": ["student"]
+        		"username":vm.username,  "password":vm.password,   "emails":vm.email
         	};
         	UserService.createUser(newUser)
                 .then(function(response) {

@@ -13,7 +13,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ng-show="currentUser == null" ng-class="{'active' : $location.url() == '/register'}"><a href="#/register">Register</a></li>
                 <li ng-show="currentUser == null" ng-class="{'active' : $location.url() == '/login'}"><a href="#/login">Login</a></li>
-                <li ng-hide="currentUser == null" ng-class="{'active' : $location.url() == '/profile'}"><a href="#/profile">{{currentUser.firstName}}</a></li>
+                <li ng-hide="currentUser == null" ng-class="{'active' : $location.url() == '/profile'}"><a ng-show="currentUser.firstName != null" href="#/profile">{{currentUser.firstName}}</a></li>
                 <li ng-hide="currentUser == null"><a href="" ng-click="vm.logout()">Logout</a></li>
             </ul>
         </div>

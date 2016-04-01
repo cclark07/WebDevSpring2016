@@ -23,27 +23,56 @@ module.exports = function(app, userModel) {
     //Responds with an array of all users
     function createUser(req, res) {
         var newUser = req.body;
-        var users = userModel.createUser(newUser);
-        res.json(users);
+        var user = userModel.createUser(newUser)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //responds with an array of all users
     function getAllUsers(req, res) {
-        res.json(userModel.getAllUsers());
+        var users = userModel.getAllUsers()
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //responds with a single user whose id property is equal to the id path parameter
     function getUserById(req, res) {
         var userId = req.params.id;
-        var user = userModel.getUserById(userId);
-        res.json(user);
+        var user = userModel.getUserById(userId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //responds with a single user whose username property is equal to the username path parameter
     function getUserByUsername(req, res) {
         var username = req.query.username;
-        var user = userModel.findUserByUsername(username);
-        res.json(user);
+        var user = userModel.findUserByUsername(username)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //responds with a single user whose username property is equal to the username path
@@ -53,8 +82,16 @@ module.exports = function(app, userModel) {
             username: req.query.username,
             password: req.query.password
         };
-        var user = userModel.findUserByCredentials(credentials);
-        res.json(user);
+
+        var user = userModel.findUserByCredentials(credentials)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //updates an existing user whose id property is equal to the id path parameter.
@@ -63,14 +100,29 @@ module.exports = function(app, userModel) {
     function updateUserById(req, res) {
         var user = req.body;
         var userId = req.params.id;
-        res.json(userModel.updateUserById(userId, user));
+        var user = userModel.updateUserById(userId, user)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //removes an existing user whose id property is equal to the id path parameter.
     //Responds with an array of all users
     function deleteUserById(req, res) {
         var userId = req.params.id;
-        var users = userModel.deleteUserById(userId);
-        res.json(users);
+        var ret = userModel.deleteUserById(userId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 }
