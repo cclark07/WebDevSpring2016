@@ -10,15 +10,29 @@ module.exports = function(app, fieldModel) {
     function createFieldForForm(req, res) {
         var field = req.body;
         var formId = req.params.formId;
-        field = fieldModel.createFieldForForm(formId, field);
-        res.json(field);
+        fieldModel.createFieldForForm(formId, field)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //returns an array of fields belonging to a form object whose id is equal to the formId path parameter
     function getFieldsForForm(req, res) {
         var formId = req.params.formId;
-        var fields = fieldModel.getFieldsForForm(formId);
-        res.json(fields);
+        fieldModel.getFieldsForForm(formId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //returns a field object whose id is equal to the fieldId path parameter and belonging to a
@@ -46,7 +60,14 @@ module.exports = function(app, fieldModel) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        var fields = fieldModel.updateFieldById(formId, fieldId, field);
-        res.json(fields);
+        fieldModel.updateFieldById(formId, fieldId, field)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 };

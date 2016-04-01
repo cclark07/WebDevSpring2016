@@ -9,6 +9,6 @@ module.exports = function() {
         options: [{label:String, value:String}]
         // collection property sets
         // collection name to 'field'
-    });
+    }, {collection: 'field'});
     return FieldSchema;
 };

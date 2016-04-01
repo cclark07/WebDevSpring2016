@@ -67,8 +67,6 @@
                 switch(fieldTypeValue) {
                     case "TEXT":
                         field = {
-                            _id: null,
-                            formId: formId,
                             label: "New Text Field",
                             type: "TEXT",
                             placeholder: "New Field"
@@ -76,8 +74,6 @@
                         break;
                     case "TEXTAREA":
                         field = {
-                            _id: null,
-                            formId: formId,
                             label: "New Text Field",
                             type: "TEXTAREA",
                             placeholder: "New Field"
@@ -85,18 +81,16 @@
                         break;
                     case "DATE":
                         field = {
-                            _id: null,
-                            formId: formId,
                             label: "New Date Field",
                             type: "DATE",
+                            placeholder: "New Field"
                         };
                         break;
                     case "OPTIONS":
                         field = {
-                            _id: null,
-                            formId: formId,
                             label: "New Dropdown",
                             type: "OPTIONS",
+                            placeholder: "New Field",
                             options: [
                                 {label: "Option 1", value: "OPTION 1"},
                                 {label: "Option 2", value: "OPTION 2"},
@@ -106,10 +100,9 @@
                         break;
                     case "CHECKBOXES":
                         field = {
-                            _id: null,
-                            formId: formId,
                             label: "New Checkboxes",
                             type: "CHECKBOXES",
+                            placeholder: "New Field",
                             options: [
                                 {label: "Option A", value: "OPTION A"},
                                 {label: "Option B", value: "OPTION B"},
@@ -119,10 +112,9 @@
                         break;
                     case "RADIOS":
                         field = {
-                            _id: null,
-                            formId: formId,
                             label: "New Radio Buttons",
                             type: "RADIOS",
+                            placeholder: "New Field",
                             options: [
                                 {label: "Option X", value: "OPTION X"},
                                 {label: "Option Y", value: "OPTION Y"},
@@ -133,7 +125,7 @@
                 }
                 FieldsService.createFieldForForm(formId, field)
                     .then(function(response) {
-                        init();
+                        vm.fields = response.data.fields;
                     });
             }
         }
@@ -178,7 +170,8 @@
 
             FieldsService.updateField(formId, vm.fieldEdit._id, vm.fieldEdit)
                 .then(function(response) {
-                    init();
+                    console.log(response.data);
+                    vm.fieldEdit = response.data;
                 })
         }
 

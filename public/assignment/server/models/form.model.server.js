@@ -19,7 +19,8 @@ module.exports = function(uuid, db, mongoose) {
         findAllForms: findAllForms,
         deleteFormById: deleteFormById,
         createFormForUser: createFormForUser,
-        updateFormById: updateFormById
+        updateFormById: updateFormById,
+        addFieldToForm: addFieldToForm
     };
     return api;
 
@@ -144,6 +145,26 @@ module.exports = function(uuid, db, mongoose) {
                 if (!err) {
                     deferred.resolve(stats);
                 } else {
+                    deferred.reject(err);
+                }
+            }
+        );
+        return deferred.promise;
+    }
+
+    function addFieldToForm(form, field) {
+        var deferred = q.defer();
+        Form.findOneAndUpdate(
+            {_id: form._id},
+            {$push: {fields: field}},
+            {upsert: true, new: true},
+            function (err, stats) {
+                if (!err) {
+                    console.log("success");
+                    deferred.resolve(stats);
+                } else {
+                    console.log("failure1");
+                    console.log(err);
                     deferred.reject(err);
                 }
             }
