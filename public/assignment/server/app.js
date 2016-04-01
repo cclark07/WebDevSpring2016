@@ -1,4 +1,4 @@
-module.exports = function(app, uuid) {
+module.exports = function(app, uuid, db, mongoose) {
     var userModel = require("./models/user.model.server.js")();
     var userService = require("./services/user.service.server.js")(app, userModel);
 
