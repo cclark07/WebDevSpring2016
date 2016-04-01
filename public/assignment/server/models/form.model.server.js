@@ -1,5 +1,16 @@
-var mock = require("./form.mock.json");
-module.exports = function(uuid) {
+var q = require("q");
+
+module.exports = function(uuid, db, mongoose) {
+    var FormSchema = require("./form.schema.server.js")();
+    var Form = mongoose.model("Form", FormSchema);
+
+    //Form.remove(
+    //    {},
+    //    function(){
+    //        console.log("Forms Cleared");
+    //    }
+    //);
+
     var api = {
         findFormByTitle: findFormByTitle,
         findUserFormsById: findUserFormsById,
@@ -13,72 +24,129 @@ module.exports = function(uuid) {
 
     // Returns a form whose title is equal to the input parameter, null otherwise
     function findFormByTitle(title) {
-        for (var i in mock) {
-            if (mock[i].title == title) {
-                return mock[i];
+        var deferred = q.defer();
+        Form.findOne(
+            {
+                title: title
+            },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(doc);
+                }
             }
-        }
-        return null;
+        );
+
+        return deferred.promise;
     }
 
     //returns an array of forms belonging to a user whose id is equal to the userId path parameter
     function findUserFormsById(userId) {
-        var userForms = [];
-        for (var i in mock) {
-            if (mock[i].userId == userId) {
-                userForms.push(mock[i]);
+        var deferred = q.defer();
+        Form.find(
+            {
+                userId: userId
+            },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(doc);
+                }
             }
-        }
-        return userForms;
+        );
+
+        return deferred.promise;
     }
 
     //returns a form object whose id is equal to the formId path parameter
     function findFormById(formId) {
-        console.log(formId + " server model");
-        for (var i in mock) {
-            if (mock[i]._id == formId) {
-                return mock[i];
+        var deferred = q.defer();
+        Form.findOne(
+            {
+                _id: formId
+            },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(doc);
+                }
             }
-        }
-        return null;
+        );
+
+        return deferred.promise;
     }
 
     // Returns all forms
     function findAllForms() {
-        return mock;
+        var deferred = q.defer();
+        Form.find(
+            function(err, users) {
+                if(!err) {
+                    deferred.resolve(users);
+                }
+                else {
+                    deferred.reject(err);
+                }
+            }
+        );
+        return deferred.promise;
     }
 
     //removes a form object whose id is equal to the formId path parameter
     function deleteFormById(formId) {
-        for (var i in mock) {
-            if (mock[i]._id == formId) {
-                mock.splice(i, 1);
+        var deferred = q.defer();
+        Form.findOneAndRemove (
+            {_id: formId},
+            function (err, stats) {
+                if (!err) {
+                    deferred.resolve(stats);
+                } else {
+                    deferred.reject(err);
+                }
             }
-        }
-        return mock;
+        );
+        return deferred.promise;
     }
 
     //creates a new form whose properties are the same as the form object embedded in the HTTP request's
     //body and the form belongs to a user whose id is equal to the userId path parameter.
     function createFormForUser(userId, inputForm) {
-        form = {
-            _id: uuid.v1(),
-            title: inputForm.title,
-            userId: userId,
-            fields: []
-        };
-        mock.push(form);
-        return mock;
+        var deferred = q.defer();
+
+        inputForm.userId = userId;
+
+        Form.create(inputForm,
+            function (err, doc) {
+                if (err) {
+                    deferred.reject (err);
+                } else {
+                    deferred.resolve (doc);
+                }
+            });
+        return deferred.promise;
     }
     //updates a form object whose id is equal to the formId path parameter so that its properties are
     //the same as the property values of the form object embedded in the request's body
     function updateFormById(formId, form) {
-        for (var i in mock) {
-            if (mock[i]._id == formId) {
-                mock[i] = form;
-                return mock[i];
+        var deferred = q.defer();
+        Form.findOneAndUpdate(
+            {_id: formId},
+            {$set: form},
+            {new: true},
+            function (err, stats) {
+                if (!err) {
+                    deferred.resolve(stats);
+                } else {
+                    deferred.reject(err);
+                }
             }
-        };
-        return null;
+        );
+        return deferred.promise;
     }
 }

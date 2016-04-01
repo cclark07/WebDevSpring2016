@@ -1,4 +1,6 @@
-module.exports = function(mongoose) {
+var mongoose = require("mongoose");
+
+module.exports = function() {
     // use mongoose to declare a field schema
     var FieldSchema = mongoose.Schema({
         label: String,
