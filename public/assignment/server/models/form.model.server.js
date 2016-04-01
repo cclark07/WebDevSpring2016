@@ -4,6 +4,7 @@ module.exports = function(uuid, db, mongoose) {
     var FormSchema = require("./form.schema.server.js")();
     var Form = mongoose.model("Form", FormSchema);
 
+    //// Uncomment and restart server to wipe Form records ////
     //Form.remove(
     //    {},
     //    function(){
