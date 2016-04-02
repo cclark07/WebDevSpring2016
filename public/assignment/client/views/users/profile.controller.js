@@ -35,7 +35,11 @@
             user.emails = vm.emails;
             user.phones = vm.phones;
 
-        	UserService.updateUser(user._id, user)
+            var userId = user._id;
+
+            delete user._id;
+
+        	UserService.updateUser(userId, user)
                 .then(function(response) {
                     $rootScope.currentUser = response.data;
                     vm.user = response.data;
