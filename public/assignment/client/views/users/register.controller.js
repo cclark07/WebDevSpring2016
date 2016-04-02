@@ -15,13 +15,14 @@
         vm.password;
         vm.verify;
         vm.email;
+        vm.phone;
 
   		// Uses the UserService to create the new user
 		// Store the new user object in the $rootScope as currentUser
 		// Use the $location service to navigate to the profile view
         function register() {
         	var newUser = {
-        		"username":vm.username,  "password":vm.password,   "emails":vm.email
+        		"username":vm.username,  "password":vm.password,   "emails":vm.email, "phones":vm.phone
         	};
         	UserService.createUser(newUser)
                 .then(function(response) {

@@ -1,40 +1,56 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ProfileController as vm">
-  <h1 class="page-header">Profile</h1>
-  <form class="form-horizontal" name="profileForm">
-      <div class="form-group">
-      <label for="username" class="col-sm-2 control-label">Username:</label>
-      <div class="col-sm-10">
-        <input ng-model="vm.username" type="text" class="form-control" placeholder="Username">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="password" class="col-sm-2 control-label">Password:</label>
-      <div class="col-sm-10">
-        <input ng-model="vm.password"type="password" class="form-control" placeholder="Password">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="firstname" class="col-sm-2 control-label">First Name:</label>
-      <div class="col-sm-10">
-        <input ng-model="vm.firstName"type="text" class="form-control" placeholder="First Name">
-      </div>
-    </div>
-     <div class="form-group">
-      <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
-      <div class="col-sm-10">
-        <input ng-model="vm.lastName"type="text" class="form-control" placeholder="Last Name">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="email" class="col-sm-2 control-label">Emails:</label>
-      <div class="col-sm-10">
-        <input ng-model="vm.emails"type="email" class="form-control" placeholder="Emails">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button ng-click="vm.update()" class="btn btn-primary btn-block">Update</button>
-      </div>
-    </div>
-  </form>
+    <h1 class="page-header">Profile</h1>
+    <form class="form-horizontal" name="profileForm">
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">Username:</label>
+            <div class="col-sm-10">
+                <input ng-model="vm.username" type="text" class="form-control" placeholder="Username">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">Password:</label>
+            <div class="col-sm-10">
+                <input ng-model="vm.password" type="password" class="form-control" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">First Name:</label>
+            <div class="col-sm-10">
+                <input ng-model="vm.firstName" type="text" class="form-control" placeholder="First Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
+            <div class="col-sm-10">
+                <input ng-model="vm.lastName" type="text" class="form-control" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Emails:</label>
+            <div ng-repeat="email in vm.emails">
+                <div ng-class="vm.emailCounter < 1 ? 'col-sm-6' : 'col-sm-6 col-sm-offset-2'">
+                    <input ng-model="email" type="email" class="form-control" placeholder="Emails">
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button ng-click="vm.addEmail()" class="btn btn-primary glyphicon glyphicon-plus"></button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Phones:</label>
+            <div ng-repeat="phone in vm.phones">
+                <div ng-class="vm.phoneCounter < 1 ? 'col-sm-6' : 'col-sm-6 col-sm-offset-2'">
+                    <input ng-model="phone" type="text" class="form-control" placeholder="Emails">
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button ng-click="vm.addPhone()" class="btn btn-primary glyphicon glyphicon-plus"></button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button ng-click="vm.update()" class="btn btn-primary btn-block">Update</button>
+            </div>
+        </div>
+    </form>
 </div>

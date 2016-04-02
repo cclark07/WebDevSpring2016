@@ -25,7 +25,6 @@ module.exports = function (uuid, db, mongoose) {
 
     function createFieldForForm(formId, field) {
         var deferred = q.defer();
-        //field._id = uuid.v1();
 
         Field.create(field,
             function (err, fieldDoc) {
@@ -94,7 +93,6 @@ module.exports = function (uuid, db, mongoose) {
                 }
             }
         );
-
         return deferred.promise;
     }
 
