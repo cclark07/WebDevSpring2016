@@ -110,7 +110,17 @@ module.exports = function (uuid, db, mongoose) {
             {new: true},
             function(err, doc) {
                 if (!err) {
-                    deferred.resolve(doc);
+                    Field.findOneAndUpdate(
+                        {_id: new ObjectId(fieldId)}, newField,
+                        function(err, fieldDoc) {
+                            if (!err) {
+                                deferred.resolve(doc);
+                            }
+                            else {
+                                deferred.reject(err);
+                            }
+                        }
+                    );
                 }
                 else {
                     deferred.reject(err);
