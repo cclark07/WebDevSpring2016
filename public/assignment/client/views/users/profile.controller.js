@@ -12,9 +12,6 @@
         vm.addEmail = addEmail;
         vm.addPhone = addPhone;
 
-        vm.emailCounter = 0;
-        vm.phoneCounter = 0;
-
     	// Get currentUser from rootScope
     	var user = $rootScope.currentUser;
 
@@ -47,13 +44,11 @@
         }
 
         function addEmail() {
-            vm.emailCounter += 1;
-            vm.emails.push("user@host.domain" + vm.emailCounter);
+            vm.emails.push("user@host.domain");
         }
 
         function addPhone() {
-            vm.phoneCounter += 1;
-            vm.phones.push("Phone Number " + vm.phoneCounter);
+            vm.phones.push("Phone Number");
         }
     }
 })();

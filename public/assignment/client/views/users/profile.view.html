@@ -28,7 +28,7 @@
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Emails:</label>
             <div ng-repeat="email in vm.emails track by $index">
-                <div ng-class="vm.emailCounter < 1 ? 'col-sm-6' : 'col-sm-6 col-sm-offset-2'">
+                <div ng-class="$index < 1 ? 'col-sm-6' : 'col-sm-6 col-sm-offset-2'">
                     <input ng-model="vm.emails[$index]" type="email" class="form-control" placeholder="Emails">
                 </div>
             </div>
@@ -39,7 +39,7 @@
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Phones:</label>
             <div ng-repeat="phone in vm.phones track by $index">
-                <div ng-class="vm.phoneCounter < 1 ? 'col-sm-6' : 'col-sm-6 col-sm-offset-2'">
+                <div ng-class="$index < 1 ? 'col-sm-6' : 'col-sm-6 col-sm-offset-2'">
                     <input ng-model="vm.phones[$index]" type="text" class="form-control" placeholder="Emails">
                 </div>
             </div>
