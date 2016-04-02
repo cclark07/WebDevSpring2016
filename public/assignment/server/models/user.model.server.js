@@ -5,12 +5,12 @@ module.exports = function(db, mongoose) {
     var User = mongoose.model("User", UserSchema);
 
     //// Uncomment and restart server to wipe User records ////
-    User.remove(
-        {},
-        function(){
-            console.log("Users Cleared");
-        }
-    )
+    //User.remove(
+    //    {},
+    //    function(){
+    //        console.log("Users Cleared");
+    //    }
+    //);
 
     var api = {
         getAllUsers: getAllUsers,
