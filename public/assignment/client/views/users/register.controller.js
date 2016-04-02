@@ -27,7 +27,7 @@
                 .then(function(response) {
                     if (response.data) {
                         $rootScope.currentUser = response.data;
-                        $location.path("#/profile");
+                        $location.path("/profile");
                     }
                 })
         }
