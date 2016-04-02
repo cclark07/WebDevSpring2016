@@ -49,8 +49,15 @@ module.exports = function(app, fieldModel) {
     function deleteFieldFromForm(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        var fields = fieldModel.deleteFieldFromForm(formId, fieldId);
-        res.json(fields);
+        fieldModel.deleteFieldFromForm(formId, fieldId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //updates a field object whose id is equal to the fieldId path parameter and belonging

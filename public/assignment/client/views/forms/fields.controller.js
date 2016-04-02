@@ -170,8 +170,10 @@
 
             FieldsService.updateField(formId, vm.fieldEdit._id, vm.fieldEdit)
                 .then(function(response) {
-                    console.log(response.data);
+                    //console.log(response.data);
+                    vm.fields = response.data.fields;
                     vm.fieldEdit = response.data;
+                    //init();
                 })
         }
 

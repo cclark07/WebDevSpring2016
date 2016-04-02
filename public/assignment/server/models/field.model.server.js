@@ -1,7 +1,6 @@
-//var forms = require("./form.mock.json");
 var q = require("q");
 
-module.exports = function (uuid, db, mongoose, formModel) {
+module.exports = function (uuid, db, mongoose) {
     var FieldSchema = require("./field.schema.server.js")();
     var Field = mongoose.model("Field", FieldSchema);
 
@@ -56,13 +55,28 @@ module.exports = function (uuid, db, mongoose, formModel) {
     }
 
     function deleteFieldFromForm(formId, fieldId) {
-        return Form.findById(formId)
-            .then(
-                function(form) {
-                    form.fields.remove(fieldId);
-                    return form.save();
+        var deferred = q.defer();
+        Form.findOne(
+            {
+                _id: formId
+            },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
                 }
-            );
+                else {
+                    for (var i = 0; i < doc.fields.length; i++) {
+                        if (doc.fields[i]._id == fieldId) {
+                            doc.fields.splice(i, 1);
+                        }
+                    }
+                    doc.save();
+                    deferred.resolve(doc.fields);
+                }
+            }
+        );
+
+        return deferred.promise;
     }
 
     function getFieldsForForm(formId) {
@@ -86,71 +100,41 @@ module.exports = function (uuid, db, mongoose, formModel) {
 
     function updateFieldById(formId, fieldId, field) {
         var deferred = q.defer();
-        Form.findOneAndUpdate(
-            {_id: formId, "fields._id": fieldId},
-            {$set: {"fields.$": field}},
-            {new: true},
+        Form.findOne(
+            {_id: formId},
             function(err, doc) {
                 if (!err) {
-                    console.log("success");
-                    console.log(doc); //Prints 'null'
-                    deferred.resolve(doc);
+                    for (var i = 0; i < doc.fields.length; i++) {
+                        if (doc.fields[i]._id == fieldId) {
+                            doc.fields[i] = field; // Change not saved to database :/
+                            console.log(doc); // Shows change
+                            deferred.resolve(doc);
+                        }
+                    }
                 }
                 else {
-                    console.log("error");
                     deferred.reject(err);
-                    console.log(err);
                 }
             }
         );
         return deferred.promise;
-
-        //db.students.update(
-        //    { _id: 4, "grades.grade": 85 },
-        //    { $set: { "grades.$.std" : 6 } }
-        //)
-        //Field.findOneAndUpdate(
-        //    {_id: fieldId},
-        //    {$set: field},
+        //Form.findOneAndUpdate(
+        //    {_id: formId, "fields._id": fieldId},
+        //    {$set: {"fields.$": field}},
         //    {new: true},
-        //    function(err, fieldDoc) {
+        //    function(err, doc) {
         //        if (!err) {
-        //            var form;
-        //            Form.findOne({_id: formId},
-        //                function(err, doc) {
-        //                    if (!err) {
-        //                        form = doc;
-        //                        for (var i in form.fields) {
-        //                            if (form.fields[i]._id == fieldId) {
-        //                                form.fields[i] = fieldDoc;
-        //                                form.save();
-        //                                deferred.resolve(form);
-        //                            }
-        //                        }
-        //                    }
-        //                    else {
-        //                        deferred.reject(err);
-        //                    }
-        //                });
+        //            console.log("success");
+        //            console.log(doc); //Prints 'null'
+        //            deferred.resolve(doc);
         //        }
         //        else {
+        //            console.log("error");
         //            deferred.reject(err);
+        //            console.log(err);
         //        }
         //    }
         //);
-
-        //Field.findOneAndUpdate(
-        //    {_id: fieldId},
-        //    {$set: field},
-        //    {new: true},
-        //    function (err, stats) {
-        //        if (!err) {
-        //            console.log(stats);
-        //            deferred.resolve(stats);
-        //        } else {
-        //            deferred.reject(err);
-        //        }
-        //    }
-        //);
+        //return deferred.promise;
     }
 };
