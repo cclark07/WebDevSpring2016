@@ -5,12 +5,12 @@ module.exports = function(uuid, db, mongoose) {
     var Form = mongoose.model("Form", FormSchema);
 
     //// Uncomment and restart server to wipe Form records ////
-    //Form.remove(
-    //    {},
-    //    function(){
-    //        console.log("Forms Cleared");
-    //    }
-    //);
+    Form.remove(
+        {},
+        function(){
+            console.log("Forms Cleared");
+        }
+    );
 
     var api = {
         findFormByTitle: findFormByTitle,

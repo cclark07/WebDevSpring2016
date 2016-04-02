@@ -7,12 +7,12 @@ module.exports = function (uuid, db, mongoose) {
     var Form = mongoose.model("Form");
 
     //// Uncomment and restart server to wipe Field records ////
-    //Field.remove(
-    //    {},
-    //    function(){
-    //        console.log("Fields Cleared");
-    //    }
-    //);
+    Field.remove(
+        {},
+        function(){
+            console.log("Fields Cleared");
+        }
+    );
 
     var api = {
         createFieldForForm: createFieldForForm,
