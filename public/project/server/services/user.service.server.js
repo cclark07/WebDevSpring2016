@@ -1,9 +1,18 @@
-module.exports = function(app, userModel) {
+module.exports = function(app, userModel, mongoose, passport) {
     app.get("/api/project/user?username=username&password=password", findUserByCredentials);
     app.get("/api/project/user", requestRouter);
     app.post("/api/project/user", createUser);
     app.delete("/api/project/user/:id", deleteUser);
-    app.put("/api/project/user/:id", updateUser)
+    app.put("/api/project/user/:id", updateUser);
+
+    var LocalStrategy = require('passport-local');
+    passport.use(new LocalStrategy(localStrategy));
+
+    function localStrategy(res) {
+        console.log(res);
+    }
+
+    console.log(passport);
 
     function requestRouter(req, res) {
         if (req.query.username && req.query.password) {

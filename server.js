@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var uuid = require('node-uuid');
 var app = express();
 var session = require('express-session');
+var passport = require('passport');
 // install and require the mongoose library
 var mongoose = require('mongoose');
 
@@ -29,6 +30,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./public/assignment/server/app.js")(app, uuid, db, mongoose);
-require("./public/project/server/app.js")(app, uuid);
+require("./public/project/server/app.js")(app, uuid, mongoose, passport);
 app.listen(port, ipaddress);
 
