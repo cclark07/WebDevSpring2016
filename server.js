@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://127.0.0.1:27017/webdev2016');
+var connectionString = 'mongodb://127.0.0.1:27017/camscapedb';
 
 // use remote connection string
 // if running in remote server
@@ -23,6 +23,8 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+
+var db = mongoose.connect(connectionString);
 
 app.use(cookieParser());
 app.use(bodyParser.json());
