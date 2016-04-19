@@ -12,8 +12,6 @@ module.exports = function(app, userModel, mongoose, passport) {
         console.log(res);
     }
 
-    console.log(passport);
-
     function requestRouter(req, res) {
         if (req.query.username && req.query.password) {
             findUserByCredentials(req, res);
