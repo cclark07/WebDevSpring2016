@@ -118,7 +118,7 @@ module.exports = function(db, mongoose) {
 
     function getLocationById(locationId) {
         var deferred = q.defer();
-        Location.find(
+        Location.findOne(
             {
                 _id: locationId
             },
