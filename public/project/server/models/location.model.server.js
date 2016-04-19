@@ -4,8 +4,6 @@ module.exports = function(db, mongoose) {
     var LocationSchema = require("./location.schema.server.js")();
     var Location = mongoose.model("ProjectLocation", LocationSchema);
 
-    //var User = mongoose.model("ProjectUser");
-
     var api = {
         getAllLocations: getAllLocations,
         createLocationForUser: createLocationForUser,

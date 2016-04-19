@@ -72,11 +72,13 @@
             var newLocation = {
                 "name":vm.locationName,
                 "userId":user._id,
-                "latlon":vm.latlon,
+                "lat":vm.lat,
+                "lon":vm.lon,
                 "webcamURL":vm.webcamURL,
-                "weatherURL":vm.weatherURL,
                 "status":"Open"
             };
+
+            delete newLocation._id;
             LocationService.createLocationForUser(user._id, newLocation)
                 .then(function(response) {
                     init();
@@ -96,9 +98,9 @@
         function selectLocation(index) {
             selectedLocation = vm.userLocations[index];
             vm.locationName = selectedLocation.name;
-            vm.latlon = selectedLocation.latlon;
+            vm.lat = selectedLocation.lat;
+            vm.lon = selectedLocation.lon;
             vm.webcamURL = selectedLocation.webcamURL;
-            vm.weatherURL = selectedLocation.weatherURL;
         }
 
         //Updates selected location with updated data
@@ -111,9 +113,9 @@
             var locationId = selectedLocation._id;
             newlocation.name = vm.locationName;
             newlocation.userId = user._id;
-            newlocation.latlon = vm.latlon;
+            newlocation.lat = vm.lat;
+            newlocation.lon = vm.lon;
             newlocation.webcamURL = vm.webcamURL;
-            newlocation.weatherURL = vm.weatherURL;
             newlocation.status = selectedLocation.status;
 
             LocationService.updateLocationById(locationId, newlocation)

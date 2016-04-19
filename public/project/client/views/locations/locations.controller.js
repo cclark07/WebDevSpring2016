@@ -20,7 +20,8 @@
 
         vm.locationName;
         vm.userId;
-        vm.latlon;
+        vm.lat;
+        vm.lon;
         vm.webcamURL;
         vm.status;
 
@@ -36,7 +37,8 @@
             var newLocation = {
                 "name":vm.locationName,
                 "userId":vm.userId,
-                "latlon":vm.latlon,
+                "lat":vm.lat,
+                "lon":vm.lon,
                 "webcamURL":vm.webcamURL,
                 "status":vm.status
             };
@@ -61,7 +63,8 @@
             selectedLocation = vm.locations[index];
             vm.locationName = selectedLocation.name;
             vm.userId = selectedLocation.userId;
-            vm.latlon = selectedLocation.latlon;
+            vm.lat = selectedLocation.lat;
+            vm.lon = selectedLocation.lon;
             vm.webcamURL = selectedLocation.webcamURL;
             vm.status = selectedLocation.status;
         }
@@ -76,7 +79,8 @@
             var locationId = selectedLocation._id;
             newlocation.name = vm.locationName;
             newlocation.userId = vm.userId;
-            newlocation.latlon = vm.latlon;
+            newlocation.lat = vm.lat;
+            newlocation.lon = vm.lon;
             newlocation.webcamURL = vm.webcamURL;
             newlocation.status = vm.status;
 

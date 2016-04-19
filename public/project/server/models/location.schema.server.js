@@ -5,7 +5,8 @@ module.exports = function() {
     var LocationSchema = mongoose.Schema({
         name: String,
         userId: String,
-        latlon: [Number],
+        lat: Number,
+        lon: Number,
         webcamURL: String,
         status: String
         // collection property sets

@@ -53,7 +53,11 @@
                     </th>
                     <th>
                         <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
-                        Lat/Lon
+                        Latitude
+                    </th>
+                    <th>
+                        <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
+                        Longitude
                     </th>
                     <th>
                         <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
@@ -70,7 +74,8 @@
                     <tbody>
                     <tr>
                         <td><input class="form-control" ng-model="vm.locationName" type="text" placeholder="Name"></td>
-                        <td><input class="form-control" ng-model="vm.latlon" type="text" placeholder="Lat/Lon (e.g. [40, 70])"></td>
+                        <td><input class="form-control" ng-model="vm.lat" type="text" placeholder="Latitude"></td>
+                        <td><input class="form-control" ng-model="vm.lon" type="text" placeholder="Longitude"></td>
                         <td><input class="form-control" ng-model="vm.webcamURL" type="url" placeholder="URL"></td>
                         <td>
                             <p>---</p>
@@ -82,7 +87,8 @@
                     </tr>
                     <tr ng-repeat="location in vm.userLocations">
                         <td><a href="#/location/{{location._id}}">{{location.name}}</a></td>
-                        <td>{{location.latlon}}</td>
+                        <td>{{location.lat}}</td>
+                        <td>{{location.lon}}</td>
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
                         <td>{{location.status}}</td>
                         <td class="text-nowrap">
