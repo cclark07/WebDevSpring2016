@@ -1,10 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var uuid = require('node-uuid');
-var app = express();
-var session = require('express-session');
 var passport = require('passport');
-// install and require the mongoose library
+var app = express();
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var mongoose = require('mongoose');
 
 var db = mongoose.connect('mongodb://127.0.0.1:27017/camscapedb');
@@ -24,9 +24,18 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
-app.use(express.static(__dirname + '/public'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+    name: "user-session",
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
 
 require("./public/assignment/server/app.js")(app, uuid, db, mongoose);
 require("./public/project/server/app.js")(app, uuid, db, mongoose);

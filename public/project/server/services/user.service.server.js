@@ -1,24 +1,66 @@
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var mongoose = require('mongoose');
+
 module.exports = function(app, userModel) {
-    app.get("/api/project/user?username=username&password=password", findUserByCredentials);
-    app.get("/api/project/user", requestRouter);
+    app.post("/api/project/login", passport.authenticate('local'), login);
+    app.post('/api/project/logout', logout);
+    app.get('/api/project/loggedin', loggedin);
+    app.get("/api/project/user", findAllUsers);
     app.post("/api/project/user", createUser);
     app.delete("/api/project/user/:id", deleteUser);
     app.put("/api/project/user/:id", updateUser);
 
-    function requestRouter(req, res) {
-        if (req.query.username && req.query.password) {
-            findUserByCredentials(req, res);
-        }
-        else {
-            findAllUsers(req, res);
-        }
+    passport.use(new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
     }
 
-    function findUserByCredentials(req, res) {
-        var credentials = {
-            username: req.query.username,
-            password: req.query.password
-        };
+    function loggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+    function logout(req, res) {
+        req.logOut();
+        res.send(200);
+    }
+
+    function localStrategy (username, password, done) {
+        userModel.findUserByCredentials({username: username, password: password})
+            .then(
+                function (user) {
+                    if (!user) { return done(null, false); }
+                    return done(null, user)
+                },
+                function (err) {
+                    if (err) {
+                        return done(err);
+                    }
+                }
+            );
+    }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel.findUserById(user._id)
+            .then(
+                function(user){
+                    return done(null, user);
+                },
+                function(err){
+                    return done(err, null);
+                }
+            );
+    }
+
+    function findUserByCredentials(credentials) {
         var user = userModel.findUserByCredentials(credentials)
             .then(
                 function (doc) {

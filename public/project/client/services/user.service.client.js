@@ -7,6 +7,7 @@
     function UserService($http) {
 
 		var api = {
+            login: login,
 			findUserByCredentials: findUserByCredentials,
 			findAllUsers: findAllUsers,
 			createUser: createUser,
@@ -15,6 +16,14 @@
 		};
 
 		return api;
+
+        function login(username, password) {
+            var credentials = {
+                username: username,
+                password: password
+            };
+            return $http.post("/api/project/login", credentials);
+        }
 
         function findUserByCredentials(username, password) {
 			return $http.get("/api/project/user?username=" + username + "&password=" + password);

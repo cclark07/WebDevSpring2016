@@ -49,4 +49,26 @@
                 redirectTo: "/home"
             });
     }
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope)
+    {
+        var deferred = $q.defer();
+
+        $http.get('/api/project/loggedin').success(function(user)
+        {
+            // User is Authenticated
+            if (user !== '0')
+            {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            }
+            // User is Not Authenticated
+            else
+            {
+                deferred.reject();
+                $location.url('/');
+            }
+        });
+
+        return deferred.promise;
+    };
 })();
