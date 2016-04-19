@@ -26,31 +26,71 @@ module.exports = function(app, userModel, mongoose, passport) {
             username: req.query.username,
             password: req.query.password
         };
-        var user = userModel.findUserByCredentials(credentials);
-        res.json(user);
+        var user = userModel.findUserByCredentials(credentials)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    console.log(err);
+                    //res.status(400).send(err);
+                }
+            );
     }
 
     function findAllUsers(req, res) {
-        var users = userModel.findAllUsers();
-        res.json(users);
+        var users = userModel.findAllUsers()
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    console.log(err);
+                    //res.status(400).send(err);
+                }
+            );
     }
 
     function createUser(req, res) {
         var user = req.body
-        var users = userModel.createUser(user);
-        res.json(users);
+        var users = userModel.createUser(user)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    console.log(err);
+                    //res.status(400).send(err);
+                }
+            );
     }
 
     function deleteUser(req, res) {
         var userId = req.params.id;
-        var users = userModel.deleteUser(userId);
-        res.json(users);
+        var users = userModel.deleteUser(userId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    console.log(err);
+                    //res.status(400).send(err);
+                }
+            );
     }
 
     function updateUser(req, res) {
         var userId = req.params.id;
         var newuser = req.body;
-        var updatedUser = userModel.updateUser(userId, newuser);
-        res.json(updatedUser);
+        var updatedUser = userModel.updateUser(userId, newuser)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    console.log(err);
+                    //res.status(400).send(err);
+                }
+            );
     }
 }

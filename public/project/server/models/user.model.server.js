@@ -1,3 +1,5 @@
+var q = require('q');
+
 var users = require("./user.mock.json");
 module.exports = function() {
 
@@ -12,41 +14,56 @@ module.exports = function() {
     return api;
 
     function findUserByCredentials(credentials) {
+        var deferred = q.defer();
         for (var i in users) {
             if (users[i].username === credentials.username &&
                 users[i].password === credentials.password) {
-                return users[i];
+                deferred.resolve(users[i]);
+                return deferred.promise;
             }
         }
-        return null;
+        deferred.reject("Incorrect Username or password");
+        return deferred.promise;
     }
 
     function findAllUsers() {
-        return users;
+        var deferred = q.defer();
+        deferred.resolve(users);
+        return deferred.promise;
     }
 
     function createUser(user) {
         user._id = (new Date).getTime();
         users.push(user);
-        return user;
+
+        var deferred = q.defer();
+        deferred.resolve(users);
+        return deferred.promise;
     }
 
     function deleteUser(userId) {
+        var deferred = q.defer();
         for (var i = 0; i < users.length; i++) {
             if (users[i]._id == userId) {
                 users.splice(i, 1);
-                break;
+                deferred.resolve(users);
+                return deferred.promise;
             }
-        };
-        return users;
+        }
+        deferred.reject("User not found");
+        return deferred.promise;
     }
 
     function updateUser(userId, newuser) {
+        var deferred = q.defer();
         for (var i = 0; i < users.length; i++) {
             if (users[i]._id == userId) {
                 users[i] = newuser;
-                return users[i];
+                deferred.resolve(users[i]);
+                return deferred.promise;
             }
-        };
+        }
+        deferred.reject("User not found");
+        return deferred.promise;
     }
 }
