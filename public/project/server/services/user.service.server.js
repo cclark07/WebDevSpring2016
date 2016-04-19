@@ -11,6 +11,7 @@ module.exports = function(app, userModel) {
     app.delete("/api/project/user/:id", deleteUser);
     app.put("/api/project/user/:id", updateUser);
     app.put("/api/project/user/:userId/:locationId", addFavoriteToUser);
+    app.put("/api/project/user/:userId/:locationId/remove", removeFavoriteFromUser);
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -129,6 +130,20 @@ module.exports = function(app, userModel) {
         var userId = req.params.userId;
         var locationId = req.params.locationId;
         userModel.addFavoriteToUser(userId, locationId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function removeFavoriteFromUser(req, res) {
+        var userId = req.params.userId;
+        var locationId = req.params.locationId;
+        userModel.removeFavoriteFromUser(userId, locationId)
             .then(
                 function (doc) {
                     res.json(doc);

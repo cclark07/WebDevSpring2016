@@ -13,7 +13,8 @@
 			createUser: createUser,
 			deleteUser: deleteUser,
 			updateUser: updateUser,
-            addFavoriteToUser: addFavoriteToUser
+            addFavoriteToUser: addFavoriteToUser,
+            removeFavoriteFromUser: removeFavoriteFromUser
 		};
 
 		return api;
@@ -48,6 +49,10 @@
 
         function addFavoriteToUser(userId, locationId) {
             return $http.put("/api/project/user/" + userId + "/" + locationId);
+        }
+
+        function removeFavoriteFromUser(userId, locationId) {
+            return $http.put("/api/project/user/" + userId + "/" + locationId + "/remove");
         }
     }
 })();

@@ -11,6 +11,7 @@
 
         vm.location;
         vm.commentString;
+        vm.isFavorite;
 
         vm.addComment = addComment;
         vm.favoriteLocation = favoriteLocation;
@@ -21,6 +22,14 @@
                 .then(function(response) {
                     vm.location = response.data;
                     initMap();
+                    if ($rootScope.currentUser) {
+                        for (var i = 0; i < $rootScope.currentUser.favorites.length; i++) {
+                            if ($rootScope.currentUser.favorites[i] == vm.location._id) {
+                                vm.isFavorite = true;
+                                break;
+                            }
+                        }
+                    }
                 })
         }
 
@@ -70,10 +79,20 @@
 
             var userId = $rootScope.currentUser._id;
 
-            UserService.addFavoriteToUser(userId, locationId)
-                .then(function(response) {
-                    $rootScope.currentUser = response.data;
-                })
+            if (vm.isFavorite) {
+                UserService.removeFavoriteFromUser(userId, locationId)
+                    .then(function(response) {
+                        vm.isFavorite = false;
+                        $rootScope.currentUser = response.data;
+                    })
+            }
+            else {
+                UserService.addFavoriteToUser(userId, locationId)
+                    .then(function (response) {
+                        vm.isFavorite = true;
+                        $rootScope.currentUser = response.data;
+                    })
+            }
         }
     }
 })();

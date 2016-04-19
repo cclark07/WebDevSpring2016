@@ -7,8 +7,11 @@
     </div>
     <hr>
     <div class="col-xs-12 text-center location-icons">
-        <button ng-click="vm.favoriteLocation()" class="glyphicon glyphicon-star btn btn-warning"></button>
-        <button ng-click="" class="glyphicon glyphicon-flag btn btn-danger"></button>
+        </button>
+        <button ng-click="vm.favoriteLocation()" class="btn btn-warning">
+            <span ng-show="vm.isFavorite" class="glyphicon glyphicon-star"></span>
+            <span ng-show="!vm.isFavorite" class="glyphicon glyphicon-star-empty"></span>
+        </button>
     </div>
     <div class="col-xs-12">
         <h2>Comments</h2>

@@ -4,6 +4,17 @@ module.exports = function(db, mongoose) {
     var UserSchema = require("./user.schema.server.js")();
     var User = mongoose.model("ProjectUser", UserSchema);
 
+    var admin = {
+        username: 'admin',
+        password: 'admin',
+        firstName: 'admin',
+        lastName: 'admin',
+        email: 'admin@admin',
+        roles: ["User", "Admin"]
+    };
+
+    User.create(admin);
+
     var api = {
         findUserByCredentials: findUserByCredentials,
         findUserById: findUserById,
@@ -11,7 +22,8 @@ module.exports = function(db, mongoose) {
         createUser: createUser,
         deleteUser: deleteUser,
         updateUser: updateUser,
-        addFavoriteToUser: addFavoriteToUser
+        addFavoriteToUser: addFavoriteToUser,
+        removeFavoriteFromUser: removeFavoriteFromUser
     }
 
     return api;
@@ -119,13 +131,29 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
         User.findOneAndUpdate(
             {_id: userId},
-            {$push: {favorites: locationId}},
-            {upsert: true, new: true},
+            {$addToSet: {favorites: locationId}},
+            {new: true},
             function (err, stats) {
                 if (!err) {
                     deferred.resolve(stats);
                 } else {
-                    console.log(err);
+                    deferred.reject(err);
+                }
+            }
+        );
+        return deferred.promise;
+    }
+
+    function removeFavoriteFromUser(userId, locationId) {
+        var deferred = q.defer();
+        User.findOneAndUpdate(
+            {_id: userId},
+            {$pull: {favorites: locationId}},
+            {new: true},
+            function (err, stats) {
+                if (!err) {
+                    deferred.resolve(stats);
+                } else {
                     deferred.reject(err);
                 }
             }
