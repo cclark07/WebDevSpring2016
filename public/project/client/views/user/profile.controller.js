@@ -4,7 +4,7 @@
         .module("SourceCamApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($rootScope, UserService, LocationService) {
+    function ProfileController($location, $rootScope, UserService, LocationService) {
         var vm = this;
 
         var selectedLocation;
@@ -17,6 +17,10 @@
 
         // Get currentUser from rootScope
         var user = $rootScope.currentUser;
+
+        if (!user) {
+            $location.path("/home");
+        }
 
         // Update controller variables bound to view inputs with currentUser data
         vm.username = user.username;
