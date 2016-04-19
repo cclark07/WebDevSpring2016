@@ -10,7 +10,8 @@ module.exports = function(db, mongoose) {
         findAllUsers: findAllUsers,
         createUser: createUser,
         deleteUser: deleteUser,
-        updateUser: updateUser
+        updateUser: updateUser,
+        addFavoriteToUser: addFavoriteToUser
     }
 
     return api;
@@ -107,6 +108,24 @@ module.exports = function(db, mongoose) {
                 if (!err) {
                     deferred.resolve(stats);
                 } else {
+                    deferred.reject(err);
+                }
+            }
+        );
+        return deferred.promise;
+    }
+
+    function addFavoriteToUser(userId, locationId) {
+        var deferred = q.defer();
+        User.findOneAndUpdate(
+            {_id: userId},
+            {$push: {favorites: locationId}},
+            {upsert: true, new: true},
+            function (err, stats) {
+                if (!err) {
+                    deferred.resolve(stats);
+                } else {
+                    console.log(err);
                     deferred.reject(err);
                 }
             }

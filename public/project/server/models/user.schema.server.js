@@ -9,7 +9,7 @@ module.exports = function() {
         password: String,
         email: String,
         roles: [String],
-        favorites: [Number]
+        favorites: [String]
         // collection property sets
         // collection name to 'user'
     }, {collection: 'user'});

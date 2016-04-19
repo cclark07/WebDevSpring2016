@@ -10,6 +10,7 @@ module.exports = function(app, userModel) {
     app.post("/api/project/user", createUser);
     app.delete("/api/project/user/:id", deleteUser);
     app.put("/api/project/user/:id", updateUser);
+    app.put("/api/project/user/:userId/:locationId", addFavoriteToUser);
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -114,6 +115,20 @@ module.exports = function(app, userModel) {
         var userId = req.params.id;
         var newuser = req.body;
         var updatedUser = userModel.updateUser(userId, newuser)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function addFavoriteToUser(req, res) {
+        var userId = req.params.userId;
+        var locationId = req.params.locationId;
+        userModel.addFavoriteToUser(userId, locationId)
             .then(
                 function (doc) {
                     res.json(doc);

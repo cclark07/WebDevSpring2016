@@ -12,7 +12,8 @@
 			findAllUsers: findAllUsers,
 			createUser: createUser,
 			deleteUser: deleteUser,
-			updateUser: updateUser
+			updateUser: updateUser,
+            addFavoriteToUser: addFavoriteToUser
 		};
 
 		return api;
@@ -43,6 +44,10 @@
 
         function updateUser(userId, user) {
 			return $http.put("/api/project/user/" + userId, user);
+        }
+
+        function addFavoriteToUser(userId, locationId) {
+            return $http.put("/api/project/user/" + userId + "/" + locationId);
         }
     }
 })();
