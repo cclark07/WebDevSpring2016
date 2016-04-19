@@ -26,6 +26,14 @@
         vm.roles;
 
         function init() {
+            vm.username = "";
+            vm.password = "";
+            vm.firstName = "";
+            vm.lastName = "";
+            vm.email = "";
+            vm.roles = [];
+            selectedUser = null;
+
             UserService.findAllUsers()
                 .then(function(response) {
                     vm.users = response.data;
@@ -76,6 +84,9 @@
 
             var newuser = selectedUser;
             var userId = selectedUser._id;
+
+            delete newuser._id;
+
             newuser.username = vm.username;
             newuser.password = vm.password;
             newuser.firstName = vm.firstName;
@@ -83,12 +94,10 @@
             newuser.email = vm.email;
             newuser.roles = vm.roles;
 
-            UserService.updateUser(userId. newuser)
+            UserService.updateUser(userId, newuser)
                 .then(function() {
                     init();
                 })
-
-            UserService.updateUser(userId, newuser, function(response) {});
         }
     }
 })();

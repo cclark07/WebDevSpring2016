@@ -56,11 +56,15 @@
             user.email = vm.email;
             user.locations = vm.userLocations;
 
-            UserService.updateUser(user._id, user)
+            var userId = user._id;
+
+            delete user._id;
+
+            UserService.updateUser(userId, user)
                 .then(function(response) {
                     $rootScope.currentUser = response.data;
                     user = response.data;
-                })
+                });
         }
 
         // Uses the LocationService to create a new location for the current user

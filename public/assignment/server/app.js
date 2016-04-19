@@ -1,7 +1,4 @@
-module.exports = function(app, uuid, mongoose) {
-    mongoose.connection.close();
-    var db = mongoose.connect('mongodb://127.0.0.1:27017/formmakerdb');
-
+module.exports = function(app, uuid, db, mongoose) {
     var userModel = require("./models/user.model.server.js")(db, mongoose);
     var userService = require("./services/user.service.server.js")(app, userModel);
 

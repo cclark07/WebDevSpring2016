@@ -7,6 +7,8 @@ var passport = require('passport');
 // install and require the mongoose library
 var mongoose = require('mongoose');
 
+var db = mongoose.connect('mongodb://127.0.0.1:27017/camscapedb');
+
 // use remote connection string
 // if running in remote server
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
@@ -26,7 +28,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-require("./public/assignment/server/app.js")(app, uuid, mongoose, passport);
-require("./public/project/server/app.js")(app, uuid, mongoose, passport);
+require("./public/assignment/server/app.js")(app, uuid, db, mongoose);
+require("./public/project/server/app.js")(app, uuid, db, mongoose);
 app.listen(port, ipaddress);
 
