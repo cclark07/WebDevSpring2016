@@ -23,10 +23,6 @@
                     </th>
                     <th>
                         <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
-                        Weather URL
-                    </th>
-                    <th>
-                        <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
                         Status
                     </th>
                     <th>
@@ -36,10 +32,9 @@
                     <tbody>
                     <tr>
                         <td><input class="form-control" ng-model="vm.locationName" type="text" placeholder="Name"></td>
-                        <td><input class="form-control" ng-model="vm.userId" type="text" placeholder="UserId" readonly></td>
+                        <td><input class="form-control" ng-model="vm.userId" type="text" placeholder="UserId" required></td>
                         <td><input class="form-control" ng-model="vm.latlon" type="text" placeholder="Lat/Lon (e.g. [40, 70])"></td>
                         <td><input class="form-control" ng-model="vm.webcamURL" type="url" placeholder="URL"></td>
-                        <td><input class="form-control" ng-model="vm.weatherURL" type="url" placeholder="URL"></td>
                         <td>
                             <select class="form-control" ng-model="vm.status">
                                 <option>Open</option>
@@ -58,7 +53,6 @@
                         <td>{{location.userId}}</td>
                         <td>{{location.latlon}}</td>
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
-                        <td><a href="{{location.weatherURL}}" target="blank">{{location.weatherURL}}</a></td>
                         <td>{{location.status}}</td>
                         <td class="text-nowrap">
                             <button ng-click="vm.deleteLocation($index)" class="glyphicon glyphicon-remove table-icon"></button>

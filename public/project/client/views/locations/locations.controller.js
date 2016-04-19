@@ -22,7 +22,6 @@
         vm.userId;
         vm.latlon;
         vm.webcamURL;
-        vm.weatherURL;
         vm.status;
 
         function init() {
@@ -39,7 +38,6 @@
                 "userId":vm.userId,
                 "latlon":vm.latlon,
                 "webcamURL":vm.webcamURL,
-                "weatherURL":vm.weatherURL,
                 "status":vm.status
             };
 
@@ -65,7 +63,6 @@
             vm.userId = selectedLocation.userId;
             vm.latlon = selectedLocation.latlon;
             vm.webcamURL = selectedLocation.webcamURL;
-            vm.weatherURL = selectedLocation.weatherURL;
             vm.status = selectedLocation.status;
         }
 
@@ -81,7 +78,6 @@
             newlocation.userId = vm.userId;
             newlocation.latlon = vm.latlon;
             newlocation.webcamURL = vm.webcamURL;
-            newlocation.weatherURL = vm.weatherURL;
             newlocation.status = vm.status;
 
             LocationService.updateLocationById(locationId, newlocation)

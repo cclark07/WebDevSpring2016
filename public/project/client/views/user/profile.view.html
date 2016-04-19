@@ -61,10 +61,6 @@
                     </th>
                     <th>
                         <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
-                        Weather URL
-                    </th>
-                    <th>
-                        <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
                         Status
                     </th>
                     <th>
@@ -76,7 +72,6 @@
                         <td><input class="form-control" ng-model="vm.locationName" type="text" placeholder="Name"></td>
                         <td><input class="form-control" ng-model="vm.latlon" type="text" placeholder="Lat/Lon (e.g. [40, 70])"></td>
                         <td><input class="form-control" ng-model="vm.webcamURL" type="url" placeholder="URL"></td>
-                        <td><input class="form-control" ng-model="vm.weatherURL" type="url" placeholder="URL"></td>
                         <td>
                             <p>---</p>
                         </td>
@@ -89,7 +84,6 @@
                         <td><a href="#/location/{{location._id}}">{{location.name}}</a></td>
                         <td>{{location.latlon}}</td>
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
-                        <td><a href="{{location.weatherURL}}" target="blank">{{location.weatherURL}}</a></td>
                         <td>{{location.status}}</td>
                         <td class="text-nowrap">
                             <button ng-click="vm.deleteLocation($index)" class="glyphicon glyphicon-remove table-icon"></button>
@@ -116,10 +110,6 @@
                         Webcam URL
                     </th>
                     <th>
-                        <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
-                        Weather URL
-                    </th>
-                    <th>
 
                     </th>
                     </thead>
@@ -127,7 +117,6 @@
                     <tr ng-repeat="location in vm.userFavorites">
                         <td><a href="#/location/{{location._id}}">{{location.name}}</a></td>
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
-                        <td><a href="{{location.weatherURL}}" target="blank">{{location.weatherURL}}</a></td>
                         <td class="text-nowrap">
                             <button ng-click="" class="glyphicon glyphicon-star table-icon"></button>
                         </td>
