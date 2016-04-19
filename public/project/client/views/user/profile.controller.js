@@ -34,8 +34,6 @@
         var userFavoriteIds = user.favorites;
         vm.userFavorites = [];
 
-        init();
-
         // Initializes the user and user forms
         function init() {
             LocationService.findAllLocationsForUser(user._id)
@@ -50,6 +48,8 @@
                     })
             }
         }
+
+        init();
 
         // Updates the current user
         function updateDetails() {

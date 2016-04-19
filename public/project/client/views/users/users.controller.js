@@ -4,7 +4,7 @@
         .module("SourceCamApp")
         .controller("UsersController", UsersController);
 
-    function UsersController(UserService) {
+    function UsersController($rootScope, UserService) {
         var vm = this;
 
         vm.users = [];
@@ -95,7 +95,12 @@
             newuser.roles = vm.roles;
 
             UserService.updateUser(userId, newuser)
-                .then(function() {
+                .then(function(response) {
+                    if ($rootScope.currentUser) {
+                        if ($rootScope.currentUser._id == response.data._id) {
+                            $rootScope.currentUser = response.data;
+                        }
+                    }
                     init();
                 })
         }
