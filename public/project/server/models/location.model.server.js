@@ -1,7 +1,10 @@
 var q = require('q');
 
-var locations = require("./location.mock.json");
-module.exports = function() {
+module.exports = function(db, mongoose) {
+    var LocationSchema = require("./location.schema.server.js")();
+    var Location = mongoose.model("ProjectLocation", LocationSchema);
+
+    //var User = mongoose.model("ProjectUser");
 
     var api = {
         getAllLocations: getAllLocations,
@@ -17,81 +20,120 @@ module.exports = function() {
 
     function getAllLocations() {
         var deferred = q.defer();
-        deferred.resolve(locations);
+        Location.find(
+            function(err, locations) {
+                if(!err) {
+                    deferred.resolve(locations);
+                }
+                else {
+                    deferred.reject(err);
+                }
+            }
+        );
+
         return deferred.promise;
     }
 
     function createLocationForUser(userId, location) {
-        location._id = (new Date).getTime();
         location.userId = userId;
-        locations.push(location);
 
         var deferred = q.defer();
-        deferred.resolve(findAllLocationsForUser(userId));
+        Location.create(location,
+            function (err, doc) {
+                if (err) {
+                    deferred.reject (err);
+                } else {
+                    deferred.resolve (doc);
+                }
+            });
         return deferred.promise;
     }
 
     function findAllLocationsForUser(userId) {
         var deferred = q.defer();
-        var userLocations = [];
-        for (var i = 0; i < locations.length; i++) {
-            if (locations[i].userId == userId) {
-                userLocations.push(locations[i]);
+        Location.find(
+            {
+                userId: userId
+            },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(doc);
+                }
             }
-        }
-        deferred.resolve(userLocations);
+        );
+
         return deferred.promise;
     }
 
     function deleteLocationById(locationId) {
         var deferred = q.defer();
-        for (var i in locations) {
-            if (locations[i]._id == locationId) {
-                locations.splice(i, 1);
-                deferred.resolve(locations);
-                return deferred.promise;
+        Location.findOneAndRemove (
+            {_id: locationId},
+            function (err, stats) {
+                if (!err) {
+                    deferred.resolve(stats);
+                } else {
+                    deferred.reject(err);
+                }
             }
-        }
-        deferred.reject("Location not found");
+        );
         return deferred.promise;
     }
 
     function updateLocationById(locationId, newLocation) {
         var deferred = q.defer();
-        for (var i = 0; i < locations.length; i++) {
-            if (locations[i]._id == locationId) {
-                locations[i] = newLocation;
-                deferred.resolve(locations[i]);
-                return deferred.promise;
+        Location.findOneAndUpdate(
+            {_id: locationId},
+            {$set: newLocation},
+            {new: true},
+            function (err, stats) {
+                if (!err) {
+                    deferred.resolve(stats);
+                } else {
+                    deferred.reject(err);
+                }
             }
-        }
-        deferred.reject("Location not found");
+        );
         return deferred.promise;
     }
 
     function getLocationsByName(name) {
         var deferred = q.defer();
-
-        var result = [];
-        for (var i in locations) {
-            if (locations[i].name == name) {
-                result.push(locations[i]);
+        Location.find(
+            {
+                name: name
+            },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(doc);
+                }
             }
-        }
-        deferred.resolve(result);
+        );
         return deferred.promise;
     }
 
     function getLocationById(locationId) {
         var deferred = q.defer();
-
-        for (var i = 0; i < locations.length; i++) {
-            if (locations[i]._id == locationId) {
-                deferred.resolve(locations[i]);
-                return deferred.promise;
+        Location.find(
+            {
+                _id: locationId
+            },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(doc);
+                }
             }
-        }
-        deferred.reject("Location not found");
+        );
+
         return deferred.promise;
     }
 }

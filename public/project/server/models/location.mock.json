@@ -1,42 +1,32 @@
 [
-  {"_id": "1",
-    "name": "Boston",
+  { "name": "Boston",
     "userId": "57159a86b462b71049a8445e",
     "latlon": [42, -71],
     "webcamURL": "http://test.test.test",
-    "weatherURL": "http://test.test.test",
     "status": "Open"
   },
-  {"_id": "2",
-    "name": "Weymouth",
+  {"name": "Weymouth",
     "userId": "57159a86b462b71049a8445e",
     "latlon": [40, -72],
     "webcamURL": "http://test.test.test",
-    "weatherURL": "http://test.test.test",
     "status": "Declined"
   },
-  {"_id": "3",
-    "name": "Long Island",
+  {"name": "Long Island",
     "userId": "57159a86b462b71049a8445f",
     "latlon": [40, -73],
     "webcamURL": "http://test.test.test",
-    "weatherURL": "http://test.test.test",
     "status": "Open"
   },
-  {"_id": "4",
-    "name": "Coney Island",
+  {"name": "Coney Island",
     "userId": "57159a86b462b71049a8445f",
     "latlon": [40, -72],
     "webcamURL": "http://test.test.test",
-    "weatherURL": "http://test.test.test",
     "status": "Approved"
   },
-  {"_id": "5",
-    "name": "Grand Cayman",
+  {"name": "Grand Cayman",
     "userId": "57159a86b462b71049a84460",
     "latlon": [19, -81],
     "webcamURL": "http://brucesbythesea.dyndns.org:8081/en/index.html",
-    "weatherURL": "http://www.wunderground.com/personal-weather-station/dashboard?ID=I90579739",
     "status": "Approved"
   }
 ]

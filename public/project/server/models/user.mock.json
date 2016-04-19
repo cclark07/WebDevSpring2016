@@ -5,7 +5,7 @@
     "password":"admin",
     "email": "admin@admin",
     "roles": ["User", "Admin"],
-    "favorites": [3, 5]
+    "favorites": []
   },
   {	"firstName":"Alan",
     "lastName":"Turing",
@@ -13,7 +13,7 @@
     "password":"alan",
     "email": "alan@alan",
     "roles": ["User"],
-    "favorites": [1, 2]
+    "favorites": []
   },
   {	"firstName":"Bob",
     "lastName":"Dole",
@@ -21,7 +21,7 @@
     "password":"bob",
     "email": "bob@bob",
     "roles": ["User"],
-    "favorites": [4]
+    "favorites": []
   },
   {	"firstName":"Bruce",
     "lastName":"Clark",
@@ -29,7 +29,7 @@
     "password":"bruce",
     "email": "bruce@bruce",
     "roles": ["User"],
-    "favorites": [2]
+    "favorites": []
   },
   {	"firstName":"Chris",
     "lastName":"Craig",
@@ -45,6 +45,6 @@
     "password":"dan",
     "email": "dan@dan",
     "roles": ["User"],
-    "favorites": [1, 2, 3, 4]
+    "favorites": []
   }
 ]

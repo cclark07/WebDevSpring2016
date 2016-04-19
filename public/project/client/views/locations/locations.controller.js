@@ -52,7 +52,7 @@
             var locationId = vm.locations[index]._id;
             LocationService.deleteLocationById(locationId)
                 .then(function(response) {
-                    vm.locations = response.data;
+                    init();
                 });
         }
 
@@ -82,7 +82,7 @@
 
             LocationService.updateLocationById(locationId, newlocation)
                 .then(function(response) {
-
+                    init();
                 })
         }
     }
