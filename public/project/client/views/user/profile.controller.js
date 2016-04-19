@@ -75,7 +75,8 @@
                 "lat":vm.lat,
                 "lon":vm.lon,
                 "webcamURL":vm.webcamURL,
-                "status":"Open"
+                "status":"Open",
+                "comments":[]
             };
 
             delete newLocation._id;
@@ -117,6 +118,7 @@
             newlocation.lon = vm.lon;
             newlocation.webcamURL = vm.webcamURL;
             newlocation.status = selectedLocation.status;
+            newLocation.comments = selectedLocation.comments;
 
             LocationService.updateLocationById(locationId, newlocation)
                 .then(function(response) {

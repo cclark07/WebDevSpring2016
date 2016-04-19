@@ -40,7 +40,8 @@
                 "lat":vm.lat,
                 "lon":vm.lon,
                 "webcamURL":vm.webcamURL,
-                "status":vm.status
+                "status":vm.status,
+                "comments":[]
             };
 
             LocationService.createLocationForUser(vm.userId, newLocation)

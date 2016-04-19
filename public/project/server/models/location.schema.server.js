@@ -8,7 +8,8 @@ module.exports = function() {
         lat: Number,
         lon: Number,
         webcamURL: String,
-        status: String
+        status: String,
+        comments: [{user:String,comment:String}]
         // collection property sets
         // collection name to 'location'
     }, {collection: 'location'});
