@@ -7,10 +7,10 @@
     "roles": ["User", "Admin"],
     "favorites": []
   },
-  {	"firstName":"Alan",
-    "lastName":"Turing",
-    "username":"alan",
-    "password":"alan",
+  {	"firstName":"Alice",
+    "lastName":"Wonderland",
+    "username":"alice",
+    "password":"alice",
     "email": "alan@alan",
     "roles": ["User"],
     "favorites": []

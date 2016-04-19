@@ -40,8 +40,8 @@
                         <td><input class="form-control" ng-model="vm.email" type="email" placeholder="Email"></td>
                         <td><input class="form-control" ng-model="vm.roles"type="text" placeholder='["Role1,"Role2"]'></td>
                         <td class="text-nowrap">
-                            <button ng-click="vm.addUser()" class="glyphicon glyphicon-plus table-icon"></button>
-                            <button ng-click="vm.updateUser()" class="glyphicon glyphicon-ok table-icon"></button>
+                            <button ng-click="vm.addUser()" class="btn btn-success glyphicon glyphicon-plus table-icon"></button>
+                            <button ng-click="vm.updateUser()" class="btn btn-info glyphicon glyphicon-ok table-icon"></button>
                         </td>
                     </tr>
 
@@ -54,8 +54,8 @@
                         <td>{{user.email}}</td>
                         <td>{{user.roles}}</td>
                         <td class="text-nowrap">
-                            <button ng-click="vm.deleteUser($index)" class="glyphicon glyphicon-remove table-icon"></button>
-                            <button ng-click="vm.selectUser($index)" class="glyphicon glyphicon-pencil table-icon"></button>
+                            <button ng-click="vm.deleteUser($index)" class="btn btn-danger glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="vm.selectUser($index)" class="btn btn-info glyphicon glyphicon-cog table-icon"></button>
                         </td>
                     </tr>
 

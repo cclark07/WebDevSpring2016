@@ -42,8 +42,8 @@
                             </select>
                         </td>
                         <td class="text-nowrap">
-                            <button ng-click="vm.addLocation()" class="glyphicon glyphicon-plus table-icon"></button>
-                            <button ng-click="vm.updateLocation()" class="glyphicon glyphicon-ok table-icon"></button>
+                            <button ng-click="vm.addLocation()" class="btn btn-success glyphicon glyphicon-plus table-icon"></button>
+                            <button ng-click="vm.updateLocation()" class="btn btn-info glyphicon glyphicon-ok table-icon"></button>
                         </td>
                     </tr>
 
@@ -55,8 +55,8 @@
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
                         <td>{{location.status}}</td>
                         <td class="text-nowrap">
-                            <button ng-click="vm.deleteLocation($index)" class="glyphicon glyphicon-remove table-icon"></button>
-                            <button ng-click="vm.selectLocation($index)" class="glyphicon glyphicon-pencil table-icon"></button>
+                            <button ng-click="vm.deleteLocation($index)" class="btn btn-danger glyphicon glyphicon-remove table-icon"></button>
+                            <button ng-click="vm.selectLocation($index)" class="btn btn-info glyphicon glyphicon-pencil table-icon"></button>
                         </td>
                     </tr>
                     </tbody>
