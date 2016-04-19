@@ -1,5 +1,11 @@
 body {
-	background-color: #004d66;
+	background:
+            linear-gradient(
+					rgba(0, 77, 102, .4),
+					rgba(0, 77, 102, .4)
+			),
+				/*Select background image*/
+			url("../img/spiral.png");
 }
 
 .full-width {

@@ -1,12 +1,11 @@
 <div ng-include="'views/worldmap/worldmap.view.html'"></div>
 
 <div class="col-xs-12 col-md-8 col-md-offset-2 panel panel-default padded" ng-controller="HomeController as vm">
-    <p class="hidden-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit,
-        vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus,
-        ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor
-        mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet
-        elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut,
-        vehicula eu diam. Pellentesque rhoncus aliquam mattis.</p>
+    <p class="hidden-xs">CamScape is a fun and fast way to not only manage your personal landscape webcams,
+    but also view others! Create locations and upload your cams to show off your home. Find and view others' webcams,
+    and favorite the ones you'd like to see again. Interact with the world map to see the locations that users have already created
+    </p>
+    <p>Sign up and get started exploring today!</p>
     <hr>
 
     <div>
@@ -23,7 +22,7 @@
             <hr>
             <h3>Results</h3>
             <form>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12">
                     <div class="table-responsive tab-content">
                         <table class="table table-striped table-bordered no-margin">
                             <thead>
@@ -35,23 +34,6 @@
                             <tbody>
                             <tr ng-repeat="location in vm.locations">
                                 <td><a href="#/location/{{location._id}}">{{location.name}}</a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <div class="table-responsive tab-content">
-                        <table class="table table-striped table-bordered no-margin">
-                            <thead>
-                            <th>
-                                <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
-                                Regions
-                            </th>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a>Region 1 TODO</a></td>
                             </tr>
                             </tbody>
                         </table>
