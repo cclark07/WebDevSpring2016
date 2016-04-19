@@ -116,7 +116,7 @@
                         <td><a href="#/location/{{location._id}}">{{location.name}}</a></td>
                         <td><a href="{{location.webcamURL}}" target="blank">{{location.webcamURL}}</a></td>
                         <td class="text-nowrap">
-                            <button ng-click="" class="btn btn-warning glyphicon glyphicon-star table-icon"></button>
+                            <button ng-click="vm.removeFavorite($index)" class="btn btn-danger glyphicon glyphicon-remove table-icon"></button>
                         </td>
                     </tr>
                     </tbody>

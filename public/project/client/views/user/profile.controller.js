@@ -14,6 +14,7 @@
         vm.deleteLocation = deleteLocation;
         vm.selectLocation = selectLocation;
         vm.updateLocation = updateLocation;
+        vm.removeFavorite = removeFavorite;
 
         // Get currentUser from rootScope
         var user = $rootScope.currentUser;
@@ -36,6 +37,7 @@
 
         // Initializes the user and user forms
         function init() {
+            vm.userFavorites = [];
             LocationService.findAllLocationsForUser(user._id)
                 .then(function(response) {
                     vm.userLocations = response.data;
@@ -127,6 +129,22 @@
             LocationService.updateLocationById(locationId, newlocation)
                 .then(function(response) {
 
+                })
+        }
+
+        function removeFavorite(locationIndex) {
+            if (!$rootScope.currentUser) {
+                return;
+            }
+
+            var userId = $rootScope.currentUser._id;
+            var locationId = userFavoriteIds[locationIndex];
+
+            UserService.removeFavoriteFromUser(userId, locationId)
+                .then(function(response) {
+                    $rootScope.currentUser = response.data;
+                    userFavoriteIds = response.data.favorites;
+                    init();
                 })
         }
     }
