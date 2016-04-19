@@ -17,45 +17,94 @@ module.exports = function(app, locationModel) {
     }
 
     function getAllLocations(req, res) {
-        var locations = locationModel.getAllLocations();
-        res.json(locations);
+        locationModel.getAllLocations()
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findAllLocationsForUser(req, res) {
         var userId = req.params.userId;
-        var locations = locationModel.findAllLocationsForUser(userId);
-        res.json(locations);
+        locationModel.findAllLocationsForUser(userId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function createLocationForUser(req, res) {
         var userId = req.params.userId;
         var location = req.body;
-        var newLocation = locationModel.createLocationForUser(userId, location);
-        res.json(newLocation);
+        locationModel.createLocationForUser(userId, location)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function deleteLocationById(req, res) {
         var locationId = req.params.locationId;
-        var locations = locationModel.deleteLocationById(locationId);
-        res.json(locations);
+        locationModel.deleteLocationById(locationId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function updateLocationById(req, res) {
         var locationId = req.params.locationId;
         var newLocation = req.body;
-        var updatedLocation = locationModel.updateLocationById(locationId, newLocation);
-        res.json(updatedLocation);
+        locationModel.updateLocationById(locationId, newLocation)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function getLocationById(req, res) {
         var locationId = req.query.id;
-        var location = locationModel.getLocationById(locationId);
-        res.json(location);
+        locationModel.getLocationById(locationId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function getLocationsByName(req, res) {
         var name = req.params.name;
-        var locations = locationModel.getLocationsByName(name);
-        res.json(locations);
+        locationModel.getLocationsByName(name)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 }
