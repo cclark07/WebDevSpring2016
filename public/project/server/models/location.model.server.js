@@ -11,7 +11,8 @@ module.exports = function(db, mongoose) {
         updateLocationById: updateLocationById,
         findAllLocationsForUser: findAllLocationsForUser,
         getLocationsByName: getLocationsByName,
-        getLocationById: getLocationById
+        getLocationById: getLocationById,
+        addCommentToLocation: addCommentToLocation
     };
 
     return api;
@@ -132,6 +133,24 @@ module.exports = function(db, mongoose) {
             }
         );
 
+        return deferred.promise;
+    }
+
+    function addCommentToLocation(locationId, comment) {
+        var deferred = q.defer();
+        Location.findOneAndUpdate(
+            {_id: locationId},
+            {$push: {comments: comment}},
+            {upsert: true, new: true},
+            function (err, stats) {
+                if (!err) {
+                    deferred.resolve(stats);
+                } else {
+                    console.log(err);
+                    deferred.reject(err);
+                }
+            }
+        );
         return deferred.promise;
     }
 }

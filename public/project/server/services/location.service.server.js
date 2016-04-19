@@ -1,6 +1,7 @@
 module.exports = function(app, locationModel) {
     app.get("/api/project/location/search/:name", getLocationsByName);
     app.get("/api/project/location?id=id", getLocationById);
+    app.put("/api/project/location/:locationId", addCommentToLocation);
     app.get("/api/project/location", requestRouter);
     app.post("/api/project/location/:userId", createLocationForUser);
     app.delete("/api/project/location/:locationId", deleteLocationById);
@@ -98,6 +99,20 @@ module.exports = function(app, locationModel) {
     function getLocationsByName(req, res) {
         var name = req.params.name;
         locationModel.getLocationsByName(name)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function addCommentToLocation(req, res) {
+        var locationId = req.params.locationId;
+        var comment = req.body;
+        locationModel.addCommentToLocation(locationId, comment)
             .then(
                 function (doc) {
                     res.json(doc);

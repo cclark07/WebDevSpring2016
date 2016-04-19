@@ -37,6 +37,10 @@ body {
 	font-size: 2rem;
 }
 
+textarea {
+	resize: none;
+}
+
 .vertical-align {
 	display: flex;
 	align-items: center;

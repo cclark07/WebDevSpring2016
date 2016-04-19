@@ -13,16 +13,14 @@
     <div class="col-xs-12">
         <h2>Comments</h2>
         <div class="panel panel-default padded">
-            <p>Username: Steve</p>
-            <p>This is a comment from Steve. He's usually pretty cool but sometimes he gets a bit irritable when he's hungry.</p>
+            <textarea rows = '3' class="form-control" ng-model="vm.commentString" type="textarea" placeholder="Add your comment here.." required></textarea>
+            <button ng-click="vm.addComment()" class="btn btn-info btn-block glyphicon glyphicon-ok table-icon"></button>
         </div>
-        <div class="panel panel-default padded">
-            <p>Username: Joe</p>
-            <p>This is a comment from Joe. He's usually pretty lame but sometimes he gets kinda cool when he's hungry.</p>
-        </div>
-        <div class="panel panel-default padded">
-            <p>Username: Alan</p>
-            <p>This is a comment from Alan. He's usually pretty energetic but sometimes he gets a bit faded when he's hungry.</p>
+        <div ng-repeat="comment in vm.location.comments">
+            <div class="panel panel-default padded">
+                <p><strong>Username:</strong> {{comment.user}}</p>
+                <p>{{comment.comment}}</p>
+            </div>
         </div>
     </div>
 </div>

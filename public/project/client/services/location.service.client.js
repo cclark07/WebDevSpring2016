@@ -13,7 +13,8 @@
             updateLocationById: updateLocationById,
             getAllLocations: getAllLocations,
             getLocationsByName: getLocationsByName,
-            getLocationById: getLocationById
+            getLocationById: getLocationById,
+            addCommentToLocation: addCommentToLocation
         };
 
         return api;
@@ -44,6 +45,10 @@
 
         function getLocationById(locationId) {
             return $http.get("/api/project/location?id=" + locationId);
+        }
+
+        function addCommentToLocation(locationId, comment) {
+            return $http.put("/api/project/location/" + locationId, comment);
         }
     }
 })();
