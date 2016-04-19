@@ -1,0 +1,23 @@
+body {
+    background: url("../img/bw_mtn.jpeg") repeat 0 0;
+    padding: 5%;
+}
+
+h1 {
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+.parent-container {
+    background: url('../img/sayagata.png') repeat 0 0;
+}
+
+.custom-container {
+    box-shadow: 0 0 1em 1em #ccc;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Corben', Georgia, Times, serif;
+}
+p, a, div {
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+}

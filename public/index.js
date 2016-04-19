@@ -1,0 +1,1 @@
+$.backstretch("/img/bw_mtn.jpg");
