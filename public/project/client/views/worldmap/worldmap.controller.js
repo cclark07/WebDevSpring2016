@@ -4,10 +4,20 @@
         .module("SourceCamApp")
         .controller("MapController", MapController);
 
-    function MapController($location) {
+    function MapController($location, LocationService) {
         var vm = this;
 
+        vm.locations = [];
+
         vm.initMap = initMap;
+        vm.getLocations = getLocations;
+
+        function getLocations() {
+            LocationService.getAllLocations()
+                .then(function(response) {
+                    vm.locations = response.data;
+                });
+        }
 
         function initMap() {
             var mapProp = {
@@ -20,6 +30,7 @@
         google.maps.event.addDomListener(window, 'load', initMap);
 
         if ($location.url() == '/home') {
+            getLocations();
             initMap();
         }
     }
