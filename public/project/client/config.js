@@ -15,35 +15,53 @@
             })
             .when("/login", {
                 templateUrl: "views/user/login.view.html",
-                controller: "LoginController"
+                controller: "LoginController",
             })
             .when("/profile", {
                 templateUrl: "views/user/profile.view.html",
-                controller: "ProfileController"
+                controller: "ProfileController",
+                resolve: {
+                    loggedIn: checkLoggedin
+                }
             })
             .when("/users", {
                 templateUrl: "views/users/users.view.html",
-                controller: "UsersController"
+                controller: "UsersController",
+                resolve: {
+                    loggedIn: checkLoggedin
+                }
             })
             .when("/admin", {
                 templateUrl: "views/admin/admin.view.html",
-                controller: "AdminController"
+                controller: "AdminController",
+                resolve: {
+                    loggedIn: checkLoggedin
+                }
             })
             .when("/location/:locationId", {
                 templateUrl: "views/location/location.view.html",
-                controller: "LocationController"
+                controller: "LocationController",
+                resolve: {
+                    loggedIn: checkLoggedin
+                }
             })
             .when("/locations", {
                 templateUrl: "views/locations/locations.view.html",
-                controller: "LocationsController"
+                controller: "LocationsController",
+                resolve: {
+                    loggedIn: checkLoggedin
+                }
             })
             .when("/create", {
                 templateUrl: "views/user/create.view.html",
-                controller: "CreateController"
+                controller: "CreateController",
+                resolve: {
+                    loggedIn: checkLoggedin
+                }
             })
             .when("/map", {
                 templateUrl: "views/worldmap/worldmap.view.html",
-                controller: "MapController"
+                controller: "MapController",
             })
             .otherwise({
                 redirectTo: "/home"
