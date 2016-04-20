@@ -21,7 +21,7 @@ body {
 	height:400px;
 }
 
-h1, h2 {
+h1, h2, h3 {
 	font-family: 'Rockwell Extra Bold', 'Rockwell Bold', monospace;
 }
 
@@ -39,6 +39,7 @@ h1, h2 {
 
 .panel {
 	margin-top: 1rem;
+	word-wrap: break-word;
 }
 
 .table-icon {

@@ -5,14 +5,33 @@
             <div onload="vm.initMap()" class="center-block" id="googleMap"></div>
         </div>
     </div>
-    <hr>
-    <div class="col-xs-12 text-center location-icons">
-        </button>
-        <button ng-click="vm.favoriteLocation()" class="btn btn-warning">
-            <span ng-show="vm.isFavorite" class="glyphicon glyphicon-star"></span>
-            <span ng-show="!vm.isFavorite" class="glyphicon glyphicon-star-empty"></span>
-        </button>
+    <div class="row">
+        <div class="col-xs-12 panel panel-default padded">
+            <div class="col-xs-12 col-sm-6">
+                <h3><strong>Name:</strong> {{vm.location.name}}</h3>
+                <h3><strong>Status:</strong> {{vm.location.status}}</h3>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h3><strong>Latitude:</strong> {{vm.location.lat}}</h3>
+                <h3><strong>Longitude:</strong> {{vm.location.lon}}</h3>
+            </div>
+            <div class="col-xs-12 text-center location-icons">
+                <button ng-click="vm.favoriteLocation()" class="btn btn-warning">
+                    <span ng-show="vm.isFavorite" class="glyphicon glyphicon-star"></span>
+                    <span ng-show="!vm.isFavorite" class="glyphicon glyphicon-star-empty"></span>
+                </button>
+            </div>
+        </div>
+
     </div>
+    <hr>
+    <!--<div class="col-xs-12 text-center location-icons">-->
+        <!--</button>-->
+        <!--<button ng-click="vm.favoriteLocation()" class="btn btn-warning">-->
+            <!--<span ng-show="vm.isFavorite" class="glyphicon glyphicon-star"></span>-->
+            <!--<span ng-show="!vm.isFavorite" class="glyphicon glyphicon-star-empty"></span>-->
+        <!--</button>-->
+    <!--</div>-->
     <div class="col-xs-12">
         <h2>Comments</h2>
         <div class="panel panel-default padded">
