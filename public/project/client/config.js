@@ -44,7 +44,7 @@
                 templateUrl: "views/admin/admin.view.html",
                 controller: "AdminController",
                 resolve: {
-                    loggedIn: checkLoggedin
+                    loggedIn: checkAdmin
                 }
             })
             .when("/location/:locationId", {
@@ -76,8 +76,8 @@
                 redirectTo: "/home"
             });
     }
-    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope)
-    {
+
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
         var deferred = $q.defer();
 
         $http.get('/api/project/loggedin').success(function(user)
@@ -99,8 +99,7 @@
         return deferred.promise;
     };
 
-    var checkForUser = function($q, $timeout, $http, $location, $rootScope)
-    {
+    var checkForUser = function($q, $timeout, $http, $location, $rootScope) {
         var deferred = $q.defer();
 
         $http.get('/api/project/loggedin').success(function(user)
@@ -115,6 +114,34 @@
             else
             {
                 deferred.resolve();
+            }
+        });
+
+        return deferred.promise;
+    };
+
+    var checkAdmin = function($q, $timeout, $http, $location, $rootScope) {
+        var deferred = $q.defer();
+
+        $http.get('/api/project/loggedin').success(function(user)
+        {
+            // User is Authenticated
+            if (user !== '0')
+            {
+                $rootScope.currentUser = user;
+                if (user.roles.indexOf("Admin") >= 0) {
+                    deferred.resolve();
+                }
+                else {
+                    deferred.reject();
+                    $location.url('/');
+                }
+            }
+            // User is Not Authenticated
+            else
+            {
+                deferred.reject();
+                $location.url('/');
             }
         });
 
