@@ -1,7 +1,7 @@
 module.exports = function(app, locationModel) {
     app.get("/api/project/location/search/:name", getLocationsByName);
     app.get("/api/project/location?id=id", getLocationById);
-    app.put("/api/project/location/:locationId", addCommentToLocation);
+    app.put("/api/project/location/:locationId/comment", addCommentToLocation);
     app.get("/api/project/location", requestRouter);
     app.post("/api/project/location/:userId", createLocationForUser);
     app.delete("/api/project/location/:locationId", deleteLocationById);

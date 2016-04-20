@@ -48,7 +48,7 @@
         }
 
         function addCommentToLocation(locationId, comment) {
-            return $http.put("/api/project/location/" + locationId, comment);
+            return $http.put("/api/project/location/" + locationId + "/comment", comment);
         }
     }
 })();

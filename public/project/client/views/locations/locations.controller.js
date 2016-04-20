@@ -26,6 +26,14 @@
         vm.status;
 
         function init() {
+            vm.locationName = "";
+            vm.userId = "";
+            vm.lat = "";
+            vm.lon = "";
+            vm.webcamURL = "";
+            vm.status = "";
+            selectedLocation = null;
+
             LocationService.getAllLocations()
                 .then(function(response) {
                     vm.locations = response.data;
@@ -84,6 +92,9 @@
             newlocation.lon = vm.lon;
             newlocation.webcamURL = vm.webcamURL;
             newlocation.status = vm.status;
+            newlocation.comments = selectedLocation.comments;
+
+            delete newlocation._id;
 
             LocationService.updateLocationById(locationId, newlocation)
                 .then(function(response) {

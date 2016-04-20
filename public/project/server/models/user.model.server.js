@@ -4,17 +4,6 @@ module.exports = function(db, mongoose) {
     var UserSchema = require("./user.schema.server.js")();
     var User = mongoose.model("ProjectUser", UserSchema);
 
-    var admin = {
-        username: 'admin',
-        password: 'admin',
-        firstName: 'admin',
-        lastName: 'admin',
-        email: 'admin@admin',
-        roles: ["User", "Admin"]
-    };
-
-    User.create(admin);
-
     var api = {
         findUserByCredentials: findUserByCredentials,
         findUserById: findUserById,

@@ -146,7 +146,6 @@ module.exports = function(db, mongoose) {
                 if (!err) {
                     deferred.resolve(stats);
                 } else {
-                    console.log(err);
                     deferred.reject(err);
                 }
             }
