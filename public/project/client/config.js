@@ -7,15 +7,24 @@
         $routeProvider
             .when("/home", {
                 templateUrl: "views/home/home.view.html",
-                controller: "HomeController"
+                controller: "HomeController",
+                resolve: {
+                    loggedIn: checkForUser
+                }
             })
             .when("/register", {
                 templateUrl: "views/user/register.view.html",
-                controller: "RegisterController"
+                controller: "RegisterController",
+                resolve: {
+                    loggedIn: checkForUser
+                }
             })
             .when("/login", {
                 templateUrl: "views/user/login.view.html",
                 controller: "LoginController",
+                resolve: {
+                    loggedIn: checkForUser
+                }
             })
             .when("/profile", {
                 templateUrl: "views/user/profile.view.html",
@@ -61,7 +70,7 @@
             })
             .when("/map", {
                 templateUrl: "views/worldmap/worldmap.view.html",
-                controller: "MapController",
+                controller: "MapController"
             })
             .otherwise({
                 redirectTo: "/home"
@@ -84,6 +93,28 @@
             {
                 deferred.reject();
                 $location.url('/');
+            }
+        });
+
+        return deferred.promise;
+    };
+
+    var checkForUser = function($q, $timeout, $http, $location, $rootScope)
+    {
+        var deferred = $q.defer();
+
+        $http.get('/api/project/loggedin').success(function(user)
+        {
+            // User is Authenticated
+            if (user !== '0')
+            {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            }
+            // User is Not Authenticated
+            else
+            {
+                deferred.resolve();
             }
         });
 
