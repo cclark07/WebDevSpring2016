@@ -24,7 +24,7 @@
         	var newUser = {
         		"username":vm.username,  "password":vm.password,   "emails":vm.email, "phones":vm.phone
         	};
-        	UserService.createUser(newUser)
+        	UserService.register(newUser)
                 .then(function(response) {
                     if (response.data) {
                         $rootScope.currentUser = response.data;

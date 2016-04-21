@@ -5,6 +5,7 @@ module.exports = function(app, userModel) {
     app.post("/api/assignment/login", passport.authenticate('local'), login);
     app.post('/api/assignment/logout', logout);
     app.get('/api/assignment/loggedin', loggedin);
+    app.post('/api/assignment/register', register);
     app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", requestRouter);
     app.get("/api/assignment/user/:id", getUserById);
@@ -29,6 +30,42 @@ module.exports = function(app, userModel) {
     function logout(req, res) {
         req.logOut();
         res.send(200);
+    }
+
+    function register(req, res) {
+        var newUser = req.body;
+        newUser.roles = ['User'];
+
+        userModel
+            .findUserByUsername(newUser.username)
+            .then(
+                function(user){
+                    if(user) {
+                        res.json(null);
+                    } else {
+                        return userModel.createUser(newUser);
+                    }
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function(user){
+                    if(user){
+                        req.login(user, function(err) {
+                            if(err) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function localStrategy (username, password, done) {

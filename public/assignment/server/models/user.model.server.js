@@ -19,7 +19,8 @@ module.exports = function(db, mongoose) {
         deleteUserById: deleteUserById,
         updateUserById: updateUserById,
         findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials
+        findUserByCredentials: findUserByCredentials,
+        register: register
     };
     return api;
 
@@ -143,6 +144,35 @@ module.exports = function(db, mongoose) {
                 }
                 else {
                     deferred.resolve(doc);
+                }
+            }
+        );
+
+        return deferred.promise;
+    }
+
+    // Searches the database for the user with the given credentials
+    function register(newUser) {
+        var deferred = q.defer();
+        User.findOne(
+            {
+                username: newUser.username,
+                password: newUser.password
+            },
+            function(err, doc) {
+                if (doc) {
+                    deferred.reject("Username already taken.");
+                }
+                else {
+                    // User doesn't exists, create one
+                    User.create(newUser,
+                        function (err, doc) {
+                            if (err) {
+                                deferred.reject (err);
+                            } else {
+                                deferred.resolve (doc);
+                            }
+                        });
                 }
             }
         );

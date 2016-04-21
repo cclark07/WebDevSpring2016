@@ -15,7 +15,8 @@
 			deleteUserById: deleteUserById,
 			updateUser: updateUser,
             login: login,
-            logout: logout
+            logout: logout,
+            register: register
 		};
 
 		return api;
@@ -30,6 +31,10 @@
 
         function logout() {
             return $http.post("/api/assignment/logout");
+        }
+
+        function register(newUser) {
+            return $http.post("/api/assignment/register", newUser);
         }
 
         // Returns user with given credentials or null if not found
