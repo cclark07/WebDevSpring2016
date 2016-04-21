@@ -1,4 +1,4 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AdminController as vm">
     <h1 class="page-header">Admin</h1>
     <h2>Users</h2>
     <form>
@@ -10,8 +10,15 @@
                     Username
                 </th>
                 <th>
-                    <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
                     Password
+                </th>
+                <th>
+                    <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
+                    First Name
+                </th>
+                <th>
+                    <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
+                    Last Name
                 </th>
                 <th>
                     <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
@@ -24,41 +31,29 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" placeholder="username"></td>
-                    <td><input type="password" placeholder="password"></td>
-                    <td><input type="text" placeholder="role1, role2"></td>
-                    <td>
-                        <span class="glyphicon glyphicon-plus table-icon"></span>
-                        <span class="glyphicon glyphicon-ok table-icon"></span>
+                    <td><input class="form-control" ng-model="vm.username" type="text" placeholder="Username"></td>
+                    <td><input class="form-control" ng-model="vm.password" type="password" placeholder="Password"></td>
+                    <td><input class="form-control" ng-model="vm.firstName" type="text" placeholder="First Name"></td>
+                    <td><input class="form-control" ng-model="vm.lastName" type="text" placeholder="Last Name"></td>
+                    <td><input class="form-control" ng-model="vm.roles"type="text" placeholder='["Role1,"Role2"]'></td>
+                    <td class="text-nowrap">
+                        <button ng-click="vm.addUser()" class="btn btn-success glyphicon glyphicon-plus table-icon"></button>
+                        <button ng-click="vm.updateUser()" class="btn btn-info glyphicon glyphicon-ok table-icon"></button>
                     </td>
                 </tr>
-                <tr>
-                    <td>alice</td>
+
+                <tr ng-repeat="user in vm.users">
+                    <td>{{user.username}}</td>
                     <td></td>
-                    <td>student</td>
-                    <td>
-                        <span class="glyphicon glyphicon-remove table-icon"></span>
-                        <span class="glyphicon glyphicon-pencil table-icon"></span>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.roles}}</td>
+                    <td class="text-nowrap">
+                        <button ng-click="vm.deleteUser($index)" class="btn btn-danger glyphicon glyphicon-remove table-icon"></button>
+                        <button ng-click="vm.selectUser($index)" class="btn btn-info glyphicon glyphicon-cog table-icon"></button>
                     </td>
                 </tr>
-                <tr>
-                    <td>bob</td>
-                    <td></td>
-                    <td>faculty | admin</td>
-                    <td>
-                        <span class="glyphicon glyphicon-remove table-icon"></span>
-                        <span class="glyphicon glyphicon-pencil table-icon"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>charlie</td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span class="glyphicon glyphicon-remove table-icon"></span>
-                        <span class="glyphicon glyphicon-pencil table-icon"></span>
-                    </td>
-                </tr>
+
             </tbody>
         </table>
     </div>
