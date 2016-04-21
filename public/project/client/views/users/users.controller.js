@@ -42,13 +42,15 @@
 
         // Uses the UserService to create the new user
         function addUser() {
+            var roles = vm.roles.replace(/\s+/g, '').split(',');
+
             var newUser = {
                 "username":vm.username,
                 "password":vm.password,
                 "firstName":vm.firstName,
                 "lastName":vm.lastName,
                 "email":vm.email,
-                "roles":vm.roles
+                "roles":roles
             };
             UserService.createUser(newUser)
                 .then(function(response) {
@@ -82,6 +84,8 @@
                 return;
             }
 
+            var roles = vm.roles.replace(/\s+/g, '').split(',');
+
             var newuser = selectedUser;
             var userId = selectedUser._id;
 
@@ -92,7 +96,7 @@
             newuser.firstName = vm.firstName;
             newuser.lastName = vm.lastName;
             newuser.email = vm.email;
-            newuser.roles = vm.roles;
+            newuser.roles = roles;
 
             UserService.updateUser(userId, newuser)
                 .then(function(response) {
