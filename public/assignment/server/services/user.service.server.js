@@ -2,17 +2,18 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function(app, userModel) {
+    var auth = authorized;
     app.post("/api/assignment/login", passport.authenticate('local'), login);
     app.post('/api/assignment/logout', logout);
     app.get('/api/assignment/loggedin', loggedin);
     app.post('/api/assignment/register', register);
-    app.post("/api/assignment/user", createUser);
+    app.post("/api/assignment/user", auth,  createUser);
     app.get("/api/assignment/user", requestRouter);
     app.get("/api/assignment/user/:id", getUserById);
     app.get("/api/assignment/user?username=username", getUserByUsername);
     app.get("/api/assignment/user?username=username&password=password", findUserByCredentials);
-    app.put("/api/assignment/user/:id", updateUserById);
-    app.delete("/api/assignment/user/:id", deleteUserById);
+    app.put("/api/assignment/user/:id", auth, updateUserById);
+    app.delete("/api/assignment/user/:id", auth, deleteUserById);
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -26,6 +27,14 @@ module.exports = function(app, userModel) {
     function loggedin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
     }
+
+    function authorized (req, res, next) {
+        if (!req.isAuthenticated()) {
+            res.send(401);
+        } else {
+            next();
+        }
+    };
 
     function logout(req, res) {
         req.logOut();
