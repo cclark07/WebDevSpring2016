@@ -9,6 +9,7 @@
 		var api = {
             login: login,
             logout: logout,
+            register: register,
 			findUserByCredentials: findUserByCredentials,
 			findAllUsers: findAllUsers,
 			createUser: createUser,
@@ -30,6 +31,10 @@
 
         function logout() {
             return $http.post("/api/project/logout");
+        }
+
+        function register(newUser) {
+            return $http.post("/api/project/register", newUser);
         }
 
         function findUserByCredentials(username, password) {

@@ -6,6 +6,7 @@ module.exports = function(db, mongoose) {
 
     var api = {
         findUserByCredentials: findUserByCredentials,
+        findUserByUsername: findUserByUsername,
         findUserById: findUserById,
         findAllUsers: findAllUsers,
         createUser: createUser,
@@ -23,6 +24,25 @@ module.exports = function(db, mongoose) {
             {
                 username: credentials.username,
                 password: credentials.password
+            },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(doc);
+                }
+            }
+        );
+
+        return deferred.promise;
+    }
+
+    function findUserByUsername(username) {
+        var deferred = q.defer();
+        User.findOne(
+            {
+                username: username
             },
             function(err, doc) {
                 if (err) {

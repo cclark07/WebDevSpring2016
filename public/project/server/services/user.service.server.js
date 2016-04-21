@@ -4,6 +4,7 @@ var LocalStrategy = require('passport-local').Strategy;
 module.exports = function(app, userModel) {
     app.post("/api/project/login", passport.authenticate('local'), login);
     app.post('/api/project/logout', logout);
+    app.post('/api/project/register', register);
     app.get('/api/project/loggedin', loggedin);
     app.get("/api/project/user", findAllUsers);
     app.post("/api/project/user", createUser);
@@ -28,6 +29,42 @@ module.exports = function(app, userModel) {
     function logout(req, res) {
         req.logOut();
         res.send(200);
+    }
+
+    function register(req, res) {
+        var newUser = req.body;
+        newUser.roles = ['User'];
+
+        userModel
+            .findUserByUsername(newUser.username)
+            .then(
+                function(user){
+                    if(user) {
+                        res.json(null);
+                    } else {
+                        return userModel.createUser(newUser);
+                    }
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function(user){
+                    if(user){
+                        req.login(user, function(err) {
+                            if(err) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function localStrategy (username, password, done) {

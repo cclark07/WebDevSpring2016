@@ -30,11 +30,13 @@
                 "roles": ["User"]
             };
 
-            UserService.createUser(newUser)
+            UserService.register(newUser)
                 .then(function(response) {
-                    $rootScope.currentUser = response.data;
-                    $location.path("/profile");
-                });
+                    if (response.data) {
+                        $rootScope.currentUser = response.data;
+                        $location.path("/profile");
+                    }
+                })
         }
     }
 })();
