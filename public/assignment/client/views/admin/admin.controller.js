@@ -15,6 +15,7 @@
         vm.deleteUser = deleteUser;
         vm.selectUser = selectUser;
         vm.updateUser = updateUser;
+        vm.sortColumn = sortColumn;
 
         vm.username;
         vm.password;
@@ -102,6 +103,10 @@
                     }
                     init();
                 })
+        }
+
+        function sortColumn(columnName) {
+
         }
     }
 })();

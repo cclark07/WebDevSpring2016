@@ -7,13 +7,15 @@ module.exports = function(app, userModel) {
     app.post('/api/assignment/logout', logout);
     app.get('/api/assignment/loggedin', loggedin);
     app.post('/api/assignment/register', register);
-    app.post("/api/assignment/user", auth,  createUser);
+    app.post("/api/assignment/admin/user", auth,  createUser);
+    app.get("/api/assignment/admin/user", getAllUsers);
+    app.get("/api/assignment/admin/user/:id", getUserById);
     app.get("/api/assignment/user", requestRouter);
     app.get("/api/assignment/user/:id", getUserById);
     app.get("/api/assignment/user?username=username", getUserByUsername);
     app.get("/api/assignment/user?username=username&password=password", findUserByCredentials);
-    app.put("/api/assignment/user/:id", auth, updateUserById);
-    app.delete("/api/assignment/user/:id", auth, deleteUserById);
+    app.put("/api/assignment/admin/user/:id", auth, updateUserById);
+    app.delete("/api/assignment/admin/user/:id", auth, deleteUserById);
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -112,11 +114,8 @@ module.exports = function(app, userModel) {
         if (req.query.username && req.query.password) {
             findUserByCredentials(req, res);
         }
-        else if (req.query.username) {
-            getUserByUsername(req, res);
-        }
         else {
-            getAllUsers(req, res);
+            getUserByUsername(req, res);
         }
     }
 

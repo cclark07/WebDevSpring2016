@@ -49,30 +49,30 @@
 
         // Returns user with the given id or null if not found
         function findUserById(userId) {
-            return $http.get("/api/assignment/user/" + userId);
+            return $http.get("/api/assignment/admin/user/" + userId);
         }
 
         // Returns all users
         function findAllUsers() {
-            return $http.get("/api/assignment/user");
+            return $http.get("/api/assignment/admin/user");
         }
 
   		// Adds user to stored users
         // Returns newly created user
         function createUser(user) {
-            return $http.post("/api/assignment/user", user);
+            return $http.post("/api/assignment/admin/user", user);
         }
 
 		// Deletes user with given id if found in all users
 		// Returns all users
         function deleteUserById(userId) {
-            return $http.delete("/api/assignment/user/" + userId);
+            return $http.delete("/api/assignment/admin/user/" + userId);
         }
 
 		// Updates the user with the given id with the data in the given user object
         // Returns updated user or null if not found
         function updateUser(userId, user) {
-            return $http.put("/api/assignment/user/" + userId, user);
+            return $http.put("/api/assignment/admin/user/" + userId, user);
         }
     }
 })();
