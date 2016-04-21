@@ -9,6 +9,8 @@
 
         vm.users = [];
         var selectedUser;
+        // Are the users currently sorted in ascending order?
+        var sortAscending = true;
 
         // Inject functions into scope
         vm.addUser = addUser;
@@ -16,6 +18,9 @@
         vm.selectUser = selectUser;
         vm.updateUser = updateUser;
         vm.sortColumn = sortColumn;
+        vm.usernameComp = usernameComp;
+        vm.firstNameComp = firstNameComp;
+        vm.lastNameComp = lastNameComp;
 
         vm.username;
         vm.password;
@@ -24,6 +29,10 @@
         vm.roles;
 
         function init() {
+            vm.usernameSort = false;
+            vm.firstNameSort = false;
+            vm.lastNameSort = false;
+
             vm.username = "";
             vm.password = "";
             vm.firstName = "";
@@ -105,8 +114,76 @@
                 })
         }
 
-        function sortColumn(columnName) {
+        function sortColumn(sortFunction) {
+            vm.sortAscending = !vm.sortAscending;
+            vm.users.sort(sortFunction);
+        }
 
+        function usernameComp(a, b) {
+            var result = 0;
+
+            if (a.username < b.username) {
+                result = -1;
+            }
+            else if (a.username === b.username) {
+                result = 0;
+            }
+            else {
+                result = 1;
+            }
+
+            if(vm.sortAscending) {
+                result *= -1;
+            }
+
+            vm.usernameSort = true;
+            vm.firstNameSort = false;
+            vm.lastNameSort = false;
+            return result;
+        }
+
+        function firstNameComp(a, b) {
+            var result = 0;
+
+            if (a.firstName < b.firstName) {
+                result = -1;
+            }
+            else if (a.firstName === b.firstName) {
+                result = 0;
+            }
+            else {
+                result = 1;
+            }
+
+            if(vm.sortAscending) {
+                result *= -1;
+            }
+
+            vm.usernameSort = false;
+            vm.firstNameSort = true;
+            vm.lastNameSort = false;
+            return result;
+        }
+
+        function lastNameComp(a, b) {
+            var result = 0;
+
+            if (a.lastName < b.lastName) {
+                result = -1;
+            }
+            else if (a.lastName === b.lastName) {
+                result = 0;
+            }
+            else {result = 1;}
+
+            if(vm.sortAscending) {
+                result *= -1;
+            }
+
+            vm.usernameSort = false;
+            vm.firstNameSort = false;
+            vm.lastNameSort = true;
+            return result;
         }
     }
 })();

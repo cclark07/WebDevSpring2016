@@ -6,19 +6,34 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <th class="text-nowrap">
-                    <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
-                    Username
+                    <a ng-click="vm.sortColumn(vm.usernameComp)">
+                        <div ng-show="vm.usernameSort" class="text-nowrap">
+                            <span ng-show="vm.sortAscending" class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
+                            <span ng-hide="vm.sortAscending" class="glyphicon glyphicon-triangle-top sort-icon"></span>
+                        </div>
+                        Username
+                    </a>
                 </th>
                 <th class="text-nowrap">
                     Password
                 </th>
-                <th class="text-nowrap">
-                    <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
-                    First Name
+                <th>
+                    <a ng-click="vm.sortColumn(vm.firstNameComp)" class="text-nowrap">
+                        <div ng-show="vm.firstNameSort" class="text-nowrap">
+                            <span ng-show="vm.sortAscending" class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
+                            <span ng-hide="vm.sortAscending" class="glyphicon glyphicon-triangle-top sort-icon"></span>
+                        </div>
+                        First Name
+                    </a>
                 </th>
                 <th class="text-nowrap">
-                    <span class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
-                    Last Name
+                    <a ng-click="vm.sortColumn(vm.lastNameComp)">
+                        <div ng-show="vm.lastNameSort" class="text-nowrap">
+                            <span ng-show="vm.sortAscending" class="glyphicon glyphicon-triangle-bottom sort-icon"></span>
+                            <span ng-hide="vm.sortAscending" class="glyphicon glyphicon-triangle-top sort-icon"></span>
+                        </div>
+                        Last Name
+                    </a>
                 </th>
                 <th class="text-nowrap">
                     Role

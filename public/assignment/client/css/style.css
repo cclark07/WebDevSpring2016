@@ -18,7 +18,8 @@
 
 .sort-icon {
 	margin-left: .5rem;
-	margin-right: .5rem;	
+	margin-right: .5rem;
+	float:left;
 }
 
 .table-icon {
