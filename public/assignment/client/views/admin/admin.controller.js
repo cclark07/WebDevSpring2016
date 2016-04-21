@@ -120,17 +120,7 @@
         }
 
         function usernameComp(a, b) {
-            var result = 0;
-
-            if (a.username < b.username) {
-                result = -1;
-            }
-            else if (a.username === b.username) {
-                result = 0;
-            }
-            else {
-                result = 1;
-            }
+            var result = a.username.toLowerCase().localeCompare((b.username.toLowerCase()));
 
             if(vm.sortAscending) {
                 result *= -1;
@@ -143,17 +133,7 @@
         }
 
         function firstNameComp(a, b) {
-            var result = 0;
-
-            if (a.firstName < b.firstName) {
-                result = -1;
-            }
-            else if (a.firstName === b.firstName) {
-                result = 0;
-            }
-            else {
-                result = 1;
-            }
+            var result = a.firstName.toLowerCase().localeCompare((b.firstName.toLowerCase()));
 
             if(vm.sortAscending) {
                 result *= -1;
@@ -166,15 +146,7 @@
         }
 
         function lastNameComp(a, b) {
-            var result = 0;
-
-            if (a.lastName < b.lastName) {
-                result = -1;
-            }
-            else if (a.lastName === b.lastName) {
-                result = 0;
-            }
-            else {result = 1;}
+            var result = a.lastName.toLowerCase().localeCompare((b.lastName.toLowerCase()));
 
             if(vm.sortAscending) {
                 result *= -1;
