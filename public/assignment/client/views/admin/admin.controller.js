@@ -80,6 +80,8 @@
                 return;
             }
 
+            var roles = vm.roles.replace(/\s+/g, '').split(',');
+
             var newuser = selectedUser;
             var userId = selectedUser._id;
 
@@ -89,7 +91,7 @@
             newuser.password = vm.password;
             newuser.firstName = vm.firstName;
             newuser.lastName = vm.lastName;
-            newuser.roles = vm.roles;
+            newuser.roles = roles;
 
             UserService.updateUser(userId, newuser)
                 .then(function(response) {
