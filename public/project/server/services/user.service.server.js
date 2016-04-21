@@ -1,6 +1,5 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var mongoose = require('mongoose');
 
 module.exports = function(app, userModel) {
     app.post("/api/project/login", passport.authenticate('local'), login);

@@ -13,7 +13,7 @@
   		// Attempt to login with input values
 		// If the user exists, it's stored in the $rootScope and user is re-routed to profile page
         function login() {
-        	UserService.findUserByCredentials(vm.user.username, vm.user.password)
+        	UserService.login(vm.user.username, vm.user.password)
                 .then(function(response){
                     if(response.data) {
                         $rootScope.currentUser = response.data;

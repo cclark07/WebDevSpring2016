@@ -13,10 +13,24 @@
             findAllUsers: findAllUsers,
 			createUser: createUser,
 			deleteUserById: deleteUserById,
-			updateUser: updateUser
+			updateUser: updateUser,
+            login: login,
+            logout: logout
 		};
 
 		return api;
+
+        function login(username, password) {
+            var credentials = {
+                username: username,
+                password: password
+            };
+            return $http.post("/api/assignment/login", credentials);
+        }
+
+        function logout() {
+            return $http.post("/api/assignment/logout");
+        }
 
         // Returns user with given credentials or null if not found
         function findUserByCredentials(username, password) {

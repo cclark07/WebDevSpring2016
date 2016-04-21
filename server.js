@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 
-var connectionString = 'mongodb://127.0.0.1:27017/camscapedb';
+var connectionString = 'mongodb://127.0.0.1:27017/formmakerdb';
 
 // use remote connection string
 // if running in remote server
