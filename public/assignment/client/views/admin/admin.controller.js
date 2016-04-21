@@ -9,8 +9,12 @@
 
         vm.users = [];
         var selectedUser;
-        // Are the users currently sorted in ascending order?
-        var sortAscending = true;
+
+        vm.sortAscending = null;
+
+        vm.usernameSort = false;
+        vm.firstNameSort = false;
+        vm.lastNameSort = false;
 
         // Inject functions into scope
         vm.addUser = addUser;
@@ -29,6 +33,8 @@
         vm.roles;
 
         function init() {
+            vm.sortAscending = null;
+
             vm.usernameSort = false;
             vm.firstNameSort = false;
             vm.lastNameSort = false;
